@@ -1,0 +1,25 @@
+.App {
+  text-align: start;
+}
+
+.map-wrap {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.MuiCollapse-root {
+  width: 90%;
+}
+
+.MuiCollapse-vertical {
+  width: 90%;
+}
+
+.MuiCollapse-entered {
+  width: 90%;
+}
+
+.css-pwcg7p-MuiCollapse-root {
+  width: 90%;
+}
