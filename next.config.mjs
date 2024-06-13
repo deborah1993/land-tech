@@ -7,11 +7,13 @@ const nextConfig = {
         headers: [
           {
             key: "X-Frame-Options",
-            value: "ALLOWALL",
+            value:
+              "ALLOW-FROM https://land-tech-iuodj3roi-deborah1993s-projects.vercel.app/",
           },
           {
             key: "Content-Security-Policy",
-            value: "frame-ancestors 'self' *",
+            value:
+              "frame-ancestors 'self' https://land-tech-iuodj3roi-deborah1993s-projects.vercel.app/",
           },
         ],
       },
