@@ -2,8 +2,6 @@
 
 import * as React from "react";
 import Map, { Layer, Marker, Source } from "react-map-gl";
-// import Map, { Layer, Marker, Source } from "react-mapbox-gl";
-// import "mapbox-gl/dist/mapbox-gl.css";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import "./App.css";

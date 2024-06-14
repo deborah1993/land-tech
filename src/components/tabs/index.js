@@ -11,11 +11,9 @@ import {
   Autocomplete,
   Button,
   FormGroup,
-  MenuItem,
   Checkbox,
 } from "@mui/material";
 import React, { useState } from "react";
-import { FiChevronDown } from "react-icons/fi";
 
 function a11yProps(index) {
   return {
@@ -147,26 +145,28 @@ function HeroTabs({ show, handleChange, setWidget }) {
         justifyContent: "flex-start",
         position: "relative",
         zIndex: 4,
-        width: "auto",
+        width: "30vw",
         backgroundColor: "white",
         boxShadow: "0px 0px 8px 0px rgba(0, 0, 0, 0.25)",
         maxWidth: "550px",
-        width: "100%",
         background: "rgba(1, 37, 82, 0.75)",
         backdropFilter: "blur(calc(24px / 2))",
       }}
     >
-      <Box sx={{ maxWidth: "500px", width: "100%" }}>
+      <Box sx={{ width: "95%" }}>
         <Tabs
           value={show}
           onChange={handleChange}
           aria-label="basic tabs example"
           sx={{
-            paddingX: "16px",
+            paddingX: "0.9vw",
             "& .MuiTabs-flexContainer": {
-              justifyContent: "space-between",
+              justifyContent: "space-evenly",
             },
-            marginBottom: "23px",
+            "& .MuiTabs-flexContainer": {
+              flexWrap: "wrap",
+            },
+            marginBottom: "1.3vw",
             borderBottom: "2px solid white",
           }}
           TabIndicatorProps={{
@@ -181,11 +181,9 @@ function HeroTabs({ show, handleChange, setWidget }) {
             label="Zip Code"
             sx={{
               textTransform: "none",
-              spacingX: 6,
-              spacingY: 3,
-              fontSize: "14px",
+              fontSize: "16px",
               fontWeight: 500,
-              lineHeight: "20px",
+              lineHeight: "140%",
               color: show === 0 ? "#02ebc7 !important" : "#FFF",
             }}
             value={0}
@@ -198,7 +196,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
             {...a11yProps(1)}
             sx={{
               textTransform: "none",
-              fontSize: "14px",
+              fontSize: "16px",
               fontWeight: 500,
               lineHeight: "20px",
               color: show === 1 ? "#02ebc7 !important" : "#FFF",
@@ -210,7 +208,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
             {...a11yProps(2)}
             sx={{
               textTransform: "none",
-              fontSize: "14px",
+              fontSize: "16px",
               fontWeight: 500,
               lineHeight: "20px",
               color: show === 2 ? "#02ebc7 !important" : "#FFF",
@@ -222,7 +220,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
             {...a11yProps(3)}
             sx={{
               textTransform: "none",
-              fontSize: "14px",
+              fontSize: "16px",
               fontWeight: 500,
               lineHeight: "20px",
               color: show === 3 ? "#02ebc7 !important" : "#FFF",
@@ -234,9 +232,9 @@ function HeroTabs({ show, handleChange, setWidget }) {
             <Box>
               <Box sx={{ padding: "16px" }}>
                 <Typography
-                  mb="8px"
+                  mb="0.5vw"
                   color="#FFF"
-                  fontSize="48px"
+                  fontSize="2.7vw"
                   lineHeight="110%"
                   fontWeight={500}
                 >
@@ -253,101 +251,79 @@ function HeroTabs({ show, handleChange, setWidget }) {
               </Box>
 
               <Box
-                id="search-n-filters"
                 sx={{
-                  marginTop: "23px",
-                  paddingX: "16px",
+                  padding: "16px",
                   display: "flex",
-                  alignItems: "flex-start",
-                  gap: "8px",
-                  alignSelf: "stretch",
+                  borderRadius: "8px",
+                  gap: "10px",
                 }}
               >
-                <Box
+                <Autocomplete
                   size="small"
-                  fullWidth
                   sx={{
+                    position: "relative",
+                    zIndex: 2,
                     display: "flex",
-                    flexDirection: "column",
-                    alignItems: "flex-start",
-                    flex: "1 0 0",
+                    width: "100%",
+                    bgcolor: "white",
+                    borderRadius: "5px 5px 5px 5px",
+                    "& .MuiInputBase-root::before": {
+                      borderBottom: "none !important",
+                      padding: "0px",
+                    },
+                    "& .MuiInputBase-root::after": {
+                      borderBottom: "none !important",
+                      padding: "0px",
+                    },
+                    "& .MuiAutocomplete-endAdornment": {
+                      padding: "0px",
+                      opacity: 0,
+                    },
+                    "& .MuiAutocomplete-root": {
+                      padding: "0px",
+                    },
+                    "& .MuiOutlinedInput-root": {
+                      padding: "0px",
+                    },
                   }}
-                >
-                  <Box
-                    sx={{
-                      display: "flex",
-                      padding: "6px 12px",
-                      alignItems: "center",
-                      gap: "8px",
-                      alignSelf: "stretch",
-                      borderRadius: "8px",
-                      border: "2px solid #9CA3AF",
-                      background: "#FFF",
-                    }}
-                  >
-                    <Search size="small" />
-                    <Autocomplete
-                      size="small"
+                  disablePortal
+                  id="combo-box-demo"
+                  options={defaultZipCodes}
+                  onChange={(event, newValue) => {
+                    handlePlaceChange(newValue);
+                  }}
+                  fullWidth
+                  value={location.name || ""}
+                  inputValue={location.name || ""}
+                  onInputChange={(event, newValue) => {
+                    handlePlaceChange(newValue);
+                  }}
+                  isOptionEqualToValue={(option, value) =>
+                    option.name === value
+                  }
+                  renderInput={(params) => <TextField {...params} />}
+                  renderOption={(props, option) => (
+                    <Box
+                      component="li"
+                      {...props}
                       sx={{
-                        position: "relative",
-                        zIndex: 2,
                         display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "flex-start",
+                        alignItems: "flex-start",
+                        textAlign: "left",
                         width: "100%",
-                        bgcolor: "white",
-                        borderRadius: "5px 0px 0px 5px",
-                        "& .MuiInputBase-root": {
-                          padding: "0px",
-                          height: "30px",
-                          "&::before": {
-                            borderBottom: "none !important",
-                          },
-                          "&::after": {
-                            borderBottom: "none !important",
-                          },
-                        },
-                        "& .MuiOutlinedInput-root": {
-                          padding: "0px",
-                          "& fieldset": {
-                            border: "none", // Elimina el borde del campo de entrada
-                          },
-                        },
-                        "& .MuiAutocomplete-endAdornment": {
-                          padding: "0px",
-                          opacity: 0,
-                        },
-                        "& .MuiAutocomplete-root": {
-                          padding: "0px",
-                        },
                       }}
-                      disablePortal
-                      id="combo-box-demo"
-                      options={defaultZipCodes}
-                      onChange={(event, newValue) => {
-                        handleZipCodeChange(newValue);
-                      }}
-                      fullWidth
-                      value={zipCode || ""}
-                      inputValue={zipCode || ""}
-                      onInputChange={(event, newValue) => {
-                        handleZipCodeChange(newValue);
-                      }}
-                      isOptionEqualToValue={(option, value) => option === value}
-                      renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          size="small"
-                          placeholder="Search for site data"
-                          height="30px"
-                        />
-                      )}
-                    />
-                  </Box>
-                </Box>
-
+                    >
+                      <Typography variant="body1" sx={{ width: "100%" }}>
+                        {option}
+                      </Typography>
+                    </Box>
+                  )}
+                />
                 <Box
                   fullWidth
                   sx={{
-                    height: "30px",
                     display: "flex",
                     justifyContent: "space-between",
                     padding: "6px 20px 6px 20px",
@@ -359,17 +335,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                     background: "#FFF",
                   }}
                 >
-                  <Typography
-                    sx={{
-                      color: "#1F2937",
-                      fontSize: "14px",
-                      fontWeight: 400,
-                      lineHeight: "20px",
-                      flex: "1 0 0",
-                    }}
-                  >
-                    Search
-                  </Typography>
+                  <Search style={{ color: "gray", fontSize: "20px" }} />
                 </Box>
               </Box>
 
@@ -395,10 +361,10 @@ function HeroTabs({ show, handleChange, setWidget }) {
             <Box>
               <Box sx={{ padding: "16px" }}>
                 <Typography
-                  mb="8px"
+                  mb="0.5vw"
                   color="#FFF"
-                  fontSize="48px"
-                  lineHeight="110%"
+                  fontSize="2.7vw"
+                  lineHeight="140%"
                   fontWeight={500}
                 >
                   Multi Criteria Sourcing Tool
@@ -424,22 +390,6 @@ function HeroTabs({ show, handleChange, setWidget }) {
                   paddingBottom: "16px",
                 }}
               >
-                {/* <Accordion
-                  disableGutters
-                  sx={{
-                    border: "1px solid #9CA3AF",
-                    borderRadius: "8px",
-                    boxShadow: "none",
-                  }}
-                > 
-                  <AccordionSummary
-                    expandIcon={<FiChevronDown />}
-                    aria-controls="panel2-content"
-                    id="panel2-header"
-                    sx={{
-                      borderRadius: "8px",
-                    }}
-                  >*/}
                 <Typography
                   sx={{
                     color: "#FFF",
@@ -450,10 +400,6 @@ function HeroTabs({ show, handleChange, setWidget }) {
                 >
                   Lot area
                 </Typography>
-                {/* </AccordionSummary> */}
-                {/* <AccordionDetails
-                    sx={{ backgroundColor: "#F9FAFB", borderRadius: "8px" }}
-                  > */}
                 <Box
                   sx={{
                     display: "flex",
@@ -484,22 +430,6 @@ function HeroTabs({ show, handleChange, setWidget }) {
                     }}
                   />
                 </Box>
-                {/* </AccordionDetails>
-                </Accordion> */}
-
-                {/* <Accordion
-                  disableGutters
-                  sx={{
-                    border: "1px solid #9CA3AF",
-                    borderRadius: "8px",
-                    boxShadow: "none",
-                  }}
-                >
-                  <AccordionSummary
-                    expandIcon={<FiChevronDown />}
-                    aria-controls="panel2-content"
-                    id="panel2-header"
-                  > */}
                 <Typography
                   sx={{
                     color: "#FFF",
@@ -513,8 +443,6 @@ function HeroTabs({ show, handleChange, setWidget }) {
                 >
                   Property Type
                 </Typography>
-                {/* </AccordionSummary>
-                  <AccordionDetails sx={{ backgroundColor: "#F9FAFB" }}> */}
                 <Box
                   sx={{
                     display: "flex",
@@ -532,6 +460,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                           width: "47%",
                           "& .MuiFormControlLabel-label": {
                             color: "white",
+                            fontSize: "small",
                           },
                         }}
                         control={
@@ -559,6 +488,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                         sx={{
                           "& .MuiFormControlLabel-label": {
                             color: "white",
+                            fontSize: "small",
                           },
                         }}
                         control={
@@ -580,22 +510,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                     </Box>
                   </FormGroup>
                 </Box>
-                {/* </AccordionDetails>
-                </Accordion> */}
 
-                {/* <Accordion
-                  disableGutters
-                  sx={{
-                    border: "1px solid #9CA3AF",
-                    borderRadius: "8px",
-                    boxShadow: "none",
-                  }}
-                >
-                  <AccordionSummary
-                    expandIcon={<FiChevronDown />}
-                    aria-controls="panel2-content"
-                    id="panel2-header"
-                  > */}
                 <Typography
                   sx={{
                     color: "#FFF",
@@ -609,8 +524,6 @@ function HeroTabs({ show, handleChange, setWidget }) {
                 >
                   Property Type
                 </Typography>
-                {/* </AccordionSummary>
-                  <AccordionDetails sx={{ backgroundColor: "#F9FAFB" }}> */}
                 <Box
                   sx={{
                     display: "flex",
@@ -625,6 +538,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                           width: "47%",
                           "& .MuiFormControlLabel-label": {
                             color: "white",
+                            fontSize: "small",
                           },
                         }}
                         control={
@@ -645,6 +559,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                         sx={{
                           "& .MuiFormControlLabel-label": {
                             color: "white",
+                            fontSize: "small",
                           },
                         }}
                         control={
@@ -669,6 +584,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                           width: "47%",
                           "& .MuiFormControlLabel-label": {
                             color: "white",
+                            fontSize: "small",
                           },
                         }}
                         control={
@@ -689,6 +605,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                         sx={{
                           "& .MuiFormControlLabel-label": {
                             color: "white",
+                            fontSize: "small",
                           },
                         }}
                         control={
@@ -713,6 +630,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                           width: "47%",
                           "& .MuiFormControlLabel-label": {
                             color: "white",
+                            fontSize: "small",
                           },
                         }}
                         control={
@@ -733,6 +651,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                         sx={{
                           "& .MuiFormControlLabel-label": {
                             color: "white",
+                            fontSize: "small",
                           },
                         }}
                         control={
@@ -777,10 +696,10 @@ function HeroTabs({ show, handleChange, setWidget }) {
             <Box>
               <Box sx={{ padding: "16px" }}>
                 <Typography
-                  mb="8px"
+                  mb="0.5vw"
                   color="#FFF"
-                  fontSize="48px"
-                  lineHeight="110%"
+                  fontSize="2.7vw"
+                  lineHeight="140%"
                   fontWeight={500}
                 >
                   Search for a specific place
@@ -800,6 +719,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                   padding: "16px",
                   display: "flex",
                   borderRadius: "8px",
+                  gap: "10px",
                 }}
               >
                 <Autocomplete
@@ -810,7 +730,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                     display: "flex",
                     width: "100%",
                     bgcolor: "white",
-                    borderRadius: "5px 0px 0px 5px",
+                    borderRadius: "5px 5px 5px 5px",
                     "& .MuiInputBase-root::before": {
                       borderBottom: "none !important",
                       padding: "0px",
@@ -873,17 +793,20 @@ function HeroTabs({ show, handleChange, setWidget }) {
                   )}
                 />
                 <Box
-                  bgcolor="#012552"
-                  borderRadius="0px 5px 5px 0px"
+                  fullWidth
                   sx={{
                     display: "flex",
-                    justifyContent: "center",
+                    justifyContent: "space-between",
+                    padding: "6px 20px 6px 20px",
                     alignItems: "center",
+                    gap: "8px",
+                    alignSelf: "stretch",
+                    borderRadius: "8px",
+                    border: "2px solid #9CA3AF",
+                    background: "#FFF",
                   }}
                 >
-                  <Button onClick={() => window.open("")}>
-                    <Search style={{ color: "white", fontSize: "20px" }} />
-                  </Button>
+                  <Search style={{ color: "gray", fontSize: "20px" }} />
                 </Box>
               </Box>
 
@@ -914,10 +837,10 @@ function HeroTabs({ show, handleChange, setWidget }) {
           ) : show === 3 ? (
             <Box sx={{ padding: "16px" }}>
               <Typography
-                mb="8px"
+                mb="0.5vw"
                 color="#FFF"
-                fontSize="48px"
-                lineHeight="110%"
+                fontSize="2.7vw"
+                lineHeight="140%"
                 fontWeight={500}
               >
                 Stay Organized and Focused with Your Site Tracker
