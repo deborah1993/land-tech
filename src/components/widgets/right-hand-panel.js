@@ -19,7 +19,7 @@ import {
 import React from "react";
 import { FiChevronDown } from "react-icons/fi";
 
-function WidgetOne({ widget }) {
+function RightHandPanel({ widget }) {
   const [filters, setFilters] = React.useState([
     "Vacant",
     "20-acres",
@@ -29,8 +29,8 @@ function WidgetOne({ widget }) {
   return (
     <div
       style={{
-        height: "100vh",
-        width: "100%",
+        width: "28%",
+        aspectRatio: "1 / 0.9",
         maxWidth: "480px",
         display: "flex",
         top: "0%",
@@ -70,21 +70,21 @@ function WidgetOne({ widget }) {
               color="#1F2937"
               lineHeight="24px"
             >
-              {widget.property}
+              {widget.property || "19-31-17-68610-001-0010"}
             </Typography>
 
             <Box id="close-button">
-              <Close />
+              <Close color="#1F2937" />
             </Box>
           </Box>
 
           <Box
             sx={{
               display: "flex",
-              padding: "16px",
+              padding: "0.9vw",
               flexDirection: "column",
               alignItems: "flex-end",
-              gap: "16px",
+              gap: "0.9vw",
               alignSelf: "stretch",
               borderBottom: "1px solid #D1D5DB",
               background: "rgba(249, 250, 251, 0.65)",
@@ -102,273 +102,6 @@ function WidgetOne({ widget }) {
               {widget.direction ??
                 "400 Central Ave, Saint Petersburg, Fl, 33701"}
             </Typography>
-
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "flex-start",
-                gap: "8px",
-                alignSelf: "stretch",
-              }}
-            >
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "flex-start",
-                  flex: "1 0 0",
-                }}
-              >
-                <Typography
-                  sx={{
-                    color: "#6B7280",
-                    fontSize: "12px",
-                    fontWeight: 400,
-                    lineHeight: "16px",
-                  }}
-                >
-                  Lot Area
-                </Typography>
-
-                <Typography
-                  sx={{
-                    color: "#1F2937",
-                    fontSize: "14px",
-                    fontWeight: 400,
-                    lineHeight: "20px",
-                  }}
-                >
-                  {widget.area ?? "2.26 acres"}
-                </Typography>
-              </Box>
-
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "flex-start",
-                  flex: "1 0 0",
-                }}
-              >
-                <Typography
-                  sx={{
-                    color: "#6B7280",
-                    fontSize: "12px",
-                    fontWeight: 400,
-                    lineHeight: "16px",
-                  }}
-                >
-                  Property State
-                </Typography>
-
-                <Typography
-                  sx={{
-                    color: "#1F2937",
-                    fontSize: "14px",
-                    fontWeight: 400,
-                    lineHeight: "20px",
-                  }}
-                >
-                  {widget.state ?? "In use"}
-                </Typography>
-              </Box>
-            </Box>
-
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "flex-start",
-                gap: "8px",
-                alignSelf: "stretch",
-              }}
-            >
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "flex-start",
-                  flex: "1 0 0",
-                }}
-              >
-                <Typography
-                  sx={{
-                    color: "#6B7280",
-                    fontSize: "12px",
-                    fontWeight: 400,
-                    lineHeight: "16px",
-                  }}
-                >
-                  Last Sold
-                </Typography>
-
-                <Typography
-                  sx={{
-                    color: "#1F2937",
-                    fontSize: "14px",
-                    fontWeight: 400,
-                    lineHeight: "20px",
-                  }}
-                >
-                  {widget.lastSold ?? "$5,898,427.00"}
-                </Typography>
-              </Box>
-
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "flex-start",
-                  flex: "1 0 0",
-                }}
-              >
-                <Typography
-                  sx={{
-                    color: "#6B7280",
-                    fontSize: "12px",
-                    fontWeight: 400,
-                    lineHeight: "16px",
-                  }}
-                >
-                  Last Sold Date
-                </Typography>
-
-                <Typography
-                  sx={{
-                    color: "#1F2937",
-                    fontSize: "14px",
-                    fontWeight: 400,
-                    lineHeight: "20px",
-                  }}
-                >
-                  {widget.lastSoldDate ?? "12/13/2022"}
-                </Typography>
-              </Box>
-            </Box>
-
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-end",
-                gap: "6px",
-                alignSelf: "stretch",
-              }}
-            >
-              <Box
-                id="ownership-title"
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "34px",
-                  alignSelf: "stretch",
-                }}
-              >
-                <Typography
-                  sx={{
-                    color: "#1F2937",
-                    fontSize: "14px",
-                    fontWeight: 400,
-                    lineHeight: "20px",
-                  }}
-                >
-                  Ownership
-                </Typography>
-              </Box>
-
-              <Box
-                id="ownership-data"
-                sx={{
-                  display: "flex",
-                  alignItems: "flex-start",
-                  gap: "8px",
-                  alignSelf: "stretch",
-                }}
-              >
-                <Box
-                  sx={{
-                    display: "flex",
-                    padding: "4px 8px",
-                    flexDirection: "column",
-                    alignItems: "flex-start",
-                    flex: "1 0 0",
-                    borderRadius: "8px",
-                    border: "1px solid #E5E7EB",
-                    background: "#FFF",
-                  }}
-                >
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "flex-start",
-                      gap: "4px",
-                    }}
-                  >
-                    <Typography
-                      sx={{
-                        color: "#1F2937",
-                        fontSize: "14px",
-                        fontWeight: 400,
-                        lineHeight: "20px",
-                      }}
-                    >
-                      CATS RED APPLE ST PETE LLC 800 3RD AVE FL 5 NEW YORK NY
-                      10022
-                    </Typography>
-                  </Box>
-                </Box>
-              </Box>
-              <Button
-                sx={{
-                  display: "flex",
-                  padding: "8px",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  gap: "4px",
-                  borderRadius: "8px",
-                  border: "2px solid rgba(255, 255, 255, 0.00",
-                }}
-              >
-                <Typography
-                  sx={{
-                    color: "#0057AD",
-                    fontSize: "14px",
-                    fontWeight: 500,
-                    lineHeight: "20px",
-                    textTransform: "none",
-                  }}
-                >
-                  View Owner Portfolio
-                </Typography>
-                <ArrowForward color="#0057AD" />
-              </Button>
-            </Box>
-
-            <Button
-              sx={{
-                display: "flex",
-                padding: "6px 12px",
-                justifyContent: "center",
-                alignItems: "center",
-                gap: "8px",
-                alignSelf: "stretch",
-                textTransform: "none",
-                borderRadius: "8px",
-                border: "2px solid #0057AD",
-                background: "#FFF",
-              }}
-            >
-              <Lock />
-              <Typography
-                sx={{
-                  color: "#0057AD",
-                  fontSize: "14px",
-                  fontWeight: 500,
-                  lineHeight: "20px",
-                }}
-              >
-                View all Property Information
-              </Typography>
-            </Button>
           </Box>
 
           <Box
@@ -802,4 +535,4 @@ function WidgetOne({ widget }) {
   );
 }
 
-export default WidgetOne;
+export default RightHandPanel;

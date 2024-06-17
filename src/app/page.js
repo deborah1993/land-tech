@@ -10,6 +10,7 @@ import HeroTabs from "@/components/tabs/index.js";
 import { BaseBoard } from "@/components/boards/base.js";
 import SummaryCard from "@/components/cards/summary.js";
 import axios from "axios";
+import ManagementPanel from "@/components/widgets/management-panel";
 
 const markers = [
   { lng: -82.6316, lat: 27.7651, description: "The Dali Museum" },
@@ -295,7 +296,6 @@ function Home() {
       {show !== 3 ? (
         <WidgetOne widget={widget} />
       ) : show === 3 ? (
-        // <Kanban />
         <div
           style={{
             position: "fixed",
@@ -306,17 +306,12 @@ function Home() {
             width: "65%",
           }}
         >
+          <ManagementPanel widget={widget} />
           <BaseBoard setShowSummary={setShowSummary} setCard={setCard} />
         </div>
       ) : (
         <></>
       )}
-
-      <SummaryCard
-        item={card}
-        open={showSummary}
-        onClose={() => setShowSummary(false)}
-      />
     </div>
   );
 }

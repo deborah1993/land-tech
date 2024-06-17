@@ -3,40 +3,27 @@
 import React, { useState } from "react";
 import { FiPlus } from "react-icons/fi";
 import { motion } from "framer-motion";
-import { Typography } from "@mui/material";
+import { Typography, Box, Button } from "@mui/material";
+import {
+  DragIndicatorSharp,
+  MoreHoriz,
+  QueryBuilder,
+} from "@mui/icons-material";
 
 export const BaseBoard = ({ setCard, setShowSummary }) => {
-  return (
-    <div
-      // className="h-screen w-full bg-neutral-900 text-neutral-50"
-      style={{
-        height: "98vh",
-        width: "100%",
-        color: "black",
-        backgroundColor: "rgba(255, 255, 255, 0.1)",
-        borderRadius: "20px",
-        boxShadow: "inset 0 0 20px rgba(255, 255, 255, 0.2)",
-        backdropFilter: "blur(20px)",
-      }}
-    >
-      <Board setCard={setCard} setShowSummary={setShowSummary} />
-    </div>
-  );
-};
-
-const Board = ({ setCard, setShowSummary }) => {
   const [cards, setCards] = useState(DEFAULT_CARDS);
 
   return (
     <div
-      // className="flex h-full w-full gap-3 overflow-scroll p-12"
       style={{
-        display: "flex",
-        height: "95vh",
-        width: "100%",
+        display: "inline-flex",
+        height: "100%",
+        flexDirection: "row",
         overflow: "hidden",
-        padding: "12px",
-        gap: 3,
+        alignItems: "flex-start",
+        flexShrink: 0,
+        borderRadius: "5px",
+        gap: "2.3vw",
       }}
     >
       <Column
@@ -52,24 +39,6 @@ const Board = ({ setCard, setShowSummary }) => {
         title="Opportunity"
         column="Opportunity"
         headingColor="text-yellow-200"
-        cards={cards}
-        setCards={setCards}
-        setCard={setCard}
-        setShowSummary={setShowSummary}
-      />
-      <Column
-        title="Letter Sent"
-        column="Letter Sent"
-        headingColor="text-blue-200"
-        cards={cards}
-        setCards={setCards}
-        setCard={setCard}
-        setShowSummary={setShowSummary}
-      />
-      <Column
-        title="Deal completed"
-        column="Deal completed"
-        headingColor="text-emerald-200"
         cards={cards}
         setCards={setCards}
         setCard={setCard}
@@ -191,38 +160,123 @@ const Column = ({
 
   return (
     <div
-      className="w-56 shrink-0"
       style={{
-        width: "22%",
+        display: "inline-flex",
+        height: "100vh",
+        flexDirection: "column",
+        alignItems: "flex-start",
         flexShrink: 0,
-        marginRight: "7px",
-        padding: "10px",
-        borderRadius: "10px",
-        border: "1px solid rgba(38, 38, 38, 0.1)",
+        borderRadius: "5px",
       }}
     >
-      <div
-        // className="mb-3 flex items-center justify-between"
+      <Box
         style={{
-          marginBottom: 3,
+          cursor: "grab",
           display: "flex",
+          flexDirection: "column",
           alignItems: "center",
-          justifyContent: "space-between",
+          width: "100%",
+          borderRadius: "5px",
         }}
       >
-        <h3 className={`font-medium ${headingColor}`}>{title}</h3>
-      </div>
-      <div
+        <Box
+          sx={{
+            display: "flex",
+            padding: "4px 8px",
+            background: "#FFF",
+            justifyContent: "space-between",
+            alignItems: "center",
+            alignSelf: "stretch",
+            borderRadius: "5px",
+          }}
+        >
+          <Box
+            id="left"
+            sx={{
+              display: "flex",
+              width: "57%",
+              height: "38px",
+              alignItems: "center",
+              gap: "4px",
+            }}
+          >
+            <DragIndicatorSharp
+              sx={{
+                fontSize: "18px",
+                color: "#1F2937",
+                stroke: "#1F2937",
+              }}
+            />
+            <Typography
+              sx={{
+                color: "#1F2937",
+                fontSize: "18px",
+                fontWeight: 400,
+              }}
+            >
+              Opportunity
+            </Typography>
+          </Box>
+          <Box
+            id="right"
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: "4px",
+            }}
+          >
+            <Typography
+              sx={{
+                display: "flex",
+                width: "24px",
+                color: "#1F2937",
+                textAlign: "right",
+                fontSize: "14px",
+                fontWeight: 400,
+                height: "27px",
+                flexDirection: "column",
+                justifyContent: "center",
+              }}
+            >
+              3
+            </Typography>
+            <MoreHoriz
+              sx={{
+                color: "#1F2937",
+                stroke: "#1F2937",
+              }}
+            />
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            width: "100%",
+            height: "7px",
+            background: "#EF46E7",
+          }}
+        ></Box>
+      </Box>
+
+      <Box
         onDrop={handleDragEnd}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
-        style={{
+        sx={{
+          display: "flex",
+          padding: "16px 12px",
+          flexDirection: "column",
+          alignItems: "flex-start",
+          gap: "8px",
+          flex: "1 0 0",
           height: "100%",
           width: "100%",
           transition: "background-color 0.2s ease-in-out", // transition-colors equivalent
           backgroundColor: active
             ? "rgba(38, 38, 38, 0.1)"
             : "rgba(38, 38, 38, 0)",
+          borderRadius: "0px 0px 5px 5px",
+          background: "rgba(255, 255, 255, 0.75)",
+          backdropFilter: "blur(calc(8px / 2))",
         }}
       >
         {filteredCards.map((c) => {
@@ -237,8 +291,7 @@ const Column = ({
           );
         })}
         <DropIndicator beforeId={null} column={column} />
-        {/* <AddCard column={column} setCards={setCards} /> */}
-      </div>
+      </Box>
     </div>
   );
 };
@@ -263,28 +316,194 @@ const MyCard = ({
         layoutId={id}
         draggable="true"
         onDragStart={(e) => handleDragStart(e, { title, id, column })}
-        // className="cursor-grab rounded border border-neutral-700 bg-neutral-800 p-3 active:cursor-grabbing"
         style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
           cursor: "grab",
-          borderRadius: "5px",
-          border: "1px solid gray",
-          padding: "5px 10px",
-          active: "cursor-grabbing",
-          backgroundColor: "white",
-          marginBottom: "5px",
         }}
         onClick={handleClick}
       >
-        <p
-          // className="text-sm text-neutral-100"
-          style={{ fontSize: "sm", color: "black" }}
+        <Box
+          sx={{
+            display: "flex",
+            height: "168px",
+            padding: "8px 12px 12px 12px",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "8px",
+            borderRadius: "5px",
+            background: "#FFF",
+            boxShadow: "0px 1px 0px 0px #CCC",
+          }}
         >
-          {title}
-        </p>
+          <Box
+            id="content"
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+              gap: "4px",
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                height: "24px",
+                alignItems: "center",
+                gap: "12px",
+                alignSelf: "stretch",
+                width: "100%",
+                justifyContent: "space-between",
+              }}
+            >
+              <Typography
+                sx={{
+                  color: "#1F2937",
+                  fontSize: "10px",
+                  fontWeight: 600,
+                  lineHeight: "14px",
+                  textTransform: "uppercase",
+                }}
+              >
+                Saint Petersburg
+              </Typography>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 18 18"
+                fill="none"
+              >
+                <path
+                  d="M13.5 8.25V6L16.5 9L13.5 12V9.75H9.75V13.5H12L9 16.5L6 13.5H8.25V9.75H4.5V12L1.5 9L4.5 6V8.25H8.25V4.5H6L9 1.5L12 4.5H9.75V8.25H13.5Z"
+                  fill="black"
+                />
+              </svg>
+            </Box>
 
-        <Typography sx={{ fontSize: 14 }} color="text.secondary">
-          {"Saved May 28th, 2024"}
-        </Typography>
+            <Typography
+              sx={{
+                maxWidth: "217px",
+                overflow: "hidden",
+                color: "#1F2937",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+                fontSize: "14px",
+                fontWeight: 400,
+              }}
+            >
+              400 Central Ave, Saint Petersburg, Fl, 33701
+            </Typography>
+
+            <Typography
+              sx={{
+                maxWidth: "217px",
+                overflow: "hidden",
+                color: "#6B7280",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+                fontSize: "12px",
+                fontWeight: 400,
+              }}
+            >
+              ID 507f1f
+            </Typography>
+          </Box>
+
+          <Box
+            id="meta"
+            sx={{
+              display: "flex",
+              justifyContent: "flex-end",
+              alignItems: "center",
+              gap: "8px",
+              alignSelf: "stretch",
+            }}
+          >
+            <QueryBuilder
+              color="#4B5563"
+              sx={{
+                color: "#4B5563",
+                fill: "#4B5563",
+                stroke: "#4B5563",
+                fontSize: "15px",
+              }}
+            />
+            <Typography
+              sx={{
+                color: "#4B5563",
+                fontSize: "12px",
+                fontWeight: 400,
+              }}
+            >
+              3 months ago
+            </Typography>
+            <Box
+              sx={{
+                width: "20px",
+                height: "20px",
+                display: "flex",
+                padding: " 7.5px 6px 6.5px 6px",
+                borderRadius: "100px",
+                border: "1px solid #FFF",
+                background: "#3B82F6",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Typography
+                sx={{
+                  color: "#FFF",
+                  textAlign: "center",
+                  fontSize: "8px",
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                }}
+              >
+                LT
+              </Typography>
+            </Box>
+          </Box>
+
+          <Box
+            id="frame-561"
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "flex-start",
+              gap: "8px",
+              flex: "1 0 0",
+              alignSelf: "stretch",
+            }}
+          >
+            <Button
+              sx={{
+                display: "flex",
+                padding: "6px 12px",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: "8px",
+                flex: "1 0 0",
+                alignSelf: "stretch",
+                borderRadius: "8px",
+                border: "2px solid #0057AD",
+                background: "rgba(0, 87, 173, 0.10)",
+              }}
+            >
+              <Typography
+                sx={{
+                  color: "#1F2937",
+                  fontSize: "14px",
+                  fontWeight: 500,
+                  textTransform: "none",
+                }}
+              >
+                View
+              </Typography>
+            </Button>
+          </Box>
+        </Box>
       </motion.div>
     </>
   );
@@ -426,18 +645,4 @@ const DEFAULT_CARDS = [
   },
   { title: "Postmortem for outage", id: "6", column: "Opportunity" },
   { title: "Sync with product on Q3 roadmap", id: "7", column: "Opportunity" },
-
-  // Letter Sent
-  {
-    title: "Refactor context providers to use Zustand",
-    id: "8",
-    column: "Letter Sent",
-  },
-  { title: "Add logging to daily CRON", id: "9", column: "Letter Sent" },
-  // Deal Completed
-  {
-    title: "Set up DD dashboards for Lambda listener",
-    id: "10",
-    column: "Deal completed",
-  },
 ];
