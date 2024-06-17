@@ -27,9 +27,9 @@ export const BaseBoard = ({ setCard, setShowSummary }) => {
       }}
     >
       <Column
-        title="Site Saved"
-        column="Site Saved"
-        headingColor="text-neutral-500"
+        title="Mobile App"
+        column="Mobile App"
+        headingColor="#7E22CE"
         cards={cards}
         setCards={setCards}
         setCard={setCard}
@@ -38,7 +38,7 @@ export const BaseBoard = ({ setCard, setShowSummary }) => {
       <Column
         title="Opportunity"
         column="Opportunity"
-        headingColor="text-yellow-200"
+        headingColor="#EF46E7"
         cards={cards}
         setCards={setCards}
         setCard={setCard}
@@ -214,7 +214,7 @@ const Column = ({
                 fontWeight: 400,
               }}
             >
-              Opportunity
+              {title}
             </Typography>
           </Box>
           <Box
@@ -238,7 +238,7 @@ const Column = ({
                 justifyContent: "center",
               }}
             >
-              3
+              {filteredCards.length}
             </Typography>
             <MoreHoriz
               sx={{
@@ -252,7 +252,7 @@ const Column = ({
           sx={{
             width: "100%",
             height: "7px",
-            background: "#EF46E7",
+            background: headingColor,
           }}
         ></Box>
       </Box>
@@ -633,10 +633,10 @@ const AddCard = ({ column, setCards }) => {
 
 const DEFAULT_CARDS = [
   // Site Saved
-  { title: "Saint Pt. Beach", id: "1", column: "Site Saved" },
-  { title: "The Dali Museum", id: "2", column: "Site Saved" },
-  { title: "Botanical Gardens", id: "3", column: "Site Saved" },
-  { title: "Mosque", id: "4", column: "Site Saved" },
+  { title: "Saint Pt. Beach", id: "1", column: "Mobile App" },
+  { title: "The Dali Museum", id: "2", column: "Mobile App" },
+  { title: "Botanical Gardens", id: "3", column: "Mobile App" },
+  { title: "Mosque", id: "4", column: "Mobile App" },
   // Opportunity
   {
     title: "Research DB options for new microservice",

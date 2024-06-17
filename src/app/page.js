@@ -11,6 +11,7 @@ import { BaseBoard } from "@/components/boards/base.js";
 import SummaryCard from "@/components/cards/summary.js";
 import axios from "axios";
 import ManagementPanel from "@/components/widgets/management-panel";
+import RightHandPanel from "@/components/widgets/right-hand-panel";
 
 const markers = [
   { lng: -82.6316, lat: 27.7651, description: "The Dali Museum" },
@@ -56,7 +57,7 @@ const markers = [
 
 function Home() {
   const [widget, setWidget] = React.useState({
-    lastSold: "16,500,000.00 on 04/07/17",
+    lastSold: "16,500,000.00",
     property: "Elite training",
     address: "4055 Tyrone Blvd N, St. Petersburg, FL 33709, United States",
     lotArea: "5,287",
@@ -122,7 +123,7 @@ function Home() {
               color="tomato"
               onClick={() =>
                 setWidget({
-                  lastSold: "16,500,000.00 on 04/07/17",
+                  lastSold: "16,500,000.00 ",
                   property: element.description,
                   address:
                     "4055 Tyrone Blvd N, St. Petersburg, FL 33709, United States",
@@ -190,7 +191,7 @@ function Home() {
               color="tomato"
               onClick={() =>
                 setWidget({
-                  lastSold: "16,500,000.00 on 04/07/17",
+                  lastSold: "16,500,000.00",
                   property: element.description,
                   address:
                     "4055 Tyrone Blvd N, St. Petersburg, FL 33709, United States",
@@ -234,7 +235,7 @@ function Home() {
               color="tomato"
               onClick={() =>
                 setWidget({
-                  lastSold: "16,500,000.00 on 04/07/17",
+                  lastSold: "16,500,000.00",
                   property: element.description,
                   address:
                     "4055 Tyrone Blvd N, St. Petersburg, FL 33709, United States",
@@ -278,7 +279,7 @@ function Home() {
               color="tomato"
               onClick={() =>
                 setWidget({
-                  lastSold: "16,500,000.00 on 04/07/17",
+                  lastSold: "16,500,000.00 ",
                   property: element.description,
                   address:
                     "4055 Tyrone Blvd N, St. Petersburg, FL 33709, United States",
@@ -294,7 +295,7 @@ function Home() {
       </div>
 
       {show !== 3 ? (
-        <WidgetOne widget={widget} />
+        <RightHandPanel widget={widget} />
       ) : show === 3 ? (
         <div
           style={{

@@ -69,7 +69,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
   const handlePlaceChange = (value) => {
     if (value.name === "Fort De Soto Park") {
       setWidget({
-        lastSold: "16,500,000.00 on 04/07/17",
+        lastSold: "16,500,000.00 ",
         property: "Fort De Soto Park",
         address: "4055 Tyrone Blvd N, St. Petersburg, FL 33709, United States",
         lotArea: "5,287",
@@ -78,7 +78,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
       });
     } else if (value.name === "The Dali Museum") {
       setWidget({
-        lastSold: "16,500,000.00 on 04/07/17",
+        lastSold: "16,500,000.00 ",
         property: "The Dali Museum",
         address: "153 2nd Ave N, St. Petersburg, FL 33701, United States",
         lotArea: "10,253",
@@ -87,7 +87,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
       });
     } else if (value.name === "Sunken Gardens") {
       setWidget({
-        lastSold: "16,500,000.00 on 04/07/17",
+        lastSold: "16,500,000.00 ",
         property: "Sunken Gardens",
         address: "4200 54th Ave S, St. Petersburg, FL 33711, United States",
         lotArea: "3,971",
@@ -101,7 +101,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
         lotArea: "15,338",
         owner: "Michelle Rud",
         externalLink: "https://www.ihg.com/holidayinnexpress/",
-        lastSold: "16,500,000.00 on 04/07/17",
+        lastSold: "16,500,000.00 ",
       });
     }
   };

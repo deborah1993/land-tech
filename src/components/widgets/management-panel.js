@@ -1014,44 +1014,6 @@ function ManagementPanel({ widget }) {
               </Box>
             </Box>
           </Box>
-          {/* <Box
-            sx={{
-              display: "flex",
-              padding: "16px",
-              flexDirection: "column",
-              alignItems: "flex-start",
-              gap: "16px",
-              alignSelf: "stretch",
-              borderRadius: "0px 0px 8px 8px",
-              background: "rgba(255, 255, 255, 0.80)",
-              backdropFilter: "blur(calc(8px / 2))",
-            }}
-          >
-            <Button
-              sx={{
-                display: "flex",
-                padding: "6px 12px",
-                justifyContent: "center",
-                alignItems: "center",
-                gap: "8px",
-                alignSelf: "stretch",
-                borderRadius: "8px",
-                border: "2px solid #0057AD",
-                background: "#0057AD",
-              }}
-            >
-              <Typography
-                sx={{
-                  color: "#FFF",
-                  fontSize: "14px",
-                  fontWeight: 500,
-                  lineHeight: "20px",
-                }}
-              >
-                Get More Insights
-              </Typography>
-            </Button>
-          </Box> */}
         </Box>
       </>
     </div>
