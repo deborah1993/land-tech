@@ -300,11 +300,15 @@ function Home() {
         <div
           style={{
             position: "fixed",
-            top: "1%",
+            display: "flex",
+            paddingTop: "3vh",
+            paddingBottom: "3vh",
             right: "1%",
             height: "100%",
             zIndex: 5,
-            width: "65%",
+            width: "65vw",
+            gap: "5vw",
+            alignItems: "flex-start",
           }}
         >
           <ManagementPanel widget={widget} />

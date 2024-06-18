@@ -16,6 +16,9 @@ export const BaseBoard = ({ setCard, setShowSummary }) => {
   return (
     <div
       style={{
+        // position: "absolute",
+        // right: "0%",
+        // left: "",
         display: "inline-flex",
         height: "100%",
         flexDirection: "row",

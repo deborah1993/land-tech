@@ -8,15 +8,15 @@ function ManagementPanel({ widget }) {
   return (
     <div
       style={{
-        height: "100vh",
+        height: "100%",
         width: "27vw",
         maxWidth: "463px",
         display: "flex",
-        top: "0%",
-        right: "1%",
-        position: "absolute",
+        // top: "0%",
+        // left: "0%",
+        // position: "absolute",
         justifyContent: "center",
-        alignItems: "center",
+        alignItems: "start",
         zIndex: 3,
       }}
     >
