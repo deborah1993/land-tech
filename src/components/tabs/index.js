@@ -522,7 +522,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                     gap: 1,
                   }}
                 >
-                  Property Type
+                  Zoning
                 </Typography>
                 <Box
                   sx={{
