@@ -303,10 +303,11 @@ function Home() {
             display: "flex",
             paddingTop: "3vh",
             paddingBottom: "3vh",
-            right: "1%",
+            paddingX: "1vw",
+            left: "0%",
             height: "100%",
             zIndex: 5,
-            width: "65vw",
+            width: "70vw",
             gap: "5vw",
             alignItems: "flex-start",
           }}

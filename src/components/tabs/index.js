@@ -47,8 +47,8 @@ function HeroTabs({ show, handleChange, setWidget }) {
   const [zipCode, setZipCode] = React.useState("");
   const [location, setLocation] = React.useState({ name: "", address: "" });
   const [locationError, setLocationError] = React.useState("");
-
-  const [acres, setAcres] = React.useState("0-50");
+  const [acresFrom, setAcresFrom] = React.useState("0");
+  const [acresTo, setAcresTo] = React.useState("50");
   const [vacantLand, setVacantLand] = React.useState("vacant");
   const [zoning, setZoning] = useState({
     agriculture: true,
