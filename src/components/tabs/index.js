@@ -224,7 +224,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
             },
           }}
         >
-          <Tab
+          {/* <Tab
             label="Zip Code"
             sx={{
               textTransform: "none",
@@ -235,7 +235,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
             }}
             value={0}
             {...a11yProps(0)}
-          />
+          /> */}
           <Tab
             label="Multi-Criteria"
             color="white"
@@ -249,7 +249,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
               color: show === 1 ? "#02ebc7 !important" : "#FFF",
             }}
           />
-          <Tab
+          {/* <Tab
             label="Location"
             value={2}
             {...a11yProps(2)}
@@ -260,7 +260,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
               lineHeight: "20px",
               color: show === 2 ? "#02ebc7 !important" : "#FFF",
             }}
-          />
+          /> */}
           <Tab
             label="Site Tracker"
             value={3}
