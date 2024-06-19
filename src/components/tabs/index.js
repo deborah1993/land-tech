@@ -358,22 +358,6 @@ function HeroTabs({ show, handleChange, setWidget }) {
                     </Box>
                   )}
                 />
-                <Box
-                  fullWidth
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    padding: "6px 20px 6px 20px",
-                    alignItems: "center",
-                    gap: "8px",
-                    alignSelf: "stretch",
-                    borderRadius: "8px",
-                    border: "2px solid #9CA3AF",
-                    background: "#FFF",
-                  }}
-                >
-                  <Search style={{ color: "gray", fontSize: "20px" }} />
-                </Box>
               </Box>
 
               <Button
@@ -388,10 +372,14 @@ function HeroTabs({ show, handleChange, setWidget }) {
                   fontWeight: 700,
                   width: "calc(100% - 32px)",
                   borderRadius: "9999px",
+                  "&:hover": {
+                    backgroundColor: "rgba(2,235,199,0.8)",
+                    color: "#FFF",
+                  },
                 }}
                 onClick={handleSubmit}
               >
-                Start free trial
+                Search
               </Button>
             </Box>
           ) : show === 1 ? (
@@ -731,8 +719,12 @@ function HeroTabs({ show, handleChange, setWidget }) {
                   fontWeight: 700,
                   width: "calc(100% - 32px)",
                   borderRadius: "9999px",
+                  "&:hover": {
+                    backgroundColor: "rgba(2,235,199,0.8)",
+                    color: "#FFF",
+                  },
                 }}
-                onClick={() => window.open("http://localhost:3000/sign-up")}
+                onClick={handleSubmit}
               >
                 Search
               </Button>
@@ -837,22 +829,6 @@ function HeroTabs({ show, handleChange, setWidget }) {
                     </Box>
                   )}
                 />
-                <Box
-                  fullWidth
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    padding: "6px 20px 6px 20px",
-                    alignItems: "center",
-                    gap: "8px",
-                    alignSelf: "stretch",
-                    borderRadius: "8px",
-                    border: "2px solid #9CA3AF",
-                    background: "#FFF",
-                  }}
-                >
-                  <Search style={{ color: "gray", fontSize: "20px" }} />
-                </Box>
               </Box>
 
               <Button
@@ -867,10 +843,14 @@ function HeroTabs({ show, handleChange, setWidget }) {
                   fontWeight: 700,
                   width: "calc(100% - 32px)",
                   borderRadius: "9999px",
+                  "&:hover": {
+                    backgroundColor: "rgba(2,235,199,0.8)",
+                    color: "#FFF",
+                  },
                 }}
                 onClick={handleSubmit}
               >
-                Start free trial
+                Search
               </Button>
             </Box>
           ) : show === 3 ? (
@@ -904,10 +884,14 @@ function HeroTabs({ show, handleChange, setWidget }) {
                   fontWeight: 700,
                   width: "calc(100% - 32px)",
                   borderRadius: "9999px",
+                  "&:hover": {
+                    backgroundColor: "rgba(2,235,199,0.8)",
+                    color: "#FFF",
+                  },
                 }}
                 onClick={handleSubmit}
               >
-                Start free trial
+                Search
               </Button>
             </Box>
           ) : (
