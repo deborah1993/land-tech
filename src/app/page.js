@@ -63,7 +63,7 @@ function Home() {
     externalLink: "https://www.isielitetraining.com/locations/st-pete/",
   });
   const [data, setData] = React.useState();
-  const [show, setShow] = React.useState(0);
+  const [show, setShow] = React.useState(1);
   const [card, setCard] = React.useState({});
 
   const handleChange = (event, newValue) => {
