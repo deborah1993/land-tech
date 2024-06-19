@@ -178,7 +178,9 @@ function HeroTabs({ show, handleChange, setWidget }) {
     xhr.send(finalData);
 
     // Abre una nueva ventana después de enviar la solicitud
-    window.open("http://localhost:3000/sign-up");
+    window.open(
+      "https://app.land.tech/signup/?territory=us&plan=unlimited&recurrence=month"
+    );
   };
 
   return (
