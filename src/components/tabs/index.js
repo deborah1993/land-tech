@@ -134,7 +134,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
         { name: "lotAreaTo", value: acresTo },
         { name: "propertyType", value: vacantLand },
         { name: "specificPlace", value: location.name },
-        { name: "zoning", value: zoning },
+        { name: "zoningArray", value: zoning },
       ],
       context: {
         pageUri: "https://land-tech.vercel.app/",
