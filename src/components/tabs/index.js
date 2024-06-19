@@ -123,7 +123,8 @@ function HeroTabs({ show, handleChange, setWidget }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const xhr = new XMLHttpRequest();
-    const url = HUBSPOT_API_URL;
+    const url =
+      "https://api.hsforms.com/submissions/v3/integration/submit/2979356/1f2a926b-195e-4550-bc32-2e2eb6c2dfaf";
 
     // Define los datos que deseas enviar
     const data = {
