@@ -119,10 +119,20 @@ function HeroTabs({ show, handleChange, setWidget }) {
 
   const HUBSPOT_API_URL = `https://api.hsforms.com/submissions/v3/integration/submit/${process.env.PORTAL_ID}/${process.env.FORM_ID}`;
 
+  //   <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+  // <script>
+  //   hbspt.forms.create({
+  //     region: "na1",
+  //     portalId: "2979356",
+  //     formId: "1f2a926b-195e-4550-bc32-2e2eb6c2dfaf"
+  //   });
+  // </script>
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const xhr = new XMLHttpRequest();
-    const url = HUBSPOT_API_URL;
+    const url =
+      "https://api.hsforms.com/submissions/v3/integration/submit/2979356/1f2a926b-195e-4550-bc32-2e2eb6c2dfaf";
     const data = {
       fields: [
         {
