@@ -43,6 +43,16 @@ const defaultOptions = [
 
 const defaultZipCodes = ["32034", "33418", "34690", "3084"];
 
+const filterTrueValuesToString = (obj) => {
+  // Filtra las propiedades cuyo valor sea true
+  const trueValues = Object.keys(obj).filter((key) => obj[key] === true);
+
+  // Une los nombres de las propiedades filtradas en un string separado por comas
+  const result = trueValues.join(", ");
+
+  return result;
+};
+
 function HeroTabs({ show, handleChange, setWidget }) {
   const [zipCode, setZipCode] = React.useState("");
   const [location, setLocation] = React.useState({ name: "", address: "" });
@@ -134,7 +144,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
         { name: "lotAreaTo", value: acresTo },
         { name: "propertyType", value: vacantLand },
         { name: "specificPlace", value: location.name },
-        { name: "zoningArray", value: zoning },
+        { name: "zoningSelected", value: filterTrueValuesToString(zoning) },
       ],
       context: {
         pageUri: "https://land-tech.vercel.app/",
