@@ -142,7 +142,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
         { name: "zipCode", value: zipCode },
         { name: "lotAreaFrom", value: acresFrom },
         { name: "lotAreaTo", value: acresTo },
-        { name: "porpertyType", value: vacantLand },
+        { name: "propertyType", value: vacantLand },
         { name: "specificPlace", value: location },
         { name: "zoning", value: zoning },
       ],
