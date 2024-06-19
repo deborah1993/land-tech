@@ -131,35 +131,20 @@ function HeroTabs({ show, handleChange, setWidget }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("entre al submit");
+
     const xhr = new XMLHttpRequest();
     const url =
       "https://api.hsforms.com/submissions/v3/integration/submit/2979356/1f2a926b-195e-4550-bc32-2e2eb6c2dfaf";
+
+    // Define los datos que deseas enviar
     const data = {
       fields: [
-        {
-          name: "zipCode",
-          value: zipCode,
-        },
-        {
-          name: "lotAreaFrom",
-          value: acresFrom,
-        },
-        {
-          name: "lotAreaTo",
-          value: acresTo,
-        },
-        {
-          name: "porpertyType",
-          value: vacantLand,
-        },
-        {
-          name: "specificPlace",
-          value: location,
-        },
-        {
-          name: "zoning",
-          value: zoning,
-        },
+        { name: "zipCode", value: zipCode },
+        { name: "lotAreaFrom", value: acresFrom },
+        { name: "lotAreaTo", value: acresTo },
+        { name: "porpertyType", value: vacantLand },
+        { name: "specificPlace", value: location },
+        { name: "zoning", value: zoning },
       ],
       context: {
         pageUri: "https://land-tech.vercel.app/",
@@ -167,20 +152,32 @@ function HeroTabs({ show, handleChange, setWidget }) {
       },
     };
 
+    // Convierte los datos a JSON
     const finalData = JSON.stringify(data);
-    xhr.post("POST", url);
-    xhr.setRequestHeader("content-Type", "application/json");
+
+    // Abre la solicitud POST
+    xhr.open("POST", url, true);
+
+    // Configura el encabezado para indicar que se envía JSON
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    // Define qué hacer cuando se complete la solicitud
     xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        console.log("estoy en el 200");
-        alert(xhr.responseText);
-      } else if (xhr.readyState === 4 && xhr.status !== 200) {
-        console.log("estoy en el error");
-        alert(xhr.responseText);
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          console.log("Solicitud exitosa");
+          alert(xhr.responseText);
+        } else {
+          console.log("Error en la solicitud");
+          alert("Hubo un error en la solicitud");
+        }
       }
     };
-    console.log("llegue al send");
+
+    // Envía los datos
     xhr.send(finalData);
+
+    // Abre una nueva ventana después de enviar la solicitud
     window.open("http://localhost:3000/sign-up");
   };
 
