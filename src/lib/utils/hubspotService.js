@@ -10,27 +10,34 @@ export const handleSubmit = (event) => {
     fields: [
       {
         name: "zipCode",
-        velue: "",
+        value: "",
       },
       {
         name: "lotAreaFrom",
-        velue: "",
+        value: "",
       },
       {
         name: "lotAreaTo",
-        velue: "",
+        value: "",
       },
       {
         name: "porpertyType",
-        velue: "",
+        value: "",
       },
       {
         name: "specificPlace",
-        velue: "",
+        value: "",
       },
       {
         name: "zoning",
-        velue: "",
+        value: {
+          agriculture: false,
+          core: false,
+          general: true,
+          lightIndustrial: false,
+          mixedUse: false,
+          multiFamily: true,
+        },
       },
     ],
     context: {
@@ -45,10 +52,12 @@ export const handleSubmit = (event) => {
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
       alert(xhr.responseText);
-    } else if (xhr.readyState === 4 && xhr.status === 403) {
+    } else if (xhr.readyState === 4 && xhr.status !== 200) {
       alert(xhr.responseText);
     }
   };
+
+  xhr.send(finalData);
 };
 
 const hubspotService = {

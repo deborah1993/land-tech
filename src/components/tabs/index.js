@@ -46,17 +46,16 @@ const defaultZipCodes = ["32034", "33418", "34690", "3084"];
 function HeroTabs({ show, handleChange, setWidget }) {
   const [zipCode, setZipCode] = React.useState("");
   const [location, setLocation] = React.useState({ name: "", address: "" });
-  const [locationError, setLocationError] = React.useState("");
-  const [acresFrom, setAcresFrom] = React.useState("0");
-  const [acresTo, setAcresTo] = React.useState("50");
+  const [acresFrom, setAcresFrom] = React.useState(10);
+  const [acresTo, setAcresTo] = React.useState(100);
   const [vacantLand, setVacantLand] = React.useState("vacant");
   const [zoning, setZoning] = useState({
-    agriculture: true,
+    agriculture: false,
     core: false,
-    multiFam: false,
-    general: false,
-    mixed: false,
-    light: false,
+    general: true,
+    mixedUse: false,
+    lightIndustrial: false,
+    multiFamily: true,
   });
 
   const handleZoningChange = (event) => {
@@ -110,28 +109,66 @@ function HeroTabs({ show, handleChange, setWidget }) {
     setZipCode(value);
   };
 
-  const handleZipCodeSubmit = (e) => {
-    e.preventDefault();
-    //abrir ventana
-    window.open(`http://localhost:3000/sign-up?input=${zipCode}`);
-  };
-
   const handleLocationChange = (value) => {
     setLocation(value);
   };
 
-  const handleLocationSubmit = (e) => {
-    e.preventDefault();
-    if (!location || location.length === 0) {
-      return setLocationError("Please fill the input");
-    }
-    setLocationError("");
-    //abrir ventana
-    window.open("http://localhost:3000/sign-up");
-  };
-
   const handlePropertyTypeChange = (e) => {
     setVacantLand(e.target.value);
+  };
+
+  const HUBSPOT_API_URL = `https://api.hsforms.com/submissions/v3/integration/submit/${process.env.PORTAL_ID}/${process.env.FORM_ID}`;
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const xhr = new XMLHttpRequest();
+    const url = HUBSPOT_API_URL;
+    const data = {
+      fields: [
+        {
+          name: "zipCode",
+          value: zipCode,
+        },
+        {
+          name: "lotAreaFrom",
+          value: acresFrom,
+        },
+        {
+          name: "lotAreaTo",
+          value: acresTo,
+        },
+        {
+          name: "porpertyType",
+          value: vacantLand,
+        },
+        {
+          name: "specificPlace",
+          value: location,
+        },
+        {
+          name: "zoning",
+          value: zoning,
+        },
+      ],
+      context: {
+        pageUri: "https://land-tech.vercel.app/",
+        pageName: "Land Tech Hero",
+      },
+    };
+
+    const finalData = JSON.stringify(data);
+    xhr.post("POST", url);
+    xhr.setRequestHeader("content-Type", "application/json");
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        alert(xhr.responseText);
+      } else if (xhr.readyState === 4 && xhr.status !== 200) {
+        alert(xhr.responseText);
+      }
+    };
+
+    xhr.send(finalData);
+    window.open("http://localhost:3000/sign-up");
   };
 
   return (
@@ -290,13 +327,13 @@ function HeroTabs({ show, handleChange, setWidget }) {
                   id="combo-box-demo"
                   options={defaultZipCodes}
                   onChange={(event, newValue) => {
-                    handlePlaceChange(newValue);
+                    handleZipCodeChange(newValue);
                   }}
                   fullWidth
-                  value={location.name || ""}
-                  inputValue={location.name || ""}
+                  value={zipCode || ""}
+                  inputValue={zipCode || ""}
                   onInputChange={(event, newValue) => {
-                    handlePlaceChange(newValue);
+                    handleZipCodeChange(newValue);
                   }}
                   isOptionEqualToValue={(option, value) =>
                     option.name === value
@@ -352,7 +389,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                   width: "calc(100% - 32px)",
                   borderRadius: "9999px",
                 }}
-                onClick={() => window.open("http://localhost:3000/sign-up")}
+                onClick={handleSubmit}
               >
                 Start free trial
               </Button>
@@ -410,6 +447,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                 >
                   <TextField
                     fullWidth
+                    value={acresFrom}
                     type="number"
                     placeholder="0 Acre"
                     size="small"
@@ -417,10 +455,13 @@ function HeroTabs({ show, handleChange, setWidget }) {
                       backgroundColor: "#FFF",
                       borderRadius: "8px",
                     }}
+                    onClick={() => setAcresFrom(0)}
+                    onChange={(e) => setAcresFrom(+e.target.value)}
                   />
                   <Typography>-</Typography>
                   <TextField
                     fullWidth
+                    value={acresTo}
                     type="number"
                     placeholder="50 Acre"
                     size="small"
@@ -428,6 +469,8 @@ function HeroTabs({ show, handleChange, setWidget }) {
                       backgroundColor: "#FFF",
                       borderRadius: "8px",
                     }}
+                    onClick={() => setAcresTo(0)}
+                    onChange={(e) => setAcresTo(+e.target.value)}
                   />
                 </Box>
                 <Typography
@@ -610,13 +653,15 @@ function HeroTabs({ show, handleChange, setWidget }) {
                         }}
                         control={
                           <Checkbox
-                            checked={zoning.light}
+                            checked={zoning.lightIndustrial}
                             onChange={handleZoningChange}
-                            name="light"
-                            value="light"
+                            name="lightIndustrial"
+                            value="lightIndustrial"
                             style={{
-                              color: zoning.light ? "#02EBC7" : "#FFF",
-                              fill: zoning.light ? "#02EBC7" : "#FFF",
+                              color: zoning.lightIndustrial
+                                ? "#02EBC7"
+                                : "#FFF",
+                              fill: zoning.lightIndustrial ? "#02EBC7" : "#FFF",
                             }}
                           />
                         }
@@ -635,13 +680,13 @@ function HeroTabs({ show, handleChange, setWidget }) {
                         }}
                         control={
                           <Checkbox
-                            checked={zoning.mixed}
+                            checked={zoning.mixedUse}
                             onChange={handleZoningChange}
-                            name="mixed"
-                            value="mixed"
+                            name="mixedUse"
+                            value="mixedUse"
                             style={{
-                              color: zoning.mixed ? "#02EBC7" : "#FFF",
-                              fill: zoning.mixed ? "#02EBC7" : "#FFF",
+                              color: zoning.mixedUse ? "#02EBC7" : "#FFF",
+                              fill: zoning.mixedUse ? "#02EBC7" : "#FFF",
                             }}
                           />
                         }
@@ -658,11 +703,11 @@ function HeroTabs({ show, handleChange, setWidget }) {
                           <Checkbox
                             checked={zoning.multiFam}
                             onChange={handleZoningChange}
-                            name="multiFam"
-                            value="multiFam"
+                            name="multiFamily"
+                            value="multiFamily"
                             style={{
-                              color: zoning.multiFam ? "#02EBC7" : "#FFF",
-                              fill: zoning.multiFam ? "#02EBC7" : "#FFF",
+                              color: zoning.multiFamily ? "#02EBC7" : "#FFF",
+                              fill: zoning.multiFamily ? "#02EBC7" : "#FFF",
                             }}
                           />
                         }
@@ -754,13 +799,13 @@ function HeroTabs({ show, handleChange, setWidget }) {
                   id="combo-box-demo"
                   options={defaultOptions}
                   onChange={(event, newValue) => {
-                    handlePlaceChange(newValue);
+                    handleLocationChange(newValue);
                   }}
                   fullWidth
                   value={location.name || ""}
                   inputValue={location.name || ""}
                   onInputChange={(event, newValue) => {
-                    handlePlaceChange(newValue);
+                    handleLocationChange(newValue);
                   }}
                   isOptionEqualToValue={(option, value) =>
                     option.name === value
@@ -810,12 +855,6 @@ function HeroTabs({ show, handleChange, setWidget }) {
                 </Box>
               </Box>
 
-              {locationError && (
-                <Typography sx={{ fontSize: "14px", color: "red" }}>
-                  {locationError}
-                </Typography>
-              )}
-
               <Button
                 sx={{
                   marginLeft: "16px",
@@ -829,7 +868,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                   width: "calc(100% - 32px)",
                   borderRadius: "9999px",
                 }}
-                onClick={() => window.open("http://localhost:3000/sign-up")}
+                onClick={handleSubmit}
               >
                 Start free trial
               </Button>
@@ -866,7 +905,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                   width: "calc(100% - 32px)",
                   borderRadius: "9999px",
                 }}
-                onClick={() => window.open("http://localhost:3000/sign-up")}
+                onClick={handleSubmit}
               >
                 Start free trial
               </Button>

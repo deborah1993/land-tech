@@ -5,10 +5,8 @@ import Map, { Layer, Marker, Source } from "react-map-gl";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import "./App.css";
-import WidgetOne from "@/components/widgets/widget-one";
 import HeroTabs from "@/components/tabs/index.js";
 import { BaseBoard } from "@/components/boards/base.js";
-import SummaryCard from "@/components/cards/summary.js";
 import axios from "axios";
 import ManagementPanel from "@/components/widgets/management-panel";
 import RightHandPanel from "@/components/widgets/right-hand-panel";
@@ -66,12 +64,12 @@ function Home() {
   });
   const [data, setData] = React.useState();
   const [show, setShow] = React.useState(0);
+  const [card, setCard] = React.useState({});
+  const [showSummary, setShowSummary] = React.useState(false);
 
   const handleChange = (event, newValue) => {
     setShow(newValue);
   };
-  const [card, setCard] = React.useState({});
-  const [showSummary, setShowSummary] = React.useState(false);
 
   React.useEffect(() => {
     const getData = async () => {
