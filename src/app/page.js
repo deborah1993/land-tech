@@ -65,7 +65,6 @@ function Home() {
   const [data, setData] = React.useState();
   const [show, setShow] = React.useState(0);
   const [card, setCard] = React.useState({});
-  const [showSummary, setShowSummary] = React.useState(false);
 
   const handleChange = (event, newValue) => {
     setShow(newValue);
@@ -127,8 +126,6 @@ function Home() {
                     "4055 Tyrone Blvd N, St. Petersburg, FL 33709, United States",
                   lotArea: "5,287",
                   owner: "Timothy Johnson",
-                  externalLink:
-                    "https://www.isielitetraining.com/locations/st-pete/",
                 })
               }
             />
@@ -156,8 +153,6 @@ function Home() {
             </Source>
           )}
         </Map>
-
-        {/* <CloroplethMap /> */}
       </div>
 
       <div
@@ -311,7 +306,7 @@ function Home() {
           }}
         >
           <ManagementPanel widget={widget} />
-          <BaseBoard setShowSummary={setShowSummary} setCard={setCard} />
+          <BaseBoard setCard={setCard} />
         </div>
       ) : (
         <></>

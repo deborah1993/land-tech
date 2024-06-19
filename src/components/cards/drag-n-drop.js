@@ -21,10 +21,9 @@ const Heading = styled("div")(() => ({
   fontSize: "16px",
 }));
 
-const TaskCard = ({ item, index, setCard, setShowSummary }) => {
+const TaskCard = ({ item, index, setCard }) => {
   const handleClick = () => {
     setCard(item);
-    setShowSummary(true);
   };
   return (
     <Draggable key={item.id} draggableId={item.id} index={index}>

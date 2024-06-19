@@ -10,7 +10,7 @@ import {
   QueryBuilder,
 } from "@mui/icons-material";
 
-export const BaseBoard = ({ setCard, setShowSummary }) => {
+export const BaseBoard = ({ setCard }) => {
   const [cards, setCards] = useState(DEFAULT_CARDS);
 
   return (
@@ -33,7 +33,6 @@ export const BaseBoard = ({ setCard, setShowSummary }) => {
         cards={cards}
         setCards={setCards}
         setCard={setCard}
-        setShowSummary={setShowSummary}
       />
       <Column
         title="Opportunity"
@@ -42,21 +41,12 @@ export const BaseBoard = ({ setCard, setShowSummary }) => {
         cards={cards}
         setCards={setCards}
         setCard={setCard}
-        setShowSummary={setShowSummary}
       />
     </div>
   );
 };
 
-const Column = ({
-  title,
-  headingColor,
-  cards,
-  column,
-  setCards,
-  setCard,
-  setShowSummary,
-}) => {
+const Column = ({ title, headingColor, cards, column, setCards, setCard }) => {
   const [active, setActive] = useState(false);
 
   const handleDragStart = (e, card) => {
@@ -285,7 +275,6 @@ const Column = ({
               key={c.id}
               {...c}
               handleDragStart={handleDragStart}
-              setShowSummary={setShowSummary}
               setCard={setCard}
             />
           );
@@ -296,17 +285,9 @@ const Column = ({
   );
 };
 
-const MyCard = ({
-  title,
-  id,
-  column,
-  handleDragStart,
-  setCard,
-  setShowSummary,
-}) => {
+const MyCard = ({ title, id, column, handleDragStart, setCard }) => {
   const handleClick = () => {
     setCard({ title, id, column });
-    setShowSummary(true);
   };
   return (
     <>
