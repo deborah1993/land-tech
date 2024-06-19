@@ -119,15 +119,6 @@ function HeroTabs({ show, handleChange, setWidget }) {
 
   const HUBSPOT_API_URL = `https://api.hsforms.com/submissions/v3/integration/submit/${process.env.PORTAL_ID}/${process.env.FORM_ID}`;
 
-  //   <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
-  // <script>
-  //   hbspt.forms.create({
-  //     region: "na1",
-  //     portalId: "2979356",
-  //     formId: "1f2a926b-195e-4550-bc32-2e2eb6c2dfaf"
-  //   });
-  // </script>
-
   // "https://api.hsforms.com/submissions/v3/integration/submit/2979356/1f2a926b-195e-4550-bc32-2e2eb6c2dfaf";
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -141,7 +132,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
         { name: "lotAreaFrom", value: acresFrom },
         { name: "lotAreaTo", value: acresTo },
         { name: "propertyType", value: vacantLand },
-        { name: "specificPlace", location.name },
+        { name: "specificPlace", value: location.name },
         { name: "zoning", value: zoning },
       ],
       context: {
