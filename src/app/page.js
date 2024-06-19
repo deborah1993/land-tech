@@ -302,10 +302,10 @@ function Home() {
             paddingTop: "3vh",
             paddingBottom: "3vh",
             paddingX: "1vw",
-            left: "0%",
+            left: "35vw",
             height: "100%",
             zIndex: 5,
-            width: "70vw",
+            width: "65vw",
             gap: "5vw",
             alignItems: "flex-start",
           }}

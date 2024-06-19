@@ -689,7 +689,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                         }}
                         control={
                           <Checkbox
-                            checked={zoning.multiFam}
+                            checked={zoning.multiFamily}
                             onChange={handleZoningChange}
                             name="multiFamily"
                             value="multiFamily"
