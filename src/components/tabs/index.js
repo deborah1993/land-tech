@@ -130,6 +130,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log("entre al submit");
     const xhr = new XMLHttpRequest();
     const url =
       "https://api.hsforms.com/submissions/v3/integration/submit/2979356/1f2a926b-195e-4550-bc32-2e2eb6c2dfaf";
@@ -171,12 +172,14 @@ function HeroTabs({ show, handleChange, setWidget }) {
     xhr.setRequestHeader("content-Type", "application/json");
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
+        console.log("estoy en el 200");
         alert(xhr.responseText);
       } else if (xhr.readyState === 4 && xhr.status !== 200) {
+        console.log("estoy en el error");
         alert(xhr.responseText);
       }
     };
-
+    console.log("llegue al send");
     xhr.send(finalData);
     window.open("http://localhost:3000/sign-up");
   };
