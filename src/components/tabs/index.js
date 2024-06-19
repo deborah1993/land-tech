@@ -128,13 +128,11 @@ function HeroTabs({ show, handleChange, setWidget }) {
   //   });
   // </script>
 
+  // "https://api.hsforms.com/submissions/v3/integration/submit/2979356/1f2a926b-195e-4550-bc32-2e2eb6c2dfaf";
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("entre al submit");
-
     const xhr = new XMLHttpRequest();
-    const url =
-      "https://api.hsforms.com/submissions/v3/integration/submit/2979356/1f2a926b-195e-4550-bc32-2e2eb6c2dfaf";
+    const url = HUBSPOT_API_URL;
 
     // Define los datos que deseas enviar
     const data = {
@@ -143,7 +141,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
         { name: "lotAreaFrom", value: acresFrom },
         { name: "lotAreaTo", value: acresTo },
         { name: "propertyType", value: vacantLand },
-        { name: "specificPlace", value: location },
+        { name: "specificPlace", location.name },
         { name: "zoning", value: zoning },
       ],
       context: {
@@ -165,10 +163,8 @@ function HeroTabs({ show, handleChange, setWidget }) {
     xhr.onreadystatechange = function () {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
-          console.log("Solicitud exitosa");
           alert(xhr.responseText);
         } else {
-          console.log("Error en la solicitud");
           alert("Hubo un error en la solicitud");
         }
       }
