@@ -1,6 +1,5 @@
 "use client";
 
-import { Search } from "@mui/icons-material";
 import {
   Box,
   Tab,
@@ -163,9 +162,9 @@ function HeroTabs({ show, handleChange, setWidget }) {
     xhr.onreadystatechange = function () {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
-          alert(xhr.responseText);
+          console.log("success");
         } else {
-          alert("Hubo un error en la solicitud");
+          console.log("error");
         }
       }
     };
@@ -897,9 +896,11 @@ function HeroTabs({ show, handleChange, setWidget }) {
                     color: "#FFF",
                   },
                 }}
-                onClick={handleSubmit}
+                onClick={window.open(
+                  "https://app.land.tech/signup/?territory=us&plan=unlimited&recurrence=month"
+                )}
               >
-                Search
+                Start
               </Button>
             </Box>
           ) : (
