@@ -136,7 +136,6 @@ function HeroTabs({ show, handleChange, setWidget }) {
     // Define los datos que deseas enviar
     const data = {
       fields: [
-        { name: "zipCode", value: zipCode },
         { name: "lotAreaFrom", value: acresFrom },
         { name: "lotAreaTo", value: acresTo },
         { name: "propertyType", value: vacantLand },
