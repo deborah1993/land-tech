@@ -74,7 +74,7 @@ function Home() {
     const getData = async () => {
       try {
         const response = await axios.get(
-          `https://api.maptiler.com/data/93dc3483-bf44-40bb-9e97-12f4c21f98c4/features.json?key=8cIbWWiWdp9kG2sX2lj8`
+          `https://api.maptiler.com/data/93dc3483-bf44-40bb-9e97-12f4c21f98c4/features.json?key=${process.env.NEXT_PUBLIC_MAP_API_KEY}`
         );
         setData(response.data);
       } catch (error) {
@@ -111,7 +111,7 @@ function Home() {
             zoom: 13.7,
           }}
           style={{ width: "100%", height: "100vh" }}
-          mapStyle={`https://api.maptiler.com/maps/fc09eb56-b954-4808-8b36-f146ca7c5dfe/style.json?key=8cIbWWiWdp9kG2sX2lj8`}
+          mapStyle={`https://api.maptiler.com/maps/fc09eb56-b954-4808-8b36-f146ca7c5dfe/style.json?key=${process.env.NEXT_PUBLIC_MAP_API_KEY}`}
         >
           {markers.map((element, i) => (
             <Marker
@@ -135,7 +135,7 @@ function Home() {
               <Layer
                 id="polygon"
                 type="fill"
-                source={`https://api.maptiler.com/maps/streets/style.json?key=8cIbWWiWdp9kG2sX2lj8`}
+                source={`https://api.maptiler.com/maps/streets/style.json?key=${process.env.NEXT_PUBLIC_MAP_API_KEY}`}
                 paint={{
                   "fill-color": "#888888",
                   "fill-opacity": 0.4,
@@ -144,7 +144,7 @@ function Home() {
               <Layer
                 id="outline"
                 type="line"
-                source={`https://api.maptiler.com/maps/streets/style.json?key=8cIbWWiWdp9kG2sX2lj8`}
+                source={`https://api.maptiler.com/maps/streets/style.json?key=${process.env.NEXT_PUBLIC_MAP_API_KEY}`}
                 paint={{
                   "line-color": "#000000",
                   "line-width": 2,
@@ -175,7 +175,7 @@ function Home() {
             zoom: 14,
           }}
           style={{ width: "100%", height: "100vh" }}
-          mapStyle={`https://api.maptiler.com/maps/fc09eb56-b954-4808-8b36-f146ca7c5dfe/style.json?key=8cIbWWiWdp9kG2sX2lj8`}
+          mapStyle={`https://api.maptiler.com/maps/fc09eb56-b954-4808-8b36-f146ca7c5dfe/style.json?key=${process.env.NEXT_PUBLIC_MAP_API_KEY}`}
         >
           {markers.map((element, i) => (
             <Marker
@@ -219,7 +219,7 @@ function Home() {
             zoom: 15,
           }}
           style={{ width: "100%", height: "100vh" }}
-          mapStyle={`https://api.maptiler.com/maps/fc09eb56-b954-4808-8b36-f146ca7c5dfe/style.json?key=8cIbWWiWdp9kG2sX2lj8`}
+          mapStyle={`https://api.maptiler.com/maps/fc09eb56-b954-4808-8b36-f146ca7c5dfe/style.json?key=${process.env.NEXT_PUBLIC_MAP_API_KEY}`}
         >
           {markers.map((element, i) => (
             <Marker
@@ -263,7 +263,7 @@ function Home() {
             zoom: 10,
           }}
           style={{ width: "100%", height: "100vh" }}
-          mapStyle={`https://api.maptiler.com/maps/fc09eb56-b954-4808-8b36-f146ca7c5dfe/style.json?key=8cIbWWiWdp9kG2sX2lj8`}
+          mapStyle={`https://api.maptiler.com/maps/fc09eb56-b954-4808-8b36-f146ca7c5dfe/style.json?key=${process.env.NEXT_PUBLIC_MAP_API_KEY}`}
         >
           {markers.map((element, i) => (
             <Marker

@@ -127,14 +127,12 @@ function HeroTabs({ show, handleChange, setWidget }) {
     setVacantLand(e.target.value);
   };
 
-  const HUBSPOT_API_URL = `https://api.hsforms.com/submissions/v3/integration/submit/${process.env.PORTAL_ID}/${process.env.FORM_ID}`;
+  const HUBSPOT_API_URL = `https://api.hsforms.com/submissions/v3/integration/submit/${process.env.NEXT_PUBLIC_PORTAL_ID}/${process.env.NEXT_PUBLIC_FORM_ID}`;
 
-  // "https://api.hsforms.com/submissions/v3/integration/submit/2979356/1f2a926b-195e-4550-bc32-2e2eb6c2dfaf";
   const handleSubmit = (event) => {
     event.preventDefault();
     const xhr = new XMLHttpRequest();
-    const url =
-      "https://api.hsforms.com/submissions/v3/integration/submit/2979356/1f2a926b-195e-4550-bc32-2e2eb6c2dfaf";
+    const url = HUBSPOT_API_URL;
 
     // Define los datos que deseas enviar
     const data = {
