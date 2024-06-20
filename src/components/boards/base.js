@@ -471,6 +471,11 @@ const MyCard = ({ title, id, column, handleDragStart, setCard }) => {
                 border: "2px solid #0057AD",
                 background: "rgba(0, 87, 173, 0.10)",
               }}
+              onClick={() =>
+                window.open(
+                  "https://app.land.tech/signup/?territory=us&plan=unlimited&recurrence=month"
+                )
+              }
             >
               <Typography
                 sx={{

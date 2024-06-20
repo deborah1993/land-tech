@@ -238,6 +238,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
             value={1}
             {...a11yProps(1)}
             sx={{
+              width: "50%",
               textTransform: "none",
               fontSize: "16px",
               fontWeight: 500,
@@ -262,6 +263,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
             value={3}
             {...a11yProps(3)}
             sx={{
+              width: "50%",
               textTransform: "none",
               fontSize: "16px",
               fontWeight: 500,
@@ -870,14 +872,14 @@ function HeroTabs({ show, handleChange, setWidget }) {
               >
                 Stay Organized and Focused with Your Site Tracker
               </Typography>
-              {/* <Typography
+              <Typography
                 color="#FFF"
                 fontSize="20px"
                 lineHeight="28px"
                 fontWeight={500}
               >
                 Keep them organized in your pipeline to fulfill the deal
-              </Typography> */}
+              </Typography>
 
               <Button
                 sx={{
@@ -895,9 +897,9 @@ function HeroTabs({ show, handleChange, setWidget }) {
                     color: "#FFF",
                   },
                 }}
-                onClick={window.open(
-                  "https://app.land.tech/signup/?territory=us&plan=unlimited&recurrence=month"
-                )}
+                // onClick={window.open(
+                //   "https://app.land.tech/signup/?territory=us&plan=unlimited&recurrence=month"
+                // )}
               >
                 Start
               </Button>

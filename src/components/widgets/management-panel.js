@@ -517,7 +517,7 @@ function ManagementPanel({ widget }) {
                     alignSelf: "stretch",
                   }}
                 >
-                  Tasks
+                  Permits
                 </Typography>
               </Box>
             </Box>
@@ -568,7 +568,7 @@ function ManagementPanel({ widget }) {
                       fontWeight: 400,
                     }}
                   >
-                    Example task label
+                    Permit label
                   </Typography>
                 </Box>
 
@@ -617,7 +617,7 @@ function ManagementPanel({ widget }) {
                       fontWeight: 400,
                     }}
                   >
-                    Example task label
+                    Permit label
                   </Typography>
                 </Box>
 
@@ -666,7 +666,7 @@ function ManagementPanel({ widget }) {
                       fontWeight: 400,
                     }}
                   >
-                    Example task label
+                    Permit label
                   </Typography>
                 </Box>
 
@@ -741,7 +741,7 @@ function ManagementPanel({ widget }) {
               }}
             >
               <Box
-                id="zoning"
+                className="activities"
                 sx={{
                   display: "flex",
                   flexDirection: "column",
@@ -813,6 +813,11 @@ function ManagementPanel({ widget }) {
                           border: "2px solid rgba(255, 255, 255, 0.00))",
                           textTransform: "none",
                         }}
+                        onClick={() =>
+                          window.open(
+                            "https://app.land.tech/signup/?territory=us&plan=unlimited&recurrence=month"
+                          )
+                        }
                       >
                         <Typography
                           sx={{
@@ -832,7 +837,7 @@ function ManagementPanel({ widget }) {
               </Box>
 
               <Box
-                id="zoning"
+                className="activities"
                 sx={{
                   display: "flex",
                   flexDirection: "column",
@@ -904,97 +909,11 @@ function ManagementPanel({ widget }) {
                           border: "2px solid rgba(255, 255, 255, 0.00))",
                           textTransform: "none",
                         }}
-                      >
-                        <Typography
-                          sx={{
-                            color: "#0057AD",
-                            fontSize: "14px",
-                            fontWeight: 500,
-                            lineHeight: "20px",
-                          }}
-                        >
-                          View all
-                        </Typography>
-                        <ArrowForward />
-                      </Button>
-                    </Box>
-                  </Box>
-                </Box>
-              </Box>
-
-              <Box
-                id="zoning"
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "flex-start",
-                  gap: "16px",
-                  alignSelf: "stretch",
-                }}
-              >
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "flex-start",
-                    gap: "8px",
-                    alignSelf: "stretch",
-                    width: "100%",
-                  }}
-                >
-                  <Box
-                    sx={{
-                      width: "100%",
-                      display: "flex",
-                      padding: "8px",
-                      flexDirection: "column",
-                      alignItems: "flex-start",
-                      alignSelf: "stretch",
-                      borderRadius: "8px",
-                      border: "2px solid #E5E7EB",
-                      background: "#FFF",
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        width: "100%",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "8px",
-                        alignSelf: "stretch",
-                      }}
-                    >
-                      <Box
-                        sx={{
-                          width: "100%",
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "8px",
-                          flex: "1 0 0",
-                        }}
-                      >
-                        <Typography
-                          sx={{
-                            color: "#1F2937",
-                            fontSize: "14px",
-                            fontWeight: 400,
-                          }}
-                        >
-                          {widget.where ??
-                            "Reminder: Call with landowner for Site 1 at 12pm 23/05/2023"}
-                        </Typography>
-                      </Box>
-                      <Button
-                        sx={{
-                          display: "flex",
-                          padding: "2px 8px",
-                          justifyContent: "center",
-                          alignItems: "center",
-                          gap: "4px",
-                          borderRadius: "8px",
-                          border: "2px solid rgba(255, 255, 255, 0.00))",
-                          textTransform: "none",
-                        }}
+                        onClick={() =>
+                          window.open(
+                            "https://app.land.tech/signup/?territory=us&plan=unlimited&recurrence=month"
+                          )
+                        }
                       >
                         <Typography
                           sx={{
