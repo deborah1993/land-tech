@@ -54,6 +54,8 @@ const markers = [
 ];
 
 function Home() {
+  const apiKey = process.env.NEXT_PUBLIC_HUBSPOT_API_KEY;
+  console.log("HubSpot API Key:", apiKey);
   const [widget, setWidget] = React.useState({
     lastSold: "16,500,000.00",
     property: "Elite training",
