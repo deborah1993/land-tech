@@ -13,7 +13,7 @@ function RightHandPanel({ widget }) {
         width: "27vw",
         maxWidth: "463px",
         display: "flex",
-        top: "10vh",
+        top: "12vh",
         right: "1%",
         position: "absolute",
         justifyContent: "start",
