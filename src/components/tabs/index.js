@@ -191,6 +191,14 @@ function HeroTabs({ show, handleChange, setWidget }) {
     );
   };
 
+  const handleOpen = (event) => {
+    event.preventDefault();
+    // Abre una nueva ventana después de enviar la solicitud
+    window.open(
+      "https://app.land.tech/signup/?territory=us&plan=unlimited&recurrence=month"
+    );
+  };
+
   return (
     <Box
       sx={{
@@ -1004,9 +1012,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                     color: "#FFF",
                   },
                 }}
-                // onClick={window.open(
-                //   "https://app.land.tech/signup/?territory=us&plan=unlimited&recurrence=month"
-                // )}
+                onClick={handleOpen}
               >
                 Start
               </Button>
