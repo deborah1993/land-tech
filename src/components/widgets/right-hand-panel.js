@@ -8,6 +8,7 @@ function RightHandPanel({ widget }) {
   return (
     <div
       style={{
+        marginTop: "auto",
         height: "85vh",
         width: "27vw",
         maxWidth: "463px",
@@ -15,9 +16,9 @@ function RightHandPanel({ widget }) {
         top: "10vh",
         right: "1%",
         position: "absolute",
-        justifyContent: "center",
+        justifyContent: "start",
         borderRadius: "8px",
-        alignItems: "center",
+        alignItems: "start",
         zIndex: 3,
         overflowY: "scroll",
         "&::-webkit-scrollbar": {

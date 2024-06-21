@@ -8,6 +8,7 @@ function ManagementPanel({ widget }) {
   return (
     <div
       style={{
+        mt: "auto",
         height: "85vh",
         width: "27vw",
         maxWidth: "463px",

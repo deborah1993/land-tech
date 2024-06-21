@@ -210,7 +210,7 @@ function Home() {
             display: "flex",
             paddingX: "1vw",
             left: "35vw",
-            top: "10vh",
+            bottom: "3vh",
             height: "80%",
             zIndex: 5,
             width: "65vw",
