@@ -44,7 +44,6 @@ function Home() {
         position: "relative",
         display: "flex",
         height: "100%",
-        marginTop: "-12vh",
       }}
     >
       <HeroTabs show={show} handleChange={handleChange} setWidget={setWidget} />
