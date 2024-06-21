@@ -5,6 +5,7 @@ import { Box, Typography, Button } from "@mui/material";
 import React from "react";
 
 function ManagementPanel({ widget }) {
+  console.log({ widget });
   return (
     <div
       style={{

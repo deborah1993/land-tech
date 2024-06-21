@@ -16,7 +16,7 @@ function Home() {
   const [widget, setWidget] = React.useState(markers[0]);
   const [data, setData] = React.useState();
   const [show, setShow] = React.useState(1);
-  const [card, setCard] = React.useState({});
+  const [card, setCard] = React.useState(markers[0]);
 
   const handleChange = (event, newValue) => {
     setShow(newValue);
