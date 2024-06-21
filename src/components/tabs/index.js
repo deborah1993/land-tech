@@ -66,10 +66,23 @@ function HeroTabs({ show, handleChange, setWidget }) {
     lightIndustrial: false,
     multiFamily: true,
   });
+  const [flu, setFlu] = useState({
+    singleFamily: false,
+    multiFamily: true,
+    general: true,
+    mixedUse: false,
+  });
 
   const handleZoningChange = (event) => {
     setZoning({
       ...zoning,
+      [event.target.name]: event.target.checked,
+    });
+  };
+
+  const handleFluChange = (event) => {
+    setFlu({
+      ...flu,
       [event.target.name]: event.target.checked,
     });
   };
@@ -141,6 +154,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
         { name: "propertyType", value: vacantLand },
         { name: "specificPlace", value: location.name },
         { name: "zoningSelected", value: filterTrueValuesToString(zoning) },
+        { name: "flu", value: filterTrueValuesToString(flu) },
       ],
       context: {
         pageUri: "https://land-tech.vercel.app/",
@@ -184,7 +198,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
         display: "flex",
         alignItems: "center",
         flexDirection: "column",
-        paddingTop: "15vh",
+        paddingTop: "12vh",
         justifyContent: "flex-start",
         position: "relative",
         zIndex: 4,
@@ -275,7 +289,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
         <Box display="flex" width="100%" justifyContent="start">
           {show === 0 ? (
             <Box>
-              <Box sx={{ padding: "16px" }}>
+              <Box sx={{ padding: "0px 16px 16px 16px" }}>
                 <Typography
                   mb="0.5vw"
                   color="#FFF"
@@ -285,12 +299,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                 >
                   Search by Zip Code
                 </Typography>
-                <Typography
-                  color="#FFF"
-                  fontSize="20px"
-                  lineHeight="28px"
-                  fontWeight={500}
-                >
+                <Typography color="#FFF" fontSize="18px" fontWeight={500}>
                   Review a list of sites in an area of interest
                 </Typography>
               </Box>
@@ -392,22 +401,17 @@ function HeroTabs({ show, handleChange, setWidget }) {
             </Box>
           ) : show === 1 ? (
             <Box>
-              <Box sx={{ padding: "16px" }}>
+              <Box sx={{ padding: "0px 16px 16px 16px" }}>
                 <Typography
                   mb="0.5vw"
                   color="#FFF"
                   fontSize="2.7vw"
-                  lineHeight="140%"
+                  lineHeight="110%"
                   fontWeight={500}
                 >
                   Multi Criteria Sourcing Tool
                 </Typography>
-                <Typography
-                  color="#FFF"
-                  fontSize="20px"
-                  lineHeight="28px"
-                  fontWeight={500}
-                >
+                <Typography color="#FFF" fontSize="18px" fontWeight={500}>
                   Quickly discover opportunity areas and sites that match your
                   business
                 </Typography>
@@ -415,7 +419,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
 
               <Box
                 sx={{
-                  padding: "16px",
+                  padding: "0px 16px 16px 16px",
                   display: "flex",
                   flexDirection: "column",
                   gap: "16px",
@@ -712,13 +716,126 @@ function HeroTabs({ show, handleChange, setWidget }) {
                     </Box>
                   </FormGroup>
                 </Box>
-                {/* </AccordionDetails>
-                </Accordion> */}
+
+                <Typography
+                  sx={{
+                    color: "#FFF",
+                    fontSize: "14px",
+                    fontWeight: 600,
+                    lineHeight: "20px",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 1,
+                  }}
+                >
+                  Future Land Use
+                </Typography>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                  }}
+                >
+                  <FormGroup column sx={{ width: "100%" }}>
+                    <Box sx={{ display: "flex" }}>
+                      <FormControlLabel
+                        sx={{
+                          width: "47%",
+                          "& .MuiFormControlLabel-label": {
+                            color: "white",
+                            fontSize: "small",
+                          },
+                        }}
+                        control={
+                          <Checkbox
+                            checked={flu.singleFamily}
+                            onChange={handleFluChange}
+                            name="single family"
+                            value="single family"
+                            style={{
+                              color: flu.singleFamily ? "#02EBC7" : "#FFF",
+                              fill: flu.singleFamily ? "#02EBC7" : "#FFF",
+                            }}
+                          />
+                        }
+                        label="Single Family"
+                      />
+                      <FormControlLabel
+                        sx={{
+                          "& .MuiFormControlLabel-label": {
+                            color: "white",
+                            fontSize: "small",
+                          },
+                        }}
+                        control={
+                          <Checkbox
+                            checked={flu.multiFamily}
+                            onChange={handleFluChange}
+                            name="multi family"
+                            value="multi family"
+                            style={{
+                              color: flu.multiFamily ? "#02EBC7" : "#FFF",
+                              fill: flu.multiFamily ? "#02EBC7" : "#FFF",
+                            }}
+                          />
+                        }
+                        label="Multi Family"
+                      />
+                    </Box>
+
+                    <Box sx={{ display: "flex" }}>
+                      <FormControlLabel
+                        sx={{
+                          width: "47%",
+                          "& .MuiFormControlLabel-label": {
+                            color: "white",
+                            fontSize: "small",
+                          },
+                        }}
+                        control={
+                          <Checkbox
+                            checked={flu.general}
+                            onChange={handleFluChange}
+                            name="general"
+                            value="general"
+                            style={{
+                              color: flu.general ? "#02EBC7" : "#FFF",
+                              fill: flu.general ? "#02EBC7" : "#FFF",
+                            }}
+                          />
+                        }
+                        label="General (Commercial)"
+                      />
+                      <FormControlLabel
+                        sx={{
+                          "& .MuiFormControlLabel-label": {
+                            color: "white",
+                            fontSize: "small",
+                          },
+                        }}
+                        control={
+                          <Checkbox
+                            checked={flu.mixedUse}
+                            onChange={handleFluChange}
+                            name="lightIndustrial"
+                            value="lightIndustrial"
+                            style={{
+                              color: flu.mixedUse ? "#02EBC7" : "#FFF",
+                              fill: flu.mixedUse ? "#02EBC7" : "#FFF",
+                            }}
+                          />
+                        }
+                        label="Mixed Use"
+                      />
+                    </Box>
+                  </FormGroup>
+                </Box>
               </Box>
 
               <Button
                 sx={{
-                  margin: "16px",
+                  margin: "0px 16px 16px 16px",
                   textTransform: "none",
                   paddingY: "6px",
                   bgcolor: "#02EBC7",
@@ -744,17 +861,12 @@ function HeroTabs({ show, handleChange, setWidget }) {
                   mb="0.5vw"
                   color="#FFF"
                   fontSize="2.7vw"
-                  lineHeight="140%"
+                  lineHeight="110%"
                   fontWeight={500}
                 >
                   Search for a specific place
                 </Typography>
-                <Typography
-                  color="#FFF"
-                  fontSize="20px"
-                  lineHeight="28px"
-                  fontWeight={500}
-                >
+                <Typography color="#FFF" fontSize="18px" fontWeight={500}>
                   Assess specific sites for your business
                 </Typography>
               </Box>
@@ -867,17 +979,12 @@ function HeroTabs({ show, handleChange, setWidget }) {
                 mb="0.5vw"
                 color="#FFF"
                 fontSize="2.7vw"
-                lineHeight="140%"
+                lineHeight="110%"
                 fontWeight={500}
               >
                 Stay Organized and Focused with Your Site Tracker
               </Typography>
-              <Typography
-                color="#FFF"
-                fontSize="20px"
-                lineHeight="28px"
-                fontWeight={500}
-              >
+              <Typography color="#FFF" fontSize="18px" fontWeight={500}>
                 Keep them organized in your pipeline to fulfill the deal
               </Typography>
 

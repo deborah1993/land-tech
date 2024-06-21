@@ -9,9 +9,10 @@ import {
   MoreHoriz,
   QueryBuilder,
 } from "@mui/icons-material";
+import { markers } from "@/lib/hard-code-data";
 
 export const BaseBoard = ({ setCard }) => {
-  const [cards, setCards] = useState(DEFAULT_CARDS);
+  const [cards, setCards] = useState(markers);
 
   return (
     <div
@@ -27,8 +28,8 @@ export const BaseBoard = ({ setCard }) => {
       }}
     >
       <Column
-        title="Mobile App"
-        column="Mobile App"
+        title="Sites Saved"
+        column="Sites Saved"
         headingColor="#7E22CE"
         cards={cards}
         setCards={setCards}
@@ -157,6 +158,8 @@ const Column = ({ title, headingColor, cards, column, setCards, setCard }) => {
         alignItems: "flex-start",
         flexShrink: 0,
         borderRadius: "5px",
+        width: "15vw",
+        maxWidth: "300px",
       }}
     >
       <Box
@@ -273,7 +276,7 @@ const Column = ({ title, headingColor, cards, column, setCards, setCard }) => {
           return (
             <MyCard
               key={c.id}
-              {...c}
+              card={c}
               handleDragStart={handleDragStart}
               setCard={setCard}
             />
@@ -285,19 +288,26 @@ const Column = ({ title, headingColor, cards, column, setCards, setCard }) => {
   );
 };
 
-const MyCard = ({ title, id, column, handleDragStart, setCard }) => {
+const MyCard = ({ handleDragStart, setCard, card }) => {
   const handleClick = () => {
-    setCard({ title, id, column });
+    setCard({ card });
   };
   return (
     <>
-      <DropIndicator beforeId={id} column={column} />
+      <DropIndicator beforeId={card.id} column={card.column} />
       <motion.div
         layout
-        layoutId={id}
+        layoutId={card.id}
         draggable="true"
-        onDragStart={(e) => handleDragStart(e, { title, id, column })}
+        onDragStart={(e) =>
+          handleDragStart(e, {
+            title: card.addres,
+            id: card.id,
+            column: card.column,
+          })
+        }
         style={{
+          width: "100%",
           display: "flex",
           flexDirection: "column",
           alignItems: "flex-start",
@@ -308,10 +318,11 @@ const MyCard = ({ title, id, column, handleDragStart, setCard }) => {
         <Box
           sx={{
             display: "flex",
+            width: "100%",
             height: "168px",
             padding: "8px 12px 12px 12px",
             flexDirection: "column",
-            alignItems: "center",
+            alignItems: "start",
             gap: "8px",
             borderRadius: "5px",
             background: "#FFF",
@@ -321,6 +332,7 @@ const MyCard = ({ title, id, column, handleDragStart, setCard }) => {
           <Box
             id="content"
             sx={{
+              width: "100%",
               display: "flex",
               flexDirection: "column",
               alignItems: "flex-start",
@@ -329,6 +341,7 @@ const MyCard = ({ title, id, column, handleDragStart, setCard }) => {
           >
             <Box
               sx={{
+                width: "100%",
                 display: "flex",
                 height: "24px",
                 alignItems: "center",
@@ -365,7 +378,8 @@ const MyCard = ({ title, id, column, handleDragStart, setCard }) => {
 
             <Typography
               sx={{
-                maxWidth: "217px",
+                maxWidth: "220px",
+                width: "100%",
                 overflow: "hidden",
                 color: "#1F2937",
                 textOverflow: "ellipsis",
@@ -374,7 +388,7 @@ const MyCard = ({ title, id, column, handleDragStart, setCard }) => {
                 fontWeight: 400,
               }}
             >
-              400 Central Ave, Saint Petersburg, Fl, 33701
+              {card.address}
             </Typography>
 
             <Typography
@@ -388,7 +402,7 @@ const MyCard = ({ title, id, column, handleDragStart, setCard }) => {
                 fontWeight: 400,
               }}
             >
-              ID 507f1f
+              {card.id}
             </Typography>
           </Box>
 
@@ -418,7 +432,7 @@ const MyCard = ({ title, id, column, handleDragStart, setCard }) => {
                 fontWeight: 400,
               }}
             >
-              3 months ago
+              {card.saved}
             </Typography>
             <Box
               sx={{
@@ -512,123 +526,3 @@ const DropIndicator = ({ beforeId, column }) => {
     />
   );
 };
-
-const AddCard = ({ column, setCards }) => {
-  const [text, setText] = useState("");
-  const [adding, setAdding] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (!text.trim().length) return;
-
-    const newCard = {
-      column,
-      title: text.trim(),
-      id: Math.random().toString(),
-    };
-
-    setCards((pv) => [...pv, newCard]);
-
-    setAdding(false);
-  };
-
-  return (
-    <>
-      {adding ? (
-        <motion.form layout onSubmit={handleSubmit}>
-          <textarea
-            onChange={(e) => setText(e.target.value)}
-            autoFocus
-            placeholder="Add new task..."
-            // className="w-full rounded border border-violet-400 bg-violet-400/20 p-3 text-sm text-neutral-50 placeholder-violet-300 focus:outline-0"
-            style={{
-              width: "100%",
-              borderRadius: "md",
-              border: "1px solid violet",
-              backgroundColor: "violet",
-              fontSize: "sm",
-              text: "gray",
-            }}
-          />
-          <div
-            // className="mt-1.5 flex items-center justify-end gap-1.5"
-            style={{
-              marginTop: 1.5,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "end",
-              gap: 1.5,
-            }}
-          >
-            <button
-              onClick={() => setAdding(false)}
-              // className="px-3 py-1.5 text-xs text-neutral-400 transition-colors hover:text-neutral-50"
-              style={{
-                paddingX: 3,
-                paddingY: 1.5,
-                fontSize: "sx",
-                color: "gray",
-              }}
-            >
-              Close
-            </button>
-            <button
-              type="submit"
-              // className="flex items-center gap-1.5 rounded bg-neutral-50 px-3 py-1.5 text-xs text-neutral-950 transition-colors hover:bg-neutral-300"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 1.5,
-                borderRadius: "md",
-                backgroundColor: "beige",
-                paddingX: 3,
-                paddingY: 1.5,
-                fontSize: "xs",
-                color: "gray",
-              }}
-            >
-              <span>Add</span>
-              <FiPlus />
-            </button>
-          </div>
-        </motion.form>
-      ) : (
-        <motion.button
-          layout
-          onClick={() => setAdding(true)}
-          className="flex w-full items-center gap-1.5 px-3 py-1.5 text-xs text-neutral-400 transition-colors hover:text-neutral-50"
-          style={{
-            display: "flex",
-            width: "100%",
-            alignItems: "center",
-            gap: 1.5,
-            paddingX: 3,
-            paddingY: 1.5,
-            fontSize: "xs",
-            color: "gray",
-          }}
-        >
-          <span>Add card</span>
-          <FiPlus />
-        </motion.button>
-      )}
-    </>
-  );
-};
-
-const DEFAULT_CARDS = [
-  // Site Saved
-  { title: "Saint Pt. Beach", id: "1", column: "Mobile App" },
-  { title: "The Dali Museum", id: "2", column: "Mobile App" },
-  { title: "Botanical Gardens", id: "3", column: "Mobile App" },
-  { title: "Mosque", id: "4", column: "Mobile App" },
-  // Opportunity
-  {
-    title: "Research DB options for new microservice",
-    id: "5",
-    column: "Opportunity",
-  },
-  { title: "Postmortem for outage", id: "6", column: "Opportunity" },
-  { title: "Sync with product on Q3 roadmap", id: "7", column: "Opportunity" },
-];

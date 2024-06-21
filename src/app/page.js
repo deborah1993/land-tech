@@ -10,60 +10,10 @@ import { BaseBoard } from "@/components/boards/base.js";
 import axios from "axios";
 import ManagementPanel from "@/components/widgets/management-panel";
 import RightHandPanel from "@/components/widgets/right-hand-panel";
-
-const markers = [
-  { lng: -82.6316, lat: 27.7651, description: "The Dali Museum" },
-  { lng: -82.7415, lat: 27.725, description: "St. Pete Beach" },
-  { lng: -82.6463, lat: 27.7886, description: "Sunken Gardens" },
-  { lng: -82.7186, lat: 27.637, description: "Fort De Soto Park" },
-  {
-    lat: 27.77822638054447,
-    lng: -82.63680448083112,
-    description: "Palladium Theater",
-  },
-  {
-    lat: 27.768504660365558,
-    lng: -82.63304024263473,
-    description: "Al Lang Stadium",
-  },
-  {
-    lng: -82.64391235122771,
-    lat: 27.77166204942377,
-    description: "Chihuly Collection",
-  },
-  {
-    lng: -82.63778236932299,
-    lat: 27.773412599391264,
-    description: "Saturday Morning Market",
-  },
-  {
-    lng: -82.79130939880979,
-    lat: 27.845725974574158,
-    description: "Studio Movie Grill - Seminole",
-  },
-  {
-    lng: -82.7752101652392,
-    lat: 27.84403367921541,
-    description: "Lake Seminole Park",
-  },
-  {
-    lng: -82.73348340267069,
-    lat: 27.79699546907014,
-    description: "Tyrone Square",
-  },
-];
+import { markers } from "@/lib/hard-code-data";
 
 function Home() {
-  const apiKey = process.env.NEXT_PUBLIC_HUBSPOT_API_KEY;
-  console.log("HubSpot API Key:", apiKey);
-  const [widget, setWidget] = React.useState({
-    lastSold: "16,500,000.00",
-    property: "Elite training",
-    address: "4055 Tyrone Blvd N, St. Petersburg, FL 33709, United States",
-    lotArea: "5,287",
-    owner: "Timothy Johnson",
-    externalLink: "https://www.isielitetraining.com/locations/st-pete/",
-  });
+  const [widget, setWidget] = React.useState(markers[0]);
   const [data, setData] = React.useState();
   const [show, setShow] = React.useState(1);
   const [card, setCard] = React.useState({});
@@ -120,16 +70,7 @@ function Home() {
               latitude={element.lat}
               longitude={element.lng}
               color="tomato"
-              onClick={() =>
-                setWidget({
-                  lastSold: "16,500,000.00 ",
-                  property: element.description,
-                  address:
-                    "4055 Tyrone Blvd N, St. Petersburg, FL 33709, United States",
-                  lotArea: "5,287",
-                  owner: "Timothy Johnson",
-                })
-              }
+              onClick={() => setWidget(element)}
             />
           ))}
           {data && (
@@ -172,9 +113,9 @@ function Home() {
         <Map
           mapLib={maplibregl}
           initialViewState={{
-            latitude: 27.852282053282245,
-            longitude: -82.78105164493117,
-            zoom: 14,
+            latitude: 27.975907605152702,
+            longitude: -82.65123628988616,
+            zoom: 9.7,
           }}
           style={{ width: "100%", height: "100vh" }}
           mapStyle={`https://api.maptiler.com/maps/fc09eb56-b954-4808-8b36-f146ca7c5dfe/style.json?key=${process.env.NEXT_PUBLIC_MAP_API_KEY}`}
@@ -184,18 +125,7 @@ function Home() {
               latitude={element.lat}
               longitude={element.lng}
               color="tomato"
-              onClick={() =>
-                setWidget({
-                  lastSold: "16,500,000.00",
-                  property: element.description,
-                  address:
-                    "4055 Tyrone Blvd N, St. Petersburg, FL 33709, United States",
-                  lotArea: "5,287",
-                  owner: "Timothy Johnson",
-                  externalLink:
-                    "https://www.isielitetraining.com/locations/st-pete/",
-                })
-              }
+              onClick={() => setWidget(element)}
             />
           ))}
         </Map>
@@ -228,18 +158,7 @@ function Home() {
               latitude={element.lat}
               longitude={element.lng}
               color="tomato"
-              onClick={() =>
-                setWidget({
-                  lastSold: "16,500,000.00",
-                  property: element.description,
-                  address:
-                    "4055 Tyrone Blvd N, St. Petersburg, FL 33709, United States",
-                  lotArea: "5,287",
-                  owner: "Timothy Johnson",
-                  externalLink:
-                    "https://www.isielitetraining.com/locations/st-pete/",
-                })
-              }
+              onClick={() => setWidget(element)}
             />
           ))}
         </Map>
@@ -272,18 +191,7 @@ function Home() {
               latitude={element.lat}
               longitude={element.lng}
               color="tomato"
-              onClick={() =>
-                setWidget({
-                  lastSold: "16,500,000.00 ",
-                  property: element.description,
-                  address:
-                    "4055 Tyrone Blvd N, St. Petersburg, FL 33709, United States",
-                  lotArea: "5,287",
-                  owner: "Timothy Johnson",
-                  externalLink:
-                    "https://www.isielitetraining.com/locations/st-pete/",
-                })
-              }
+              onClick={() => setWidget(element)}
             />
           ))}
         </Map>

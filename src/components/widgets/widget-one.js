@@ -260,6 +260,8 @@ function WidgetOne({ widget }) {
                   display: "flex",
                   alignItems: "center",
                   gap: "34px",
+                  width: "100%",
+                  justifyContent: "space-between",
                   alignSelf: "stretch",
                 }}
               >
@@ -273,6 +275,29 @@ function WidgetOne({ widget }) {
                 >
                   Ownership
                 </Typography>
+                <Button
+                  sx={{
+                    display: "flex",
+                    padding: "0px",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: "4px",
+                    borderRadius: "8px",
+                    border: "2px solid rgba(255, 255, 255, 0.00",
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      color: "#0057AD",
+                      fontSize: "14px",
+                      fontWeight: 500,
+                      lineHeight: "20px",
+                      textTransform: "none",
+                    }}
+                  >
+                    Contact Owner
+                  </Typography>
+                </Button>
               </Box>
 
               <Box
@@ -356,6 +381,11 @@ function WidgetOne({ widget }) {
                 border: "2px solid #0057AD",
                 background: "#FFF",
               }}
+              onClick={() =>
+                window.open(
+                  "https://app.land.tech/signup/?territory=us&plan=unlimited&recurrence=month"
+                )
+              }
             >
               <Lock />
               <Typography
@@ -706,6 +736,11 @@ function WidgetOne({ widget }) {
                             border: "2px solid rgba(255, 255, 255, 0.00))",
                             textTransform: "none",
                           }}
+                          onClick={() =>
+                            window.open(
+                              "https://app.land.tech/signup/?territory=us&plan=unlimited&recurrence=month"
+                            )
+                          }
                         >
                           <Typography
                             sx={{
