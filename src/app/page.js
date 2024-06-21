@@ -40,7 +40,12 @@ function Home() {
   return (
     <div
       className="App"
-      style={{ position: "relative", display: "flex", height: "100%" }}
+      style={{
+        position: "relative",
+        display: "flex",
+        height: "100%",
+        marginTop: "-12vh",
+      }}
     >
       <HeroTabs show={show} handleChange={handleChange} setWidget={setWidget} />
       <div
