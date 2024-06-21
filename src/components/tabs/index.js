@@ -751,8 +751,8 @@ function HeroTabs({ show, handleChange, setWidget }) {
                           <Checkbox
                             checked={flu.singleFamily}
                             onChange={handleFluChange}
-                            name="single family"
-                            value="single family"
+                            name="singleFamily"
+                            value="singleFamily"
                             style={{
                               color: flu.singleFamily ? "#02EBC7" : "#FFF",
                               fill: flu.singleFamily ? "#02EBC7" : "#FFF",
@@ -772,8 +772,8 @@ function HeroTabs({ show, handleChange, setWidget }) {
                           <Checkbox
                             checked={flu.multiFamily}
                             onChange={handleFluChange}
-                            name="multi family"
-                            value="multi family"
+                            name="multiFamily"
+                            value="multiFamily"
                             style={{
                               color: flu.multiFamily ? "#02EBC7" : "#FFF",
                               fill: flu.multiFamily ? "#02EBC7" : "#FFF",
@@ -818,8 +818,8 @@ function HeroTabs({ show, handleChange, setWidget }) {
                           <Checkbox
                             checked={flu.mixedUse}
                             onChange={handleFluChange}
-                            name="lightIndustrial"
-                            value="lightIndustrial"
+                            name="mixedUse"
+                            value="mixedUse"
                             style={{
                               color: flu.mixedUse ? "#02EBC7" : "#FFF",
                               fill: flu.mixedUse ? "#02EBC7" : "#FFF",

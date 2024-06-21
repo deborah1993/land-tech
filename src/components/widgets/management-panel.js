@@ -5,7 +5,6 @@ import { Box, Typography, Button } from "@mui/material";
 import React from "react";
 
 function ManagementPanel({ widget }) {
-  console.log({ widget });
   return (
     <div
       style={{
@@ -21,6 +20,7 @@ function ManagementPanel({ widget }) {
         "&::-webkit-scrollbar": {
           display: "none",
         },
+        borderRadius: "8px",
         msOverflowStyle: "none", // IE and Edge
         scrollbarWidth: "none", // Firefox
       }}
