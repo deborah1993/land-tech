@@ -121,11 +121,15 @@ function Home() {
             longitude: -82.65123628988616,
             zoom: 9.7,
           }}
-          style={{ width: "100%", height: "100vh" }}
+          style={{
+            width: "100%",
+            height: "100vh",
+          }}
           mapStyle={`https://api.maptiler.com/maps/fc09eb56-b954-4808-8b36-f146ca7c5dfe/style.json?key=${process.env.NEXT_PUBLIC_MAP_API_KEY}`}
         >
           {markers.map((element, i) => (
             <Marker
+              style={{ cursor: "default" }}
               latitude={element.lat}
               longitude={element.lng}
               color="tomato"
