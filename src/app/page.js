@@ -202,6 +202,7 @@ function Home() {
       ) : show === 3 ? (
         <div
           style={{
+            mt: "12vh",
             position: "fixed",
             display: "flex",
             paddingTop: "3vh",
