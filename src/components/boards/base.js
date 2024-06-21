@@ -290,7 +290,7 @@ const Column = ({ title, headingColor, cards, column, setCards, setCard }) => {
 
 const MyCard = ({ handleDragStart, setCard, card }) => {
   const handleClick = () => {
-    setCard({ card });
+    setCard(card);
   };
   return (
     <>
@@ -313,7 +313,6 @@ const MyCard = ({ handleDragStart, setCard, card }) => {
           alignItems: "flex-start",
           cursor: "grab",
         }}
-        onClick={handleClick}
       >
         <Box
           sx={{
@@ -485,11 +484,7 @@ const MyCard = ({ handleDragStart, setCard, card }) => {
                 border: "2px solid #0057AD",
                 background: "rgba(0, 87, 173, 0.10)",
               }}
-              onClick={() =>
-                window.open(
-                  "https://app.land.tech/signup/?territory=us&plan=unlimited&recurrence=month"
-                )
-              }
+              onClick={handleClick}
             >
               <Typography
                 sx={{
