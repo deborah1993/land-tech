@@ -208,8 +208,6 @@ function Home() {
           style={{
             position: "fixed",
             display: "flex",
-            paddingTop: "3vh",
-            paddingBottom: "3vh",
             paddingX: "1vw",
             left: "35vw",
             top: "10vh",
@@ -220,7 +218,7 @@ function Home() {
             alignItems: "flex-start",
           }}
         >
-          <ManagementPanel widget={widget} />
+          <ManagementPanel widget={card} />
           <BaseBoard setCard={setCard} />
         </div>
       ) : (
