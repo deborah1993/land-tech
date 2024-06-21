@@ -206,13 +206,13 @@ function Home() {
       ) : show === 3 ? (
         <div
           style={{
-            mt: "12vh",
             position: "fixed",
             display: "flex",
             paddingTop: "3vh",
             paddingBottom: "3vh",
             paddingX: "1vw",
             left: "35vw",
+            top: "10vh",
             height: "100%",
             zIndex: 5,
             width: "65vw",
