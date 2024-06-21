@@ -8,12 +8,11 @@ function RightHandPanel({ widget }) {
   return (
     <div
       style={{
-        mt: "12vh",
         height: "95vh",
         width: "27vw",
         maxWidth: "463px",
         display: "flex",
-        top: "0%",
+        top: "10vh",
         right: "1%",
         position: "absolute",
         justifyContent: "center",
