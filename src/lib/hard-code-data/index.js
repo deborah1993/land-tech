@@ -116,7 +116,7 @@ export const markers = [
     lotArea: "3,750,883.95 sq. ft",
     propertyState: "Agriculture",
     lastSold: "780,000",
-    lastSoldDate: "14/07/2021",
+    lastSoldDate: "14/07/2018",
     ownerShip: "SK DEERBROOK LLC 105 NE 1ST ST DELRAY BEACH FL 33444",
     zoningBackgroundColor: "#62e684",
     zoningBorderColor: "#1cdf63",
