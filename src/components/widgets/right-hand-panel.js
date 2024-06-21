@@ -321,8 +321,7 @@ function RightHandPanel({ widget }) {
                         lineHeight: "20px",
                       }}
                     >
-                      CATS RED APPLE ST PETE LLC 800 3RD AVE FL 5 NEW YORK NY
-                      10022
+                      {widget.ownerShip}
                     </Typography>
                   </Box>
                 </Box>

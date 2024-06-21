@@ -218,8 +218,8 @@ function Home() {
             alignItems: "flex-start",
           }}
         >
-          <ManagementPanel widget={card} />
           <BaseBoard setCard={setCard} />
+          <ManagementPanel widget={card} />
         </div>
       ) : (
         <></>
