@@ -211,7 +211,7 @@ function Home() {
             paddingX: "1vw",
             left: "35vw",
             bottom: "3vh",
-            height: "80%",
+            height: "85vh",
             zIndex: 5,
             width: "65vw",
             gap: "5vw",

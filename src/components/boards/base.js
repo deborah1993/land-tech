@@ -17,6 +17,7 @@ export const BaseBoard = ({ setCard }) => {
   return (
     <div
       style={{
+        mt: "auto",
         display: "inline-flex",
         height: "100%",
         flexDirection: "row",
