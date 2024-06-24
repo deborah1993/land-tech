@@ -243,7 +243,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
           }}
         >
           {/* <Tab
-            label="Zip Code"
+            label="Get location insights"
             sx={{
               textTransform: "none",
               fontSize: "16px",
@@ -255,7 +255,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
             {...a11yProps(0)}
           /> */}
           <Tab
-            label="Multi-Criteria"
+            label="Source opportunities"
             color="white"
             value={1}
             {...a11yProps(1)}
@@ -269,7 +269,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
             }}
           />
           {/* <Tab
-            label="Location"
+            label="Assess sites"
             value={2}
             {...a11yProps(2)}
             sx={{
@@ -281,7 +281,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
             }}
           /> */}
           <Tab
-            label="Site Tracker"
+            label="Track deals"
             value={3}
             {...a11yProps(3)}
             sx={{
@@ -305,10 +305,11 @@ function HeroTabs({ show, handleChange, setWidget }) {
                   lineHeight="110%"
                   fontWeight={500}
                 >
-                  Search by Zip Code
+                  Find development opportunities in your chosen location
                 </Typography>
                 <Typography color="#FFF" fontSize="18px" fontWeight={500}>
-                  Review a list of sites in an area of interest
+                  Enter a city, county or zip code to get key location data to
+                  help you quickly identify opportunities.
                 </Typography>
               </Box>
 
@@ -404,7 +405,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                 }}
                 onClick={handleSubmit}
               >
-                Search
+                Unlock all insights
               </Button>
             </Box>
           ) : show === 1 ? (
@@ -417,11 +418,11 @@ function HeroTabs({ show, handleChange, setWidget }) {
                   lineHeight="110%"
                   fontWeight={500}
                 >
-                  Multi Criteria Sourcing Tool
+                  Find the perfect site for your development
                 </Typography>
                 <Typography color="#FFF" fontSize="18px" fontWeight={500}>
-                  Quickly discover opportunity areas and sites that match your
-                  business
+                  Enter your specific sourcing criteria to get a list of sites
+                  that match your requirements.
                 </Typography>
               </Box>
 
@@ -900,7 +901,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                 }}
                 onClick={handleSubmit}
               >
-                Search
+                Download your results
               </Button>
             </Box>
           ) : show === 2 ? (
@@ -913,10 +914,11 @@ function HeroTabs({ show, handleChange, setWidget }) {
                   lineHeight="110%"
                   fontWeight={500}
                 >
-                  Search for a specific place
+                  Assess site viability
                 </Typography>
                 <Typography color="#FFF" fontSize="18px" fontWeight={500}>
-                  Assess specific sites for your business
+                  Enter your site address to get the data you need to do your
+                  due diligence.
                 </Typography>
               </Box>
 
@@ -1019,7 +1021,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                 }}
                 onClick={handleSubmit}
               >
-                Search
+                Get full site report
               </Button>
             </Box>
           ) : show === 3 ? (
@@ -1031,10 +1033,11 @@ function HeroTabs({ show, handleChange, setWidget }) {
                 lineHeight="110%"
                 fontWeight={500}
               >
-                Stay Organized and Focused with Your Site Tracker
+                Manage sites to completion
               </Typography>
               <Typography color="#FFF" fontSize="18px" fontWeight={500}>
-                Keep them organized in your pipeline to fulfill the deal
+                Move projects between customizable stages and click to open the
+                site card.
               </Typography>
 
               <Button
@@ -1055,7 +1058,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                 }}
                 onClick={handleOpen}
               >
-                Start
+                Add your own sites
               </Button>
             </Box>
           ) : (
