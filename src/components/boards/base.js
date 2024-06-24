@@ -319,7 +319,7 @@ const MyCard = ({ handleDragStart, setCard, card }) => {
           sx={{
             display: "flex",
             width: "100%",
-            height: "168px",
+            minHeight: "168px",
             padding: "8px 12px 12px 12px",
             flexDirection: "column",
             alignItems: "start",
@@ -381,9 +381,9 @@ const MyCard = ({ handleDragStart, setCard, card }) => {
                 maxWidth: "220px",
                 width: "100%",
                 overflow: "hidden",
-                color: "#1F2937",
                 textOverflow: "ellipsis",
                 whiteSpace: "nowrap",
+                color: "#1F2937",
                 fontSize: "14px",
                 fontWeight: 400,
               }}
@@ -428,6 +428,9 @@ const MyCard = ({ handleDragStart, setCard, card }) => {
             <Typography
               sx={{
                 color: "#4B5563",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
                 fontSize: "12px",
                 fontWeight: 400,
               }}

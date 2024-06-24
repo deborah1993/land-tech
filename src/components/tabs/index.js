@@ -478,7 +478,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                     <Typography
                       sx={{
                         color: "gray",
-                        fontSize: "16px",
+                        fontSize: "0.9vw",
                       }}
                     >
                       Acre

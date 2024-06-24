@@ -1487,7 +1487,7 @@ function ManagementPanel({ widget }) {
               padding: "0px 16px 16px 16px",
               flexDirection: "column",
               alignItems: "center",
-              gap: "24px",
+              gap: "10px",
               alignSelf: "stretch",
               backdropFilter: " blur(calc(8px / 2))",
             }}
