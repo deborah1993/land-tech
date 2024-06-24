@@ -454,66 +454,72 @@ function HeroTabs({ show, handleChange, setWidget }) {
                     position: "relative",
                   }}
                 >
-                  <TextField
-                    fullWidth
-                    value={acresFrom}
-                    type="text"
-                    inputmode="numeric"
-                    pattern="[0-9]*"
-                    placeholder="0 Acre"
-                    size="small"
-                    sx={{
-                      backgroundColor: "#FFF",
-                      borderRadius: "8px",
-                    }}
-                    onChange={(e) => setAcresFrom(+e.target.value)}
-                  />
-                  <Box
-                    sx={{
-                      position: "absolute",
-                      top: "20%",
-                      left: "37%",
-                    }}
-                  >
-                    <Typography
+                  <Box sx={{ position: "relative" }}>
+                    <TextField
+                      fullWidth
+                      value={acresFrom}
+                      type="text"
+                      inputmode="numeric"
+                      pattern="[0-9]*"
+                      placeholder="0 Acre"
+                      size="small"
                       sx={{
-                        color: "gray",
-                        fontSize: "0.9vw",
+                        backgroundColor: "#FFF",
+                        borderRadius: "8px",
+                      }}
+                      onChange={(e) => setAcresFrom(+e.target.value)}
+                    />
+                    <Box
+                      sx={{
+                        position: "absolute",
+                        top: "50%",
+                        transform: "translate(-50%, -50%)",
+                        left: "37%",
                       }}
                     >
-                      Acre
-                    </Typography>
+                      <Typography
+                        sx={{
+                          color: "gray",
+                          fontSize: "16px",
+                        }}
+                      >
+                        Acre
+                      </Typography>
+                    </Box>
                   </Box>
                   <Typography>-</Typography>
-                  <TextField
-                    fullWidth
-                    value={acresTo}
-                    type="text"
-                    inputmode="numeric"
-                    pattern="[0-9]*"
-                    placeholder="50 Acre"
-                    size="small"
-                    sx={{
-                      backgroundColor: "#FFF",
-                      borderRadius: "8px",
-                    }}
-                    onChange={(e) => setAcresTo(+e.target.value)}
-                  />
-                  <Box
-                    sx={{
-                      position: "absolute",
-                      top: "20%",
-                      left: "88%",
-                    }}
-                  >
-                    <Typography
+                  <Box sx={{ position: "relative" }}>
+                    <TextField
+                      fullWidth
+                      value={acresTo}
+                      type="text"
+                      inputmode="numeric"
+                      pattern="[0-9]*"
+                      placeholder="50 Acre"
+                      size="small"
                       sx={{
-                        color: "gray",
-                        fontSize: "16px",
+                        backgroundColor: "#FFF",
+                        borderRadius: "8px",
+                      }}
+                      onChange={(e) => setAcresTo(+e.target.value)}
+                    />
+                    <Box
+                      sx={{
+                        position: "absolute",
+                        top: "50%",
+                        transform: "translate(-50%, -50%)",
+                        left: "5%",
                       }}
                     >
-                      Acre
-                    </Typography>
+                      <Typography
+                        sx={{
+                          color: "gray",
+                          fontSize: "16px",
+                        }}
+                      >
+                        Acre
+                      </Typography>
+                    </Box>
                   </Box>
                 </Box>
                 <Typography
