@@ -635,27 +635,6 @@ function HeroTabs({ show, handleChange, setWidget }) {
                         }}
                         control={
                           <Checkbox
-                            checked={zoning.agriculture}
-                            onChange={handleZoningChange}
-                            name="agriculture"
-                            value="agriculture"
-                            style={{
-                              color: zoning.agriculture ? "#02EBC7" : "#FFF",
-                              fill: zoning.agriculture ? "#02EBC7" : "#FFF",
-                            }}
-                          />
-                        }
-                        label="Agriculture"
-                      />
-                      <FormControlLabel
-                        sx={{
-                          "& .MuiFormControlLabel-label": {
-                            color: "white",
-                            fontSize: "small",
-                          },
-                        }}
-                        control={
-                          <Checkbox
                             checked={zoning.core}
                             onChange={handleZoningChange}
                             name="core"
@@ -667,6 +646,27 @@ function HeroTabs({ show, handleChange, setWidget }) {
                           />
                         }
                         label="Core (Commercial)"
+                      />
+                      <FormControlLabel
+                        sx={{
+                          "& .MuiFormControlLabel-label": {
+                            color: "white",
+                            fontSize: "small",
+                          },
+                        }}
+                        control={
+                          <Checkbox
+                            checked={zoning.agriculture}
+                            onChange={handleZoningChange}
+                            name="agriculture"
+                            value="agriculture"
+                            style={{
+                              color: zoning.agriculture ? "#02EBC7" : "#FFF",
+                              fill: zoning.agriculture ? "#02EBC7" : "#FFF",
+                            }}
+                          />
+                        }
+                        label="Agriculture"
                       />
                     </Box>
 
@@ -729,27 +729,6 @@ function HeroTabs({ show, handleChange, setWidget }) {
                         }}
                         control={
                           <Checkbox
-                            checked={zoning.mixedUse}
-                            onChange={handleZoningChange}
-                            name="mixedUse"
-                            value="mixedUse"
-                            style={{
-                              color: zoning.mixedUse ? "#02EBC7" : "#FFF",
-                              fill: zoning.mixedUse ? "#02EBC7" : "#FFF",
-                            }}
-                          />
-                        }
-                        label="Mixed Use"
-                      />
-                      <FormControlLabel
-                        sx={{
-                          "& .MuiFormControlLabel-label": {
-                            color: "white",
-                            fontSize: "small",
-                          },
-                        }}
-                        control={
-                          <Checkbox
                             checked={zoning.multiFamily}
                             onChange={handleZoningChange}
                             name="multiFamily"
@@ -761,6 +740,27 @@ function HeroTabs({ show, handleChange, setWidget }) {
                           />
                         }
                         label="Multi Family (Residential)"
+                      />
+                      <FormControlLabel
+                        sx={{
+                          "& .MuiFormControlLabel-label": {
+                            color: "white",
+                            fontSize: "small",
+                          },
+                        }}
+                        control={
+                          <Checkbox
+                            checked={zoning.mixedUse}
+                            onChange={handleZoningChange}
+                            name="mixedUse"
+                            value="mixedUse"
+                            style={{
+                              color: zoning.mixedUse ? "#02EBC7" : "#FFF",
+                              fill: zoning.mixedUse ? "#02EBC7" : "#FFF",
+                            }}
+                          />
+                        }
+                        label="Mixed Use"
                       />
                     </Box>
                   </FormGroup>
