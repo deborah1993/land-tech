@@ -624,7 +624,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                   }}
                 >
                   <FormGroup column sx={{ width: "100%" }}>
-                    <Box sx={{ display: "flex" }}>
+                    <Box sx={{ display: "flex", width: "100%" }}>
                       <FormControlLabel
                         sx={{
                           width: "47%",
@@ -670,7 +670,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                       />
                     </Box>
 
-                    <Box sx={{ display: "flex" }}>
+                    <Box sx={{ display: "flex", width: "100%" }}>
                       <FormControlLabel
                         sx={{
                           width: "47%",
@@ -718,7 +718,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                       />
                     </Box>
 
-                    <Box sx={{ display: "flex" }}>
+                    <Box sx={{ display: "flex", width: "100%" }}>
                       <FormControlLabel
                         sx={{
                           width: "47%",
