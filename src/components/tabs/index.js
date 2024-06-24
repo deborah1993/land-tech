@@ -549,7 +549,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                     <Box sx={{ display: "flex" }}>
                       <FormControlLabel
                         sx={{
-                          width: "47%",
+                          width: "50%",
                           "& .MuiFormControlLabel-label": {
                             color: "white",
                             fontSize: "small",
@@ -627,7 +627,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                     <Box sx={{ display: "flex", width: "100%" }}>
                       <FormControlLabel
                         sx={{
-                          width: "47%",
+                          width: "50%",
                           "& .MuiFormControlLabel-label": {
                             color: "white",
                             fontSize: "small",
@@ -673,7 +673,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                     <Box sx={{ display: "flex", width: "100%" }}>
                       <FormControlLabel
                         sx={{
-                          width: "47%",
+                          width: "50%",
                           "& .MuiFormControlLabel-label": {
                             color: "white",
                             fontSize: "small",
@@ -721,7 +721,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                     <Box sx={{ display: "flex", width: "100%" }}>
                       <FormControlLabel
                         sx={{
-                          width: "47%",
+                          width: "50%",
                           "& .MuiFormControlLabel-label": {
                             color: "white",
                             fontSize: "small",
@@ -790,7 +790,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                     <Box sx={{ display: "flex" }}>
                       <FormControlLabel
                         sx={{
-                          width: "47%",
+                          width: "50%",
                           "& .MuiFormControlLabel-label": {
                             color: "white",
                             fontSize: "small",
@@ -836,7 +836,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                     <Box sx={{ display: "flex" }}>
                       <FormControlLabel
                         sx={{
-                          width: "47%",
+                          width: "50%",
                           "& .MuiFormControlLabel-label": {
                             color: "white",
                             fontSize: "small",
