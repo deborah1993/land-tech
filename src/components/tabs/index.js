@@ -474,7 +474,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                         position: "absolute",
                         top: "50%",
                         transform: "translate(-50%, -50%)",
-                        right: "10%",
+                        right: "5%",
                       }}
                     >
                       <Typography

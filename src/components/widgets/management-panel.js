@@ -1533,7 +1533,6 @@ function ManagementPanel({ widget }) {
                 flexDirection: "column",
                 alignItems: "flex-start",
                 gap: "0.6vw",
-                background: "#FFF",
                 justifyContent: "flex-start",
               }}
             >
