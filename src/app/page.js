@@ -71,6 +71,7 @@ function Home() {
         >
           {markers.map((element, i) => (
             <Marker
+              style={{ cursor: "pointer" }}
               latitude={element.lat}
               longitude={element.lng}
               color="tomato"
@@ -129,7 +130,7 @@ function Home() {
         >
           {markers.map((element, i) => (
             <Marker
-              style={{ cursor: "default" }}
+              style={{ cursor: "pointer" }}
               latitude={element.lat}
               longitude={element.lng}
               color="tomato"
@@ -163,6 +164,7 @@ function Home() {
         >
           {markers.map((element, i) => (
             <Marker
+              style={{ cursor: "pointer" }}
               latitude={element.lat}
               longitude={element.lng}
               color="tomato"
@@ -196,6 +198,7 @@ function Home() {
         >
           {markers.map((element, i) => (
             <Marker
+              style={{ cursor: "pointer" }}
               latitude={element.lat}
               longitude={element.lng}
               color="tomato"
