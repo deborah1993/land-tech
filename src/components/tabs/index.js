@@ -206,11 +206,11 @@ function HeroTabs({ show, handleChange, setWidget }) {
         display: "flex",
         alignItems: "center",
         flexDirection: "column",
-        paddingTop: "12vh",
+        paddingTop: { lg: "12vh", xs: "5vh" },
         justifyContent: "flex-start",
         position: "relative",
         zIndex: 4,
-        width: "30vw",
+        width: { lg: "30vw", xs: "100%" },
         backgroundColor: "white",
         boxShadow: "0px 0px 8px 0px rgba(0, 0, 0, 0.25)",
         maxWidth: "550px",
@@ -413,14 +413,20 @@ function HeroTabs({ show, handleChange, setWidget }) {
               <Box sx={{ padding: "0px 16px 16px 16px" }}>
                 <Typography
                   mb="0.5vw"
+                  sx={{ mt: { lg: "0px", xs: "16px" } }}
                   color="#FFF"
-                  fontSize="2.7vw"
+                  fontSize={{ lg: "2.7vw", xs: "30px" }}
                   lineHeight="110%"
                   fontWeight={500}
                 >
                   Find the perfect site for your development
                 </Typography>
-                <Typography color="#FFF" fontSize="18px" fontWeight={500}>
+                <Typography
+                  color="#FFF"
+                  fontSize="18px"
+                  fontWeight={500}
+                  sx={{ display: { lg: "flex", xs: "none" } }}
+                >
                   Enter your specific sourcing criteria to get a list of sites
                   that match your requirements.
                 </Typography>
@@ -773,7 +779,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                     fontSize: "14px",
                     fontWeight: 600,
                     lineHeight: "20px",
-                    display: "flex",
+                    display: { lg: "flex", xs: "none" },
                     alignItems: "center",
                     gap: 1,
                   }}
@@ -782,7 +788,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                 </Typography>
                 <Box
                   sx={{
-                    display: "flex",
+                    display: { lg: "flex", xs: "none" },
                     flexDirection: "row",
                     alignItems: "center",
                   }}
@@ -885,7 +891,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
 
               <Button
                 sx={{
-                  margin: "0px 16px 16px 16px",
+                  margin: { lg: "0px 16px 16px 16px", xs: "16px" },
                   textTransform: "none",
                   paddingY: "6px",
                   bgcolor: "#02EBC7",
