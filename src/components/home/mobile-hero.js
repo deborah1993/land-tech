@@ -17,7 +17,7 @@ function MobileHero() {
   const [data, setData] = React.useState();
   const [show, setShow] = React.useState(1);
   const [card, setCard] = React.useState(markers[0]);
-  const [expand, setExpand] = React.useState(true);
+  const [expand, setExpand] = React.useState(false);
   const [formData, setFormData] = React.useState({});
 
   const handleChange = (event, newValue) => {
