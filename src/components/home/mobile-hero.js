@@ -322,7 +322,7 @@ function MobileHero() {
                         letterSpacing: "1px",
                       }}
                     >
-                      Find you own sights
+                      Find you own sites
                     </Typography>
                     {expand ? (
                       <Box
