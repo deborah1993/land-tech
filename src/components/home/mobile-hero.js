@@ -46,7 +46,7 @@ function MobileHero() {
         position: "relative",
         display: { xs: "flex", lg: "none" },
         height: "100%",
-        minHeight: "100vh",
+        minHeight: "100dvh",
         flexDirection: "column",
       }}
     >
@@ -70,7 +70,7 @@ function MobileHero() {
           top: 0,
           left: 0,
           width: "100%",
-          height: "100vh",
+          height: "100dvh",
           opacity: show === 0 ? 1 : 0,
           transition: "opacity 2s ease",
           zIndex: show === 0 ? 3 : 1,
@@ -83,7 +83,7 @@ function MobileHero() {
             longitude: -82.64043346195938,
             zoom: 13.7,
           }}
-          style={{ width: "100%", height: "100vh" }}
+          style={{ width: "100%", height: "100dvh" }}
           mapStyle={`https://api.maptiler.com/maps/fc09eb56-b954-4808-8b36-f146ca7c5dfe/style.json?key=${process.env.NEXT_PUBLIC_MAP_API_KEY}`}
         >
           {markers.map((element, i) => (
@@ -134,7 +134,7 @@ function MobileHero() {
           top: 0,
           left: 0,
           width: "100%",
-          height: "100vh",
+          height: "100dvh",
           opacity: show === 1 ? 1 : 0,
           transition: "opacity 2s ease",
           zIndex: show === 1 ? 3 : 1,
@@ -150,7 +150,7 @@ function MobileHero() {
           dragPan={false}
           style={{
             width: "100%",
-            height: "100vh",
+            height: "100dvh",
           }}
           mapStyle={`https://api.maptiler.com/maps/fc09eb56-b954-4808-8b36-f146ca7c5dfe/style.json?key=${process.env.NEXT_PUBLIC_MAP_API_KEY}`}
         >
@@ -180,7 +180,7 @@ function MobileHero() {
           top: 0,
           left: 0,
           width: "100%",
-          height: "100vh",
+          height: "100dvh",
           opacity: show === 2 ? 1 : 0,
           transition: "opacity 2s ease",
           zIndex: show === 2 ? 3 : 1,
@@ -193,7 +193,7 @@ function MobileHero() {
             longitude: -82.63846347842352,
             zoom: 15,
           }}
-          style={{ width: "100%", height: "100vh" }}
+          style={{ width: "100%", height: "100dvh" }}
           mapStyle={`https://api.maptiler.com/maps/fc09eb56-b954-4808-8b36-f146ca7c5dfe/style.json?key=${process.env.NEXT_PUBLIC_MAP_API_KEY}`}
         >
           {markers.map((element, i) => (
@@ -222,7 +222,7 @@ function MobileHero() {
           top: 0,
           left: 0,
           width: "100%",
-          height: "100vh",
+          height: "100dvh",
           opacity: show === 3 ? 1 : 0,
           transition: "opacity 2s ease",
           zIndex: show === 3 ? 3 : 1,
@@ -235,7 +235,7 @@ function MobileHero() {
             longitude: -82.48739865410533,
             zoom: 10,
           }}
-          style={{ width: "100%", height: "100vh" }}
+          style={{ width: "100%", height: "100dvh" }}
           mapStyle={`https://api.maptiler.com/maps/fc09eb56-b954-4808-8b36-f146ca7c5dfe/style.json?key=${process.env.NEXT_PUBLIC_MAP_API_KEY}`}
         >
           {markers.map((element, i) => (
@@ -261,7 +261,7 @@ function MobileHero() {
       <Box
         className="tabs-mobile"
         sx={{
-          height: expand ? "85vh" : "50px",
+          height: expand ? "85dvh" : "50px",
           marginTop: "auto",
           width: "100%",
           borderRadius: "40px 40px 0px 0px",

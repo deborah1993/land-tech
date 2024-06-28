@@ -190,7 +190,7 @@ function TabsMobile({ show, handleChange, setWidget, setExpand }) {
   return (
     <Box
       sx={{
-        height: "100vh",
+        height: "100dvh",
         display: "flex",
         alignItems: "center",
         flexDirection: "column",
