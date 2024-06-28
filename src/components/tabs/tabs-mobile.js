@@ -206,7 +206,7 @@ function TabsMobile({ show, handleChange, setWidget, setExpand }) {
         backdropFilter: "blur(calc(24px / 2))",
       }}
     >
-      <Box sx={{ width: "95%" }}>
+      <Box sx={{ width: "100%" }}>
         <Tabs
           value={show}
           onChange={handleChange}
