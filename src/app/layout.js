@@ -1,7 +1,7 @@
 // RootLayout.js
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { createTheme, ThemeProvider } from "@mui/material/styles"; // Asegúrate de importar desde @mui/material/styles
+import { ThemeProvider } from "@mui/material/styles"; // Asegúrate de importar desde @mui/material/styles
 import theme from "../styles/theme/foundations/breakpoints"; // Asegúrate de que la ruta es correcta
 
 const inter = Inter({ subsets: ["latin"] });

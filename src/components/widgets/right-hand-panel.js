@@ -148,7 +148,7 @@ function RightHandPanel({ widget }) {
                     lineHeight: "20px",
                   }}
                 >
-                  {widget.state ?? "In use"}
+                  {widget.state}
                 </Typography>
               </Box>
             </Box>

@@ -11,41 +11,16 @@ import {
   Button,
   FormGroup,
   Checkbox,
-  FormControl,
-  MenuItem,
-  ListItemText,
-  Select,
-  Chip,
 } from "@mui/material";
 import React, { useState } from "react";
 
+const HUBSPOT_API_URL = `https://api.hsforms.com/submissions/v3/integration/submit/${process.env.NEXT_PUBLIC_PORTAL_ID}/${process.env.NEXT_PUBLIC_FORM_ID}`;
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
     "aria-controls": `simple-tabpanel-${index}`,
   };
 }
-
-const defaultOptions = [
-  {
-    name: "The Dali Museum",
-    address: "4055 Tyrone Blvd N, St. Petersburg, FL 33709",
-  },
-  {
-    name: "Fort De Soto Park",
-    address: "153 2nd Ave N, St. Petersburg, FL 33701",
-  },
-  {
-    name: "Sunken Gardens",
-    address: "4200 54th Ave S, St. Petersburg, FL 33711",
-  },
-  {
-    name: "St. Pete Beach",
-    address: "13625 Icot Blvd, Clearwater, FL 33760",
-  },
-];
-
-const defaultZipCodes = ["32034", "33418", "34690", "3084"];
 
 const filterTrueValuesToString = (obj) => {
   // Filtra las propiedades cuyo valor sea true
@@ -57,22 +32,90 @@ const filterTrueValuesToString = (obj) => {
   return result;
 };
 
-function HeroTabs({ show, handleChange, setWidget }) {
+function TabsMobile({ show, handleChange, setWidget, setExpand }) {
   const [zipCode, setZipCode] = React.useState("");
   const [location, setLocation] = React.useState({ name: "", address: "" });
   const [acresFrom, setAcresFrom] = React.useState(10);
   const [acresTo, setAcresTo] = React.useState(100);
-  const [vacantLand, setVacantLand] = React.useState("vacant");
-  const [landType, setLandType] = useState(["Vacant"]);
-  const [zoning, setZoning] = useState([
-    "General (Commercial)",
-    "Multi Family (Residential)",
-  ]);
-  const [flu, setFlu] = useState(["General (Commercial)", "Multi Family"]);
+  const [vacantLand, setVacantLand] = React.useState({
+    vacant: true,
+    nonVacant: false,
+  });
+  const [zoning, setZoning] = useState({
+    agriculture: false,
+    core: false,
+    general: true,
+    mixedUse: false,
+    lightIndustrial: false,
+    multiFamily: true,
+  });
+  // const [flu, setFlu] = useState({
+  //   singleFamily: false,
+  //   multiFamily: true,
+  //   general: true,
+  //   mixedUse: false,
+  // });
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const xhr = new XMLHttpRequest();
+    const url = HUBSPOT_API_URL;
+
+    // Define los datos que deseas enviar
+    const data = {
+      fields: [
+        { name: "lotAreaFrom", value: acresFrom },
+        { name: "lotAreaTo", value: acresTo },
+        { name: "propertyType", value: filterTrueValuesToString(vacantLand) },
+        { name: "specificPlace", value: location.name },
+        { name: "zoningSelected", value: filterTrueValuesToString(zoning) },
+        { name: "flu", value: "" },
+      ],
+      context: {
+        pageUri: "https://land-tech.vercel.app/",
+        pageName: "Land Tech Hero",
+      },
+    };
+
+    // Convierte los datos a JSON
+    const finalData = JSON.stringify(data);
+
+    // Abre la solicitud POST
+    xhr.open("POST", url, true);
+
+    // Configura el encabezado para indicar que se envía JSON
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    // Define qué hacer cuando se complete la solicitud
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          console.log("success");
+        } else {
+          console.log("error");
+        }
+      }
+    };
+
+    // Envía los datos
+    xhr.send(finalData);
+    setExpand(false);
+    // Abre una nueva ventana después de enviar la solicitud
+    window.open(
+      "https://app.land.tech/signup/?territory=us&plan=unlimited&recurrence=month"
+    );
+  };
 
   const handleZoningChange = (event) => {
     setZoning({
       ...zoning,
+      [event.target.name]: event.target.checked,
+    });
+  };
+
+  const handleVacantChange = (event) => {
+    setVacantLand({
+      ...vacantLand,
       [event.target.name]: event.target.checked,
     });
   };
@@ -136,58 +179,6 @@ function HeroTabs({ show, handleChange, setWidget }) {
     setVacantLand(e.target.value);
   };
 
-  const HUBSPOT_API_URL = `https://api.hsforms.com/submissions/v3/integration/submit/${process.env.NEXT_PUBLIC_PORTAL_ID}/${process.env.NEXT_PUBLIC_FORM_ID}`;
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const xhr = new XMLHttpRequest();
-    const url = HUBSPOT_API_URL;
-
-    // Define los datos que deseas enviar
-    const data = {
-      fields: [
-        { name: "lotAreaFrom", value: acresFrom },
-        { name: "lotAreaTo", value: acresTo },
-        { name: "propertyType", value: landType.join(",") },
-        { name: "specificPlace", value: location.name },
-        { name: "zoningSelected", value: zoning.join(",") },
-        { name: "flu", value: flu.join(",") },
-      ],
-      context: {
-        pageUri: "https://land-tech.vercel.app/",
-        pageName: "Land Tech Hero",
-      },
-    };
-
-    // Convierte los datos a JSON
-    const finalData = JSON.stringify(data);
-
-    // Abre la solicitud POST
-    xhr.open("POST", url, true);
-
-    // Configura el encabezado para indicar que se envía JSON
-    xhr.setRequestHeader("Content-Type", "application/json");
-
-    // Define qué hacer cuando se complete la solicitud
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === XMLHttpRequest.DONE) {
-        if (xhr.status === 200) {
-          console.log("success");
-        } else {
-          console.log("error");
-        }
-      }
-    };
-
-    // Envía los datos
-    xhr.send(finalData);
-
-    // Abre una nueva ventana después de enviar la solicitud
-    window.open(
-      "https://app.land.tech/signup/?territory=us&plan=unlimited&recurrence=month"
-    );
-  };
-
   const handleOpen = (event) => {
     event.preventDefault();
     // Abre una nueva ventana después de enviar la solicitud
@@ -199,7 +190,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
   return (
     <Box
       sx={{
-        height: "100%",
+        height: "100vh",
         display: "flex",
         alignItems: "center",
         flexDirection: "column",
@@ -207,16 +198,15 @@ function HeroTabs({ show, handleChange, setWidget }) {
         justifyContent: "flex-start",
         position: "relative",
         zIndex: 4,
-        width: { lg: "30vw", xs: "100%" },
+        width: "100vw",
         backgroundColor: "white",
         boxShadow: "0px 0px 8px 0px rgba(0, 0, 0, 0.25)",
-        maxWidth: "550px",
+        maxWidth: "100%",
         background: "rgba(1, 37, 82, 0.75)",
         backdropFilter: "blur(calc(24px / 2))",
-        overflow: "hidden",
       }}
     >
-      <Box sx={{ width: "95%", height: "78vh" }}>
+      <Box sx={{ width: "95%" }}>
         <Tabs
           value={show}
           onChange={handleChange}
@@ -258,7 +248,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
             value={1}
             {...a11yProps(1)}
             sx={{
-              width: "50%",
+              width: "100%",
               textTransform: "none",
               fontSize: "16px",
               fontWeight: 500,
@@ -278,7 +268,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
               color: show === 2 ? "#02ebc7 !important" : "#FFF",
             }}
           /> */}
-          <Tab
+          {/* <Tab
             label="Track deals"
             value={3}
             {...a11yProps(3)}
@@ -290,9 +280,9 @@ function HeroTabs({ show, handleChange, setWidget }) {
               lineHeight: "20px",
               color: show === 3 ? "#02ebc7 !important" : "#FFF",
             }}
-          />
+          /> */}
         </Tabs>
-        <Box display="flex" width="100%" justifyContent="start" height="100%">
+        <Box display="flex" width="100%" justifyContent="start">
           {show === 0 ? (
             <Box>
               <Box sx={{ padding: "0px 16px 16px 16px" }}>
@@ -407,15 +397,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
               </Button>
             </Box>
           ) : show === 1 ? (
-            <Box
-              sx={{
-                width: "100%",
-                height: "100%",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-around",
-              }}
-            >
+            <Box>
               <Box sx={{ padding: "0px 16px 16px 16px" }}>
                 <Typography
                   mb="0.5vw"
@@ -440,7 +422,6 @@ function HeroTabs({ show, handleChange, setWidget }) {
 
               <Box
                 sx={{
-                  width: "100%",
                   padding: "0px 16px 16px 16px",
                   display: "flex",
                   flexDirection: "column",
@@ -461,7 +442,6 @@ function HeroTabs({ show, handleChange, setWidget }) {
                 </Typography>
                 <Box
                   sx={{
-                    width: "100%",
                     display: "flex",
                     flexDirection: "row",
                     alignItems: "center",
@@ -469,7 +449,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                     position: "relative",
                   }}
                 >
-                  <Box sx={{ position: "relative", width: "100%" }}>
+                  <Box sx={{ position: "relative" }}>
                     <TextField
                       fullWidth
                       value={acresFrom}
@@ -503,7 +483,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                     </Box>
                   </Box>
                   <Typography>-</Typography>
-                  <Box sx={{ position: "relative", width: "100%" }}>
+                  <Box sx={{ position: "relative" }}>
                     <TextField
                       fullWidth
                       value={acresTo}
@@ -553,70 +533,57 @@ function HeroTabs({ show, handleChange, setWidget }) {
                 <Box
                   sx={{
                     display: "flex",
-                    spacingX: 2,
                     flexDirection: "row",
                     alignItems: "center",
-                    gap: 2,
-                    width: "100%",
                   }}
                 >
-                  <FormControl sx={{ width: "100%" }}>
-                    <Select
-                      sx={{
-                        backgroundColor: "#FFF",
-                        borderRadius: "8px",
-                      }}
-                      fullWidth
-                      labelId="landType"
-                      variant="outlined"
-                      size="small"
-                      multiple
-                      value={landType}
-                      onChange={(e) => {
-                        setLandType(e.target.value);
-                      }}
-                      renderValue={(selected) => (
-                        <Box
-                          sx={{
-                            display: "flex",
-                            flexWrap: "nowrap",
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
-                            whiteSpace: "nowrap",
-                            width: "20vw",
-                            maxWidth: "500px",
-                            overflow: "hidden",
-                          }}
-                        >
-                          {selected.map((current) => (
-                            <Chip
-                              // color="#02EBC7"
-                              // sx={{
-                              //   "& .MuiChip-label": {
-                              //     color: "black",
-                              //   },
-                              // }}
-                              key={current}
-                              label={current}
-                              style={{ margin: 2 }}
-                            />
-                          ))}
-                        </Box>
-                      )}
-                    >
-                      <MenuItem value={"Vacant"}>
-                        <Checkbox checked={landType.indexOf("Vacant") > -1} />
-                        <ListItemText>{"Vacant"}</ListItemText>
-                      </MenuItem>
-
-                      <MenuItem value={"Non-vacant"}>
-                        <Checkbox
-                          checked={landType.indexOf("Non-vacant") > -1}
-                        />
-                        <ListItemText>{"Non-vacant"}</ListItemText>
-                      </MenuItem>
-                    </Select>
-                  </FormControl>
+                  <FormGroup column sx={{ width: "100%" }}>
+                    <Box sx={{ display: "flex", width: "100%" }}>
+                      <FormControlLabel
+                        sx={{
+                          width: "50%",
+                          "& .MuiFormControlLabel-label": {
+                            color: "white",
+                            fontSize: "small",
+                          },
+                        }}
+                        control={
+                          <Checkbox
+                            checked={vacantLand.vacant}
+                            onChange={handleVacantChange}
+                            name="vacant"
+                            value="Vacant"
+                            style={{
+                              color: vacantLand.vacant ? "#02EBC7" : "#FFF",
+                              fill: vacantLand.nonVacant ? "#02EBC7" : "#FFF",
+                            }}
+                          />
+                        }
+                        label="Vacant"
+                      />
+                      <FormControlLabel
+                        sx={{
+                          "& .MuiFormControlLabel-label": {
+                            color: "white",
+                            fontSize: "small",
+                          },
+                        }}
+                        control={
+                          <Checkbox
+                            checked={vacantLand.nonVacant}
+                            onChange={handleVacantChange}
+                            name="nonVacant"
+                            value="Non Vacant"
+                            style={{
+                              color: vacantLand.nonVacant ? "#02EBC7" : "#FFF",
+                              fill: vacantLand.nonVacant ? "#02EBC7" : "#FFF",
+                            }}
+                          />
+                        }
+                        label="Non Vacant"
+                      />
+                    </Box>
+                  </FormGroup>
                 </Box>
 
                 <Typography
@@ -639,8 +606,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                     alignItems: "center",
                   }}
                 >
-                  {/* CHECK BOXES */}
-                  {/* <FormGroup column sx={{ width: "100%" }}>
+                  <FormGroup column sx={{ width: "100%" }}>
                     <Box sx={{ display: "flex", width: "100%" }}>
                       <FormControlLabel
                         sx={{
@@ -780,113 +746,10 @@ function HeroTabs({ show, handleChange, setWidget }) {
                         label="Mixed Use"
                       />
                     </Box>
-                  </FormGroup> */}
-                  <FormControl sx={{ width: "100%" }}>
-                    <Select
-                      MenuProps={{
-                        style: {
-                          maxHeight: 300,
-                          "& .MuiPaper-root": {
-                            "&::-webkit-scrollbar": {
-                              display: "none !important",
-                            },
-                            msOverflowStyle: "none !important", // IE and Edge
-                            scrollbarWidth: "none !important", // Firefox
-                          },
-                        },
-                      }}
-                      sx={{
-                        backgroundColor: "#FFF",
-                        borderRadius: "8px",
-                        textOverflow: "ellipsis",
-                        whiteSpace: "nowrap",
-                      }}
-                      fullWidth
-                      labelId="zoning"
-                      variant="outlined"
-                      size="small"
-                      multiple
-                      value={zoning}
-                      onChange={(e) => {
-                        setZoning(e.target.value);
-                      }}
-                      renderValue={(selected) => (
-                        <Box
-                          sx={{
-                            display: "flex",
-                            flexWrap: "nowrap",
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
-                            whiteSpace: "nowrap",
-                            width: "24vw",
-                            maxWidth: "540px",
-                            overflow: "hidden",
-                          }}
-                        >
-                          {selected.map((current) => (
-                            <Chip
-                              // color="#02EBC7"
-                              // sx={{
-                              //   "& .MuiChip-label": {
-                              //     color: "black",
-                              //   },
-                              // }}
-                              key={current}
-                              label={current}
-                              style={{ margin: 2 }}
-                            />
-                          ))}
-                        </Box>
-                      )}
-                    >
-                      <MenuItem value={"Core (Commercial)"}>
-                        <Checkbox
-                          checked={zoning.indexOf("Core (Commercial)") > -1}
-                        />
-                        <ListItemText>{"Core (Commercial)"}</ListItemText>
-                      </MenuItem>
-
-                      <MenuItem value={"Agriculture"}>
-                        <Checkbox
-                          checked={zoning.indexOf("Agriculture") > -1}
-                        />
-                        <ListItemText>{"Agriculture"}</ListItemText>
-                      </MenuItem>
-
-                      <MenuItem value={"General (Commercial)"}>
-                        <Checkbox
-                          checked={zoning.indexOf("General (Commercial)") > -1}
-                        />
-                        <ListItemText>{"General (Commercial)"}</ListItemText>
-                      </MenuItem>
-
-                      <MenuItem value={"Light Industrial"}>
-                        <Checkbox
-                          checked={zoning.indexOf("Light Industrial") > -1}
-                        />
-                        <ListItemText>{"Light Industrial"}</ListItemText>
-                      </MenuItem>
-
-                      <MenuItem value={"Multi Family (Residential)"}>
-                        <Checkbox
-                          checked={
-                            zoning.indexOf("Multi Family (Residential)") > -1
-                          }
-                        />
-                        <ListItemText>
-                          {"Multi Family (Residential)"}
-                        </ListItemText>
-                      </MenuItem>
-
-                      <MenuItem value={"Mixed Use"}>
-                        <Checkbox checked={zoning.indexOf("Mixed Use") > -1} />
-                        <ListItemText>{"Mixed Use"}</ListItemText>
-                      </MenuItem>
-                    </Select>
-                  </FormControl>
+                  </FormGroup>
                 </Box>
 
-                <Typography
+                {/* <Typography
                   sx={{
                     color: "#FFF",
                     fontSize: "14px",
@@ -906,8 +769,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                     alignItems: "center",
                   }}
                 >
-                  {/* CHHECK BOXES */}
-                  {/* <FormGroup column sx={{ width: "100%" }}>
+                  <FormGroup column sx={{ width: "100%" }}>
                     <Box sx={{ display: "flex" }}>
                       <FormControlLabel
                         sx={{
@@ -999,82 +861,8 @@ function HeroTabs({ show, handleChange, setWidget }) {
                         label="Mixed Use"
                       />
                     </Box>
-                  </FormGroup> */}
-
-                  <FormControl sx={{ width: "100%" }}>
-                    <Select
-                      MenuProps={{
-                        style: {
-                          maxHeight: 250,
-                          "& .MuiPaper-root": {
-                            "&::-webkit-scrollbar": {
-                              display: "none !important",
-                            },
-                            msOverflowStyle: "none !important", // IE and Edge
-                            scrollbarWidth: "none !important", // Firefox
-                          },
-                        },
-                      }}
-                      sx={{
-                        backgroundColor: "#FFF",
-                        borderRadius: "8px",
-                      }}
-                      fullWidth
-                      labelId="flu"
-                      variant="outlined"
-                      size="small"
-                      multiple
-                      value={flu}
-                      onChange={(e) => {
-                        setFlu(e.target.value);
-                      }}
-                      renderValue={(selected) => (
-                        <Box
-                          sx={{
-                            display: "flex",
-                            flexWrap: "nowrap",
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
-                            whiteSpace: "nowrap",
-                            width: "24vw",
-                            maxWidth: "540px",
-                            overflow: "hidden",
-                          }}
-                        >
-                          {selected.map((current) => (
-                            <Chip
-                              key={current}
-                              label={current}
-                              style={{ margin: 2 }}
-                            />
-                          ))}
-                        </Box>
-                      )}
-                    >
-                      <MenuItem value={"Single Family"}>
-                        <Checkbox checked={flu.indexOf("Single Family") > -1} />
-                        <ListItemText>{"Single Family"}</ListItemText>
-                      </MenuItem>
-
-                      <MenuItem value={"Multi Family"}>
-                        <Checkbox checked={flu.indexOf("Multi Family") > -1} />
-                        <ListItemText>{"Multi Family"}</ListItemText>
-                      </MenuItem>
-
-                      <MenuItem value={"General (Commercial)"}>
-                        <Checkbox
-                          checked={flu.indexOf("General (Commercial)") > -1}
-                        />
-                        <ListItemText>{"General (Commercial)"}</ListItemText>
-                      </MenuItem>
-
-                      <MenuItem value={"Mixed Use"}>
-                        <Checkbox checked={flu.indexOf("Mixed Use") > -1} />
-                        <ListItemText>{"Mixed Use"}</ListItemText>
-                      </MenuItem>
-                    </Select>
-                  </FormControl>
-                </Box>
+                  </FormGroup>
+                </Box> */}
               </Box>
 
               <Button
@@ -1084,7 +872,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                   paddingY: "6px",
                   bgcolor: "#02EBC7",
                   color: "#001A41",
-                  fontSize: "18px",
+                  fontSize: "14px",
                   fontWeight: 700,
                   width: "calc(100% - 32px)",
                   borderRadius: "9999px",
@@ -1264,4 +1052,4 @@ function HeroTabs({ show, handleChange, setWidget }) {
   );
 }
 
-export default HeroTabs;
+export default TabsMobile;

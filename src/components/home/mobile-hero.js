@@ -1,21 +1,24 @@
 "use client";
 
 import * as React from "react";
-import { Box, Button, Collapse } from "@mui/material";
+import { Box, Button, Collapse, Typography } from "@mui/material";
 import Map, { Layer, Marker, Source } from "react-map-gl";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import HeroTabs from "@/components/tabs/index.js";
 import axios from "axios";
 import { markers } from "@/lib/hard-code-data";
 import { FiChevronUp, FiChevronDown } from "react-icons/fi";
+import CollapsibleMobile from "../widgets/collapsible-mobile";
+import TabsMobile from "../tabs/tabs-mobile";
+import { CustomMarkerIcon } from "@/lib/utils/marker";
 
 function MobileHero() {
   const [widget, setWidget] = React.useState(markers[0]);
   const [data, setData] = React.useState();
   const [show, setShow] = React.useState(1);
   const [card, setCard] = React.useState(markers[0]);
-  const [expand, setExpand] = React.useState(true);
+  const [expand, setExpand] = React.useState(false);
+  const [formData, setFormData] = React.useState({});
 
   const handleChange = (event, newValue) => {
     setShow(newValue);
@@ -37,7 +40,7 @@ function MobileHero() {
   }, []);
 
   return (
-    <div
+    <Box
       className="App"
       style={{
         position: "relative",
@@ -47,6 +50,20 @@ function MobileHero() {
         flexDirection: "column",
       }}
     >
+      <div
+        style={{
+          margin: "auto",
+          width: "90vw",
+          position: "absolute",
+          top: "25vh",
+          left: "50%",
+          transform: "translateX(-50%)",
+          zIndex: 4,
+        }}
+      >
+        {!expand && <CollapsibleMobile widget={widget} data={formData} />}
+      </div>
+
       <div
         style={{
           position: "fixed",
@@ -71,12 +88,20 @@ function MobileHero() {
         >
           {markers.map((element, i) => (
             <Marker
-              style={{ cursor: "pointer" }}
               latitude={element.lat}
               longitude={element.lng}
+              style={{
+                cursor: "pointer",
+              }}
               color="tomato"
               onClick={() => setWidget(element)}
-            />
+            >
+              <div className="bounce-container">
+                <div className="bounce2">
+                  <CustomMarkerIcon />
+                </div>
+              </div>
+            </Marker>
           ))}
           {data && (
             <Source id="my-data" type="geojson" data={data}>
@@ -119,8 +144,8 @@ function MobileHero() {
           mapLib={maplibregl}
           initialViewState={{
             latitude: 28.040907605152702,
-            longitude: -82.65123628988616,
-            zoom: 9.7,
+            longitude: -82.55123628988616,
+            zoom: 9.5,
           }}
           style={{
             width: "100%",
@@ -130,12 +155,20 @@ function MobileHero() {
         >
           {markers.map((element, i) => (
             <Marker
-              style={{ cursor: "pointer" }}
               latitude={element.lat}
               longitude={element.lng}
+              style={{
+                cursor: "pointer",
+              }}
               color="tomato"
               onClick={() => setWidget(element)}
-            />
+            >
+              <div className="bounce-container">
+                <div className="bounce2">
+                  <CustomMarkerIcon />
+                </div>
+              </div>
+            </Marker>
           ))}
         </Map>
       </div>
@@ -164,12 +197,20 @@ function MobileHero() {
         >
           {markers.map((element, i) => (
             <Marker
-              style={{ cursor: "pointer" }}
               latitude={element.lat}
               longitude={element.lng}
+              style={{
+                cursor: "pointer",
+              }}
               color="tomato"
               onClick={() => setWidget(element)}
-            />
+            >
+              <div className="bounce-container">
+                <div className="bounce2">
+                  <CustomMarkerIcon />
+                </div>
+              </div>
+            </Marker>
           ))}
         </Map>
       </div>
@@ -198,12 +239,20 @@ function MobileHero() {
         >
           {markers.map((element, i) => (
             <Marker
-              style={{ cursor: "pointer" }}
               latitude={element.lat}
               longitude={element.lng}
+              style={{
+                cursor: "pointer",
+              }}
               color="tomato"
               onClick={() => setWidget(element)}
-            />
+            >
+              <div className="bounce-container">
+                <div className="bounce2">
+                  <CustomMarkerIcon />
+                </div>
+              </div>
+            </Marker>
           ))}
         </Map>
       </div>
@@ -234,39 +283,86 @@ function MobileHero() {
                 borderRadius: "40px 40px 0px 0px",
               }}
             >
-              <Collapse orientation="vertical" in={expand} collapsedSize={50}>
-                <Button
+              <Collapse
+                orientation="vertical"
+                in={expand}
+                collapsedSize={50}
+                sx={{ width: "100%" }}
+              >
+                <Box
                   sx={{
-                    color: "white",
-                    fontSize: "30px",
+                    width: "90%",
                     position: "absolute",
-                    top: 5,
+                    top: 10,
                     left: "50%",
                     transform: "translateX(-50%)",
                     zIndex: 1000,
                     backgroundColor: "rgba(0, 0, 0, 0)",
                   }}
-                  onClick={() => setExpand(!expand)}
                 >
-                  {expand ? (
-                    <FiChevronDown
+                  <Button
+                    sx={{
+                      width: "100%",
+                      color: "white",
+                      fontSize: "30px",
+                      position: "retlative",
+                      zIndex: 1000,
+                      backgroundColor: "rgba(0, 0, 0, 0)",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                    onClick={() => setExpand(!expand)}
+                  >
+                    <Typography
                       sx={{
-                        color: "#FFF",
-                        stroke: "#FFF",
-                        fill: "#FFF",
+                        fontSize: "14px",
+                        textTransform: "none",
+                        fontWeight: 600,
+                        letterSpacing: "1px",
                       }}
-                    />
-                  ) : (
-                    <FiChevronUp
-                      sx={{
-                        color: "#FFF",
-                        stroke: "#FFF",
-                        fill: "#FFF",
-                      }}
-                    />
-                  )}
-                </Button>
-                <HeroTabs
+                    >
+                      Find you own sights
+                    </Typography>
+                    {expand ? (
+                      <Box
+                        sx={{
+                          position: "absolute",
+                          right: 0,
+                          top: -3,
+                        }}
+                      >
+                        <FiChevronDown
+                          sx={{
+                            color: "#FFF",
+                            stroke: "#FFF",
+                            fill: "#FFF",
+                          }}
+                        />
+                      </Box>
+                    ) : (
+                      <Box
+                        sx={{
+                          position: "absolute",
+                          right: 0,
+                          top: -3,
+                        }}
+                      >
+                        <FiChevronUp
+                          sx={{
+                            color: "#FFF",
+                            stroke: "#FFF",
+                            fill: "#FFF",
+                          }}
+                        />
+                      </Box>
+                    )}
+                  </Button>
+                </Box>
+
+                <TabsMobile
+                  setFormData={setFormData}
+                  setExpand={setExpand}
                   show={show}
                   handleChange={handleChange}
                   setWidget={setWidget}
@@ -276,30 +372,7 @@ function MobileHero() {
           </div>
         </Box>
       </Box>
-      {/* {show !== 3 ? (
-        <RightHandPanel widget={widget} />
-      ) : show === 3 ? (
-        <div
-          style={{
-            position: "fixed",
-            display: "flex",
-            paddingX: "1vw",
-            left: "35vw",
-            bottom: "3vh",
-            height: "85vh",
-            zIndex: 5,
-            width: "65vw",
-            gap: "5vw",
-            alignItems: "flex-start",
-          }}
-        >
-          <BaseBoard setCard={setCard} />
-          <ManagementPanel widget={card} />
-        </div>
-      ) : (
-        <></>
-      )} */}
-    </div>
+    </Box>
   );
 }
 
