@@ -1095,7 +1095,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                 }}
                 onClick={handleSubmit}
               >
-                Download your results
+                See your results
               </Button>
             </Box>
           ) : show === 2 ? (

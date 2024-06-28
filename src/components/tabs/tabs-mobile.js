@@ -883,7 +883,7 @@ function TabsMobile({ show, handleChange, setWidget, setExpand }) {
                 }}
                 onClick={handleSubmit}
               >
-                Download your results
+                See your results
               </Button>
             </Box>
           ) : show === 2 ? (
