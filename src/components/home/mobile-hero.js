@@ -147,6 +147,7 @@ function MobileHero() {
             longitude: -82.55123628988616,
             zoom: 9.5,
           }}
+          dragPan={false}
           style={{
             width: "100%",
             height: "100vh",
