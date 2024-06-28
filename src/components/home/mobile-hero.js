@@ -261,7 +261,7 @@ function MobileHero() {
       <Box
         className="tabs-mobile"
         sx={{
-          height: expand ? "85vh" : "50px",
+          height: expand ? "80vh" : "50px",
           marginTop: "auto",
           width: "100%",
           borderRadius: "40px 40px 0px 0px",
