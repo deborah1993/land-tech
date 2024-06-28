@@ -195,7 +195,7 @@ function TabsMobile({ show, handleChange, setWidget, setExpand }) {
         alignItems: "center",
         flexDirection: "column",
         paddingTop: { lg: "12vh", xs: "5vh" },
-        justifyContent: "flex-start",
+        justifyContent: "center",
         position: "relative",
         zIndex: 4,
         width: "100vw",
@@ -206,7 +206,7 @@ function TabsMobile({ show, handleChange, setWidget, setExpand }) {
         backdropFilter: "blur(calc(24px / 2))",
       }}
     >
-      <Box sx={{ width: "100%" }}>
+      <Box sx={{ width: "95%" }}>
         <Tabs
           value={show}
           onChange={handleChange}
