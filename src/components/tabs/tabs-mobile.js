@@ -194,8 +194,9 @@ function TabsMobile({ show, handleChange, setWidget, setExpand }) {
         display: "flex",
         alignItems: "center",
         flexDirection: "column",
-        paddingTop: { lg: "12vh", xs: "5vh" },
-        justifyContent: "center",
+        paddingTop: { lg: "12vh", xs: "50px" },
+        paddingBottom: "50px",
+        justifyContent: "start",
         position: "relative",
         zIndex: 4,
         width: "100vw",
@@ -212,18 +213,23 @@ function TabsMobile({ show, handleChange, setWidget, setExpand }) {
           onChange={handleChange}
           aria-label="basic tabs example"
           sx={{
+            width: "100%",
             paddingX: "0.9vw",
             "& .MuiTabs-flexContainer": {
-              justifyContent: "space-evenly",
+              justifyContent: "center",
             },
             "& .MuiTabs-flexContainer": {
               flexWrap: "wrap",
+            },
+            "& .MuiButtonBase-root": {
+              maxWidth: "100%",
             },
             marginBottom: "1.3vw",
             borderBottom: "2px solid white",
           }}
           TabIndicatorProps={{
             style: {
+              width: "100%",
               backgroundColor: "#02ebc7",
               height: "4px",
               borderRadius: "9999px 9999px 0px 0px",
@@ -248,7 +254,11 @@ function TabsMobile({ show, handleChange, setWidget, setExpand }) {
             value={1}
             {...a11yProps(1)}
             sx={{
-              width: "100%",
+              width: "100% !important",
+              flex: "1 0 0",
+              textAlign: "center",
+              display: "flex",
+              justifyContent: "center",
               textTransform: "none",
               fontSize: "16px",
               fontWeight: 500,
@@ -282,7 +292,7 @@ function TabsMobile({ show, handleChange, setWidget, setExpand }) {
             }}
           /> */}
         </Tabs>
-        <Box display="flex" width="100%" justifyContent="start">
+        <Box display="flex" width="100%" justifyContent="center">
           {show === 0 ? (
             <Box>
               <Box sx={{ padding: "0px 16px 16px 16px" }}>
@@ -397,7 +407,14 @@ function TabsMobile({ show, handleChange, setWidget, setExpand }) {
               </Button>
             </Box>
           ) : show === 1 ? (
-            <Box>
+            <Box
+              sx={{
+                height: "100%",
+                display: "flex",
+                justifyContent: "space-between",
+                flexDirection: "column",
+              }}
+            >
               <Box sx={{ padding: "0px 16px 16px 16px" }}>
                 <Typography
                   mb="0.5vw"
@@ -408,15 +425,6 @@ function TabsMobile({ show, handleChange, setWidget, setExpand }) {
                   fontWeight={500}
                 >
                   Find the perfect site for your development
-                </Typography>
-                <Typography
-                  color="#FFF"
-                  fontSize="18px"
-                  fontWeight={500}
-                  sx={{ display: { lg: "flex", xs: "none" } }}
-                >
-                  Enter your specific sourcing criteria to get a list of sites
-                  that match your requirements.
                 </Typography>
               </Box>
 
@@ -867,7 +875,7 @@ function TabsMobile({ show, handleChange, setWidget, setExpand }) {
 
               <Button
                 sx={{
-                  margin: { lg: "0px 16px 16px 16px", xs: "16px" },
+                  margin: { lg: "0px 16px 16px 16px", xs: "auto" },
                   textTransform: "none",
                   paddingY: "6px",
                   bgcolor: "#02EBC7",

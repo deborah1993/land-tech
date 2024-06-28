@@ -17,7 +17,7 @@ function MobileHero() {
   const [data, setData] = React.useState();
   const [show, setShow] = React.useState(1);
   const [card, setCard] = React.useState(markers[0]);
-  const [expand, setExpand] = React.useState(false);
+  const [expand, setExpand] = React.useState(true);
   const [formData, setFormData] = React.useState({});
 
   const handleChange = (event, newValue) => {
@@ -261,7 +261,7 @@ function MobileHero() {
       <Box
         className="tabs-mobile"
         sx={{
-          height: expand ? "80vh" : "50px",
+          height: expand ? "85vh" : "50px",
           marginTop: "auto",
           width: "100%",
           borderRadius: "40px 40px 0px 0px",
