@@ -330,7 +330,7 @@ function MobileHero() {
                         sx={{
                           position: "absolute",
                           right: 0,
-                          top: -3,
+                          left: 3,
                         }}
                       >
                         <FiChevronDown
@@ -346,7 +346,7 @@ function MobileHero() {
                         sx={{
                           position: "absolute",
                           right: 0,
-                          top: -3,
+                          left: 3,
                         }}
                       >
                         <FiChevronUp
