@@ -260,7 +260,7 @@ function MobileHero() {
       <Box
         className="tabs-mobile"
         sx={{
-          height: expand ? "85dvh" : "50px",
+          height: expand ? "85dvh" : "55px",
           marginTop: "auto",
           width: "100%",
           borderRadius: "40px 40px 0px 0px",
@@ -286,7 +286,7 @@ function MobileHero() {
               <Collapse
                 orientation="vertical"
                 in={expand}
-                collapsedSize={50}
+                collapsedSize={60}
                 sx={{ width: "100%" }}
               >
                 <Box
@@ -305,33 +305,19 @@ function MobileHero() {
                       width: "100%",
                       color: "white",
                       fontSize: "30px",
-                      position: "retlative",
+                      position: "relative",
+                      top: -20,
                       zIndex: 1000,
                       backgroundColor: "rgba(0, 0, 0, 0)",
                       display: "flex",
+                      flexDirection: "column",
                       justifyContent: "center",
                       alignItems: "center",
                     }}
                     onClick={() => setExpand(!expand)}
                   >
-                    <Typography
-                      sx={{
-                        fontSize: "14px",
-                        textTransform: "none",
-                        fontWeight: 600,
-                        letterSpacing: "1px",
-                      }}
-                    >
-                      Find you own sites
-                    </Typography>
                     {expand ? (
-                      <Box
-                        sx={{
-                          position: "absolute",
-                          right: "5vw",
-                          top: -3,
-                        }}
-                      >
+                      <Box>
                         <FiChevronDown
                           sx={{
                             color: "#FFF",
@@ -341,13 +327,7 @@ function MobileHero() {
                         />
                       </Box>
                     ) : (
-                      <Box
-                        sx={{
-                          position: "absolute",
-                          right: "5vw",
-                          top: -3,
-                        }}
-                      >
+                      <Box>
                         <FiChevronUp
                           sx={{
                             color: "#FFF",
@@ -357,6 +337,18 @@ function MobileHero() {
                         />
                       </Box>
                     )}
+                    <Typography
+                      sx={{
+                        position: "relative",
+                        top: -20,
+                        fontSize: "14px",
+                        textTransform: "none",
+                        fontWeight: 600,
+                        letterSpacing: "1px",
+                      }}
+                    >
+                      Find you own sites
+                    </Typography>
                   </Button>
                 </Box>
 
