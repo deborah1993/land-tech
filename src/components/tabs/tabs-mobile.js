@@ -190,7 +190,7 @@ function TabsMobile({ show, handleChange, setWidget, setExpand }) {
   return (
     <Box
       sx={{
-        height: "100dvh",
+        height: "88dvh",
         display: "flex",
         alignItems: "center",
         flexDirection: "column",
@@ -299,7 +299,7 @@ function TabsMobile({ show, handleChange, setWidget, setExpand }) {
                 <Typography
                   mb="0.5vw"
                   color="#FFF"
-                  fontSize="2.7vw"
+                  fontSize="2.3vw"
                   lineHeight="110%"
                   fontWeight={500}
                 >
