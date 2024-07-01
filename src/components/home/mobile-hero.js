@@ -54,7 +54,7 @@ function MobileHero() {
           margin: "auto",
           width: "90vw",
           position: "absolute",
-          top: "20dvh",
+          top: "25dvh",
           left: "50%",
           transform: "translateX(-50%)",
           zIndex: 4,
@@ -144,7 +144,7 @@ function MobileHero() {
           initialViewState={{
             latitude: 28.040907605152702,
             longitude: -82.55123628988616,
-            zoom: 9.5,
+            zoom: 9,
           }}
           dragPan={false}
           style={{
