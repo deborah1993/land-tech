@@ -430,7 +430,7 @@ function TabsMobile({ show, handleChange, setWidget, setExpand }) {
 
               <Box
                 sx={{
-                  padding: "0px 16px 16px 16px",
+                  padding: "16px 16px 16px 16px",
                   display: "flex",
                   flexDirection: "column",
                   gap: "16px",
