@@ -194,7 +194,7 @@ function TabsMobile({ show, handleChange, setWidget, setExpand }) {
         display: "flex",
         alignItems: "center",
         flexDirection: "column",
-        paddingTop: { lg: "12vh", xs: "50px" },
+        paddingTop: { lg: "12dvh", xs: "50px" },
         paddingBottom: "50px",
         justifyContent: "start",
         position: "relative",

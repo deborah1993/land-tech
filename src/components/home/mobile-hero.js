@@ -16,7 +16,6 @@ function MobileHero() {
   const [widget, setWidget] = React.useState(markers[0]);
   const [data, setData] = React.useState();
   const [show, setShow] = React.useState(1);
-  const [card, setCard] = React.useState(markers[0]);
   const [expand, setExpand] = React.useState(false);
   const [formData, setFormData] = React.useState({});
 
@@ -55,7 +54,7 @@ function MobileHero() {
           margin: "auto",
           width: "90vw",
           position: "absolute",
-          top: "25vh",
+          top: "25dvh",
           left: "50%",
           transform: "translateX(-50%)",
           zIndex: 4,

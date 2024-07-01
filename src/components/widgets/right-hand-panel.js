@@ -9,7 +9,7 @@ function RightHandPanel({ widget }) {
     <div
       style={{
         marginTop: "auto",
-        height: "85vh",
+        height: "85dvh",
         width: "27vw",
         maxWidth: "463px",
         display: "flex",

@@ -47,7 +47,7 @@ function Home() {
         sx={{
           display: { xs: "none", lg: "flex" },
           position: "relative",
-          height: "100vh",
+          height: "100dvh",
         }}
       >
         <HeroTabs
@@ -61,7 +61,7 @@ function Home() {
             top: 0,
             left: 0,
             width: "100%",
-            height: "100%",
+            height: "100dvh",
             opacity: show === 0 ? 1 : 0,
             transition: "opacity 2s ease",
             zIndex: show === 0 ? 3 : 1,
@@ -125,7 +125,7 @@ function Home() {
             top: 0,
             left: 0,
             width: "100%",
-            height: "100vh",
+            height: "100dvh",
             opacity: show === 1 ? 1 : 0,
             transition: "opacity 2s ease",
             zIndex: show === 1 ? 3 : 1,
@@ -140,7 +140,7 @@ function Home() {
             }}
             style={{
               width: "100%",
-              height: "100vh",
+              height: "100%",
             }}
             mapStyle={`https://api.maptiler.com/maps/fc09eb56-b954-4808-8b36-f146ca7c5dfe/style.json?key=${process.env.NEXT_PUBLIC_MAP_API_KEY}`}
           >
@@ -170,7 +170,7 @@ function Home() {
             top: 0,
             left: 0,
             width: "100%",
-            height: "100vh",
+            height: "100dvh",
             opacity: show === 2 ? 1 : 0,
             transition: "opacity 2s ease",
             zIndex: show === 2 ? 3 : 1,
@@ -183,7 +183,7 @@ function Home() {
               longitude: -82.63846347842352,
               zoom: 15,
             }}
-            style={{ width: "100%", height: "100vh" }}
+            style={{ width: "100%", height: "100%" }}
             mapStyle={`https://api.maptiler.com/maps/fc09eb56-b954-4808-8b36-f146ca7c5dfe/style.json?key=${process.env.NEXT_PUBLIC_MAP_API_KEY}`}
           >
             {markers.map((element, i) => (
@@ -212,7 +212,7 @@ function Home() {
             top: 0,
             left: 0,
             width: "100%",
-            height: "100vh",
+            height: "100dvh",
             opacity: show === 3 ? 1 : 0,
             transition: "opacity 2s ease",
             zIndex: show === 3 ? 3 : 1,
@@ -225,7 +225,7 @@ function Home() {
               longitude: -82.48739865410533,
               zoom: 10,
             }}
-            style={{ width: "100%", height: "100vh" }}
+            style={{ width: "100%", height: "100%" }}
             mapStyle={`https://api.maptiler.com/maps/fc09eb56-b954-4808-8b36-f146ca7c5dfe/style.json?key=${process.env.NEXT_PUBLIC_MAP_API_KEY}`}
           >
             {markers.map((element, i) => (
@@ -257,8 +257,8 @@ function Home() {
               display: "flex",
               paddingX: "1vw",
               left: "35vw",
-              bottom: "3vh",
-              height: "85vh",
+              bottom: "3dvh",
+              height: "85dvh",
               zIndex: 5,
               width: "65vw",
               gap: "5vw",
