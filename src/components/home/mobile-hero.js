@@ -82,6 +82,7 @@ function MobileHero() {
             longitude: -82.64043346195938,
             zoom: 13.7,
           }}
+          dragPan={false}
           style={{ width: "100%", height: "100dvh" }}
           mapStyle={`https://api.maptiler.com/maps/fc09eb56-b954-4808-8b36-f146ca7c5dfe/style.json?key=${process.env.NEXT_PUBLIC_MAP_API_KEY}`}
         >
@@ -192,6 +193,7 @@ function MobileHero() {
             longitude: -82.63846347842352,
             zoom: 15,
           }}
+          dragPan={false}
           style={{ width: "100%", height: "100dvh" }}
           mapStyle={`https://api.maptiler.com/maps/fc09eb56-b954-4808-8b36-f146ca7c5dfe/style.json?key=${process.env.NEXT_PUBLIC_MAP_API_KEY}`}
         >
@@ -234,6 +236,7 @@ function MobileHero() {
             longitude: -82.48739865410533,
             zoom: 10,
           }}
+          dragPan={false}
           style={{ width: "100%", height: "100dvh" }}
           mapStyle={`https://api.maptiler.com/maps/fc09eb56-b954-4808-8b36-f146ca7c5dfe/style.json?key=${process.env.NEXT_PUBLIC_MAP_API_KEY}`}
         >
