@@ -144,7 +144,7 @@ function MobileHero() {
           initialViewState={{
             latitude: 28.040907605152702,
             longitude: -82.55123628988616,
-            zoom: 9,
+            zoom: 9.3,
           }}
           dragPan={false}
           style={{
