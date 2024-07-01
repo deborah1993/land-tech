@@ -328,7 +328,7 @@ function MobileHero() {
                       <Box
                         sx={{
                           position: "absolute",
-                          right: 0,
+                          right: "10%",
                           top: -3,
                         }}
                       >
@@ -344,7 +344,7 @@ function MobileHero() {
                       <Box
                         sx={{
                           position: "absolute",
-                          right: 0,
+                          right: "10%",
                           top: -3,
                         }}
                       >
