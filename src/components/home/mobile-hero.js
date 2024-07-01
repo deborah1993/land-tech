@@ -54,7 +54,7 @@ function MobileHero() {
           margin: "auto",
           width: "90vw",
           position: "absolute",
-          top: "25dvh",
+          top: "15dvh",
           left: "50%",
           transform: "translateX(-50%)",
           zIndex: 4,
