@@ -415,7 +415,7 @@ function TabsMobile({ show, handleChange, setWidget, setExpand }) {
                 flexDirection: "column",
               }}
             >
-              <Box sx={{ padding: "0px 16px 16px 16px" }}>
+              {/* <Box sx={{ padding: "0px 16px 16px 16px" }}>
                 <Typography
                   mb="0.5vw"
                   sx={{ mt: { lg: "0px", xs: "16px" } }}
@@ -426,7 +426,7 @@ function TabsMobile({ show, handleChange, setWidget, setExpand }) {
                 >
                   Find the perfect site for your development
                 </Typography>
-              </Box>
+              </Box> */}
 
               <Box
                 sx={{
