@@ -292,7 +292,13 @@ function HeroTabs({ show, handleChange, setWidget }) {
             }}
           />
         </Tabs>
-        <Box display="flex" width="100%" justifyContent="start" height="100%">
+        <Box
+          display="flex"
+          width="100%"
+          justifyContent="start"
+          height="100%"
+          alignItems="start"
+        >
           {show === 0 ? (
             <Box>
               <Box sx={{ padding: "0px 16px 16px 16px" }}>
@@ -413,10 +419,10 @@ function HeroTabs({ show, handleChange, setWidget }) {
                 height: "100%",
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "center",
+                justifyContent: "start",
               }}
             >
-              <Box sx={{ padding: "0px 16px 16px 16px" }}>
+              <Box sx={{ padding: "16px 16px 16px 16px" }}>
                 <Typography
                   mb="0.5vw"
                   sx={{ mt: { lg: "0px", xs: "16px" } }}
