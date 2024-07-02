@@ -427,7 +427,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                 >
                   Find the perfect site for your development
                 </Typography>
-                <Typography
+                {/* <Typography
                   color="#FFF"
                   fontSize="18px"
                   fontWeight={500}
@@ -435,7 +435,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                 >
                   Enter your specific sourcing criteria to get a list of sites
                   that match your requirements.
-                </Typography>
+                </Typography> */}
               </Box>
 
               <Box
