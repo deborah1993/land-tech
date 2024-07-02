@@ -427,15 +427,15 @@ function HeroTabs({ show, handleChange, setWidget }) {
                 >
                   Find the perfect site for your development
                 </Typography>
-                {/* <Typography
+                <Typography
                   color="#FFF"
                   fontSize="18px"
                   fontWeight={500}
-                  sx={{ display: { lg: "flex", xs: "none" } }}
+                  sx={{ display: { xl: "flex", xs: "none" } }}
                 >
                   Enter your specific sourcing criteria to get a list of sites
                   that match your requirements.
-                </Typography> */}
+                </Typography>
               </Box>
 
               <Box
