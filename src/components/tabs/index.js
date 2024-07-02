@@ -203,7 +203,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
         display: "flex",
         alignItems: "center",
         flexDirection: "column",
-        paddingTop: { lg: "12vh", xs: "5vh" },
+        paddingTop: { lg: "calc(80px + 4rem)", xs: "5vh" },
         justifyContent: "flex-start",
         position: "relative",
         zIndex: 4,
