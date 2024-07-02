@@ -9,11 +9,11 @@ function RightHandPanel({ widget }) {
     <div
       style={{
         marginTop: "auto",
-        height: "calc(100dvh - (85px + 4rem))",
+        height: "calc(95dvh - (85px + 4rem))",
         width: "27vw",
         maxWidth: "463px",
         display: "flex",
-        top: "calc(85px + 4rem)",
+        top: "calc(80px + 4rem)",
         right: "1%",
         position: "absolute",
         justifyContent: "start",
