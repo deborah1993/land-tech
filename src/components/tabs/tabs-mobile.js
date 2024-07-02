@@ -415,19 +415,6 @@ function TabsMobile({ show, handleChange, setWidget, setExpand }) {
                 flexDirection: "column",
               }}
             >
-              {/* <Box sx={{ padding: "0px 16px 16px 16px" }}>
-                <Typography
-                  mb="0.5vw"
-                  sx={{ mt: { lg: "0px", xs: "16px" } }}
-                  color="#FFF"
-                  fontSize={{ lg: "2.7vw", xs: "30px" }}
-                  lineHeight="110%"
-                  fontWeight={500}
-                >
-                  Find the perfect site for your development
-                </Typography>
-              </Box> */}
-
               <Box
                 sx={{
                   padding: "16px 16px 16px 16px",

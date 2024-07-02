@@ -413,7 +413,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                 height: "100%",
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "space-around",
+                justifyContent: "center",
               }}
             >
               <Box sx={{ padding: "0px 16px 16px 16px" }}>
@@ -465,6 +465,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                     display: "flex",
                     flexDirection: "row",
                     alignItems: "center",
+                    justifyContent: "center",
                     gap: "8px",
                     position: "relative",
                   }}
@@ -619,28 +620,67 @@ function HeroTabs({ show, handleChange, setWidget }) {
                   </FormControl>
                 </Box>
 
-                <Typography
-                  sx={{
-                    color: "#FFF",
-                    fontSize: "14px",
-                    fontWeight: 600,
-                    lineHeight: "20px",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 1,
-                  }}
-                >
-                  Zoning
-                </Typography>
                 <Box
                   sx={{
+                    width: "100%",
                     display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
+                    flexDirection: "column",
+                    gap: "16px",
+                    position: "relative",
                   }}
                 >
-                  {/* CHECK BOXES */}
-                  {/* <FormGroup column sx={{ width: "100%" }}>
+                  <Box
+                    sx={{
+                      width: "100%",
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <Typography
+                      sx={{
+                        color: "#FFF",
+                        fontSize: "14px",
+                        fontWeight: 600,
+                        lineHeight: "20px",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 1,
+                      }}
+                    >
+                      Zoning
+                    </Typography>
+
+                    <Typography
+                      sx={{
+                        width: "48%",
+                        color: "#FFF",
+                        fontSize: "14px",
+                        fontWeight: 600,
+                        lineHeight: "20px",
+                        display: { lg: "flex", xs: "none" },
+                        alignItems: "center",
+                        gap: 1,
+                      }}
+                    >
+                      Future Land Use
+                    </Typography>
+                  </Box>
+
+                  <Box
+                    sx={{
+                      width: "100%",
+                      display: "flex",
+                      flexDirection: "row",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: "8px",
+                      position: "relative",
+                    }}
+                  >
+                    <Box sx={{ position: "relative", width: "47%" }}>
+                      {/* CHECK BOXES */}
+                      {/* <FormGroup column sx={{ width: "100%" }}>
                     <Box sx={{ display: "flex", width: "100%" }}>
                       <FormControlLabel
                         sx={{
@@ -781,133 +821,119 @@ function HeroTabs({ show, handleChange, setWidget }) {
                       />
                     </Box>
                   </FormGroup> */}
-                  <FormControl sx={{ width: "100%" }}>
-                    <Select
-                      MenuProps={{
-                        style: {
-                          maxHeight: 300,
-                          "& .MuiPaper-root": {
-                            "&::-webkit-scrollbar": {
-                              display: "none !important",
+                      <FormControl sx={{ width: "100%" }}>
+                        <Select
+                          MenuProps={{
+                            style: {
+                              maxHeight: 300,
+                              "& .MuiPaper-root": {
+                                "&::-webkit-scrollbar": {
+                                  display: "none !important",
+                                },
+                                msOverflowStyle: "none !important", // IE and Edge
+                                scrollbarWidth: "none !important", // Firefox
+                              },
                             },
-                            msOverflowStyle: "none !important", // IE and Edge
-                            scrollbarWidth: "none !important", // Firefox
-                          },
-                        },
-                      }}
-                      sx={{
-                        backgroundColor: "#FFF",
-                        borderRadius: "8px",
-                        textOverflow: "ellipsis",
-                        whiteSpace: "nowrap",
-                      }}
-                      fullWidth
-                      labelId="zoning"
-                      variant="outlined"
-                      size="small"
-                      multiple
-                      value={zoning}
-                      onChange={(e) => {
-                        setZoning(e.target.value);
-                      }}
-                      renderValue={(selected) => (
-                        <Box
+                          }}
                           sx={{
-                            display: "flex",
-                            flexWrap: "nowrap",
-                            overflow: "hidden",
+                            backgroundColor: "#FFF",
+                            borderRadius: "8px",
                             textOverflow: "ellipsis",
                             whiteSpace: "nowrap",
-                            width: "24vw",
-                            maxWidth: "540px",
-                            overflow: "hidden",
                           }}
+                          fullWidth
+                          labelId="zoning"
+                          variant="outlined"
+                          size="small"
+                          multiple
+                          value={zoning}
+                          onChange={(e) => {
+                            setZoning(e.target.value);
+                          }}
+                          renderValue={(selected) => (
+                            <Box
+                              sx={{
+                                display: "flex",
+                                flexWrap: "nowrap",
+                                overflow: "hidden",
+                                textOverflow: "ellipsis",
+                                whiteSpace: "nowrap",
+                                width: "8vw",
+                                maxWidth: "540px",
+                                overflow: "hidden",
+                              }}
+                            >
+                              {selected.map((current) => (
+                                <Chip
+                                  // color="#02EBC7"
+                                  // sx={{
+                                  //   "& .MuiChip-label": {
+                                  //     color: "black",
+                                  //   },
+                                  // }}
+                                  key={current}
+                                  label={current}
+                                  style={{ margin: 2 }}
+                                />
+                              ))}
+                            </Box>
+                          )}
                         >
-                          {selected.map((current) => (
-                            <Chip
-                              // color="#02EBC7"
-                              // sx={{
-                              //   "& .MuiChip-label": {
-                              //     color: "black",
-                              //   },
-                              // }}
-                              key={current}
-                              label={current}
-                              style={{ margin: 2 }}
+                          <MenuItem value={"Core (Commercial)"}>
+                            <Checkbox
+                              checked={zoning.indexOf("Core (Commercial)") > -1}
                             />
-                          ))}
-                        </Box>
-                      )}
-                    >
-                      <MenuItem value={"Core (Commercial)"}>
-                        <Checkbox
-                          checked={zoning.indexOf("Core (Commercial)") > -1}
-                        />
-                        <ListItemText>{"Core (Commercial)"}</ListItemText>
-                      </MenuItem>
+                            <ListItemText>{"Core (Commercial)"}</ListItemText>
+                          </MenuItem>
 
-                      <MenuItem value={"Agriculture"}>
-                        <Checkbox
-                          checked={zoning.indexOf("Agriculture") > -1}
-                        />
-                        <ListItemText>{"Agriculture"}</ListItemText>
-                      </MenuItem>
+                          <MenuItem value={"Agriculture"}>
+                            <Checkbox
+                              checked={zoning.indexOf("Agriculture") > -1}
+                            />
+                            <ListItemText>{"Agriculture"}</ListItemText>
+                          </MenuItem>
 
-                      <MenuItem value={"General (Commercial)"}>
-                        <Checkbox
-                          checked={zoning.indexOf("General (Commercial)") > -1}
-                        />
-                        <ListItemText>{"General (Commercial)"}</ListItemText>
-                      </MenuItem>
+                          <MenuItem value={"General (Commercial)"}>
+                            <Checkbox
+                              checked={
+                                zoning.indexOf("General (Commercial)") > -1
+                              }
+                            />
+                            <ListItemText>
+                              {"General (Commercial)"}
+                            </ListItemText>
+                          </MenuItem>
 
-                      <MenuItem value={"Light Industrial"}>
-                        <Checkbox
-                          checked={zoning.indexOf("Light Industrial") > -1}
-                        />
-                        <ListItemText>{"Light Industrial"}</ListItemText>
-                      </MenuItem>
+                          <MenuItem value={"Light Industrial"}>
+                            <Checkbox
+                              checked={zoning.indexOf("Light Industrial") > -1}
+                            />
+                            <ListItemText>{"Light Industrial"}</ListItemText>
+                          </MenuItem>
 
-                      <MenuItem value={"Multi Family (Residential)"}>
-                        <Checkbox
-                          checked={
-                            zoning.indexOf("Multi Family (Residential)") > -1
-                          }
-                        />
-                        <ListItemText>
-                          {"Multi Family (Residential)"}
-                        </ListItemText>
-                      </MenuItem>
+                          <MenuItem value={"Multi Family (Residential)"}>
+                            <Checkbox
+                              checked={
+                                zoning.indexOf("Multi Family (Residential)") >
+                                -1
+                              }
+                            />
+                            <ListItemText>
+                              {"Multi Family (Residential)"}
+                            </ListItemText>
+                          </MenuItem>
 
-                      <MenuItem value={"Mixed Use"}>
-                        <Checkbox checked={zoning.indexOf("Mixed Use") > -1} />
-                        <ListItemText>{"Mixed Use"}</ListItemText>
-                      </MenuItem>
-                    </Select>
-                  </FormControl>
-                </Box>
-
-                <Typography
-                  sx={{
-                    color: "#FFF",
-                    fontSize: "14px",
-                    fontWeight: 600,
-                    lineHeight: "20px",
-                    display: { lg: "flex", xs: "none" },
-                    alignItems: "center",
-                    gap: 1,
-                  }}
-                >
-                  Future Land Use
-                </Typography>
-                <Box
-                  sx={{
-                    display: { lg: "flex", xs: "none" },
-                    flexDirection: "row",
-                    alignItems: "center",
-                  }}
-                >
-                  {/* CHHECK BOXES */}
-                  {/* <FormGroup column sx={{ width: "100%" }}>
+                          <MenuItem value={"Mixed Use"}>
+                            <Checkbox
+                              checked={zoning.indexOf("Mixed Use") > -1}
+                            />
+                            <ListItemText>{"Mixed Use"}</ListItemText>
+                          </MenuItem>
+                        </Select>
+                      </FormControl>
+                    </Box>
+                    {/* CHHECK BOXES */}
+                    {/* <FormGroup column sx={{ width: "100%" }}>
                     <Box sx={{ display: "flex" }}>
                       <FormControlLabel
                         sx={{
@@ -1000,86 +1026,95 @@ function HeroTabs({ show, handleChange, setWidget }) {
                       />
                     </Box>
                   </FormGroup> */}
-
-                  <FormControl sx={{ width: "100%" }}>
-                    <Select
-                      MenuProps={{
-                        style: {
-                          maxHeight: 250,
-                          "& .MuiPaper-root": {
-                            "&::-webkit-scrollbar": {
-                              display: "none !important",
+                    <Typography>-</Typography>
+                    <Box sx={{ position: "relative", width: "47%" }}>
+                      <FormControl sx={{ width: "100%" }}>
+                        <Select
+                          MenuProps={{
+                            style: {
+                              maxHeight: 250,
+                              "& .MuiPaper-root": {
+                                "&::-webkit-scrollbar": {
+                                  display: "none !important",
+                                },
+                                msOverflowStyle: "none !important", // IE and Edge
+                                scrollbarWidth: "none !important", // Firefox
+                              },
                             },
-                            msOverflowStyle: "none !important", // IE and Edge
-                            scrollbarWidth: "none !important", // Firefox
-                          },
-                        },
-                      }}
-                      sx={{
-                        backgroundColor: "#FFF",
-                        borderRadius: "8px",
-                      }}
-                      fullWidth
-                      labelId="flu"
-                      variant="outlined"
-                      size="small"
-                      multiple
-                      value={flu}
-                      onChange={(e) => {
-                        setFlu(e.target.value);
-                      }}
-                      renderValue={(selected) => (
-                        <Box
-                          sx={{
-                            display: "flex",
-                            flexWrap: "nowrap",
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
-                            whiteSpace: "nowrap",
-                            width: "24vw",
-                            maxWidth: "540px",
-                            overflow: "hidden",
                           }}
+                          sx={{
+                            backgroundColor: "#FFF",
+                            borderRadius: "8px",
+                          }}
+                          fullWidth
+                          labelId="flu"
+                          variant="outlined"
+                          size="small"
+                          multiple
+                          value={flu}
+                          onChange={(e) => {
+                            setFlu(e.target.value);
+                          }}
+                          renderValue={(selected) => (
+                            <Box
+                              sx={{
+                                display: "flex",
+                                flexWrap: "nowrap",
+                                overflow: "hidden",
+                                textOverflow: "ellipsis",
+                                whiteSpace: "nowrap",
+                                width: "8vw",
+                                maxWidth: "540px",
+                                overflow: "hidden",
+                              }}
+                            >
+                              {selected.map((current) => (
+                                <Chip
+                                  key={current}
+                                  label={current}
+                                  style={{ margin: 2 }}
+                                />
+                              ))}
+                            </Box>
+                          )}
                         >
-                          {selected.map((current) => (
-                            <Chip
-                              key={current}
-                              label={current}
-                              style={{ margin: 2 }}
+                          <MenuItem value={"Single Family"}>
+                            <Checkbox
+                              checked={flu.indexOf("Single Family") > -1}
                             />
-                          ))}
-                        </Box>
-                      )}
-                    >
-                      <MenuItem value={"Single Family"}>
-                        <Checkbox checked={flu.indexOf("Single Family") > -1} />
-                        <ListItemText>{"Single Family"}</ListItemText>
-                      </MenuItem>
+                            <ListItemText>{"Single Family"}</ListItemText>
+                          </MenuItem>
 
-                      <MenuItem value={"Multi Family"}>
-                        <Checkbox checked={flu.indexOf("Multi Family") > -1} />
-                        <ListItemText>{"Multi Family"}</ListItemText>
-                      </MenuItem>
+                          <MenuItem value={"Multi Family"}>
+                            <Checkbox
+                              checked={flu.indexOf("Multi Family") > -1}
+                            />
+                            <ListItemText>{"Multi Family"}</ListItemText>
+                          </MenuItem>
 
-                      <MenuItem value={"General (Commercial)"}>
-                        <Checkbox
-                          checked={flu.indexOf("General (Commercial)") > -1}
-                        />
-                        <ListItemText>{"General (Commercial)"}</ListItemText>
-                      </MenuItem>
+                          <MenuItem value={"General (Commercial)"}>
+                            <Checkbox
+                              checked={flu.indexOf("General (Commercial)") > -1}
+                            />
+                            <ListItemText>
+                              {"General (Commercial)"}
+                            </ListItemText>
+                          </MenuItem>
 
-                      <MenuItem value={"Mixed Use"}>
-                        <Checkbox checked={flu.indexOf("Mixed Use") > -1} />
-                        <ListItemText>{"Mixed Use"}</ListItemText>
-                      </MenuItem>
-                    </Select>
-                  </FormControl>
+                          <MenuItem value={"Mixed Use"}>
+                            <Checkbox checked={flu.indexOf("Mixed Use") > -1} />
+                            <ListItemText>{"Mixed Use"}</ListItemText>
+                          </MenuItem>
+                        </Select>
+                      </FormControl>
+                    </Box>
+                  </Box>
                 </Box>
               </Box>
 
               <Button
                 sx={{
-                  margin: { lg: "0px 16px 16px 16px", xs: "16px" },
+                  margin: { lg: "16px 16px 16px 16px", xs: "16px" },
                   textTransform: "none",
                   paddingY: "6px",
                   bgcolor: "#02EBC7",
