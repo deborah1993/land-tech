@@ -431,7 +431,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                   color="#FFF"
                   fontSize="18px"
                   fontWeight={500}
-                  sx={{ display: { xl: "flex", xs: "none" } }}
+                  sx={{ display: { "2xl": "flex", xs: "none" } }}
                 >
                   Enter your specific sourcing criteria to get a list of sites
                   that match your requirements.

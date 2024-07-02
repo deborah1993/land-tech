@@ -10,7 +10,7 @@ const theme = createTheme({
       md: 960, // para pantallas medianas
       lg: 1024, // para pantallas grandes
       xl: 1280, // para pantallas extra grandes
-      //   "2xl": 1440,
+      "2xl": 1440,
       //   "3xl": 1920,
     },
   },
