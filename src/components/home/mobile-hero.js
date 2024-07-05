@@ -352,6 +352,7 @@ function MobileHero() {
                         textTransform: "none",
                         fontWeight: 600,
                         letterSpacing: "1px",
+                        fontFamily: "Soin Sans Neue",
                       }}
                     >
                       Find you own sites

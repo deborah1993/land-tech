@@ -14,6 +14,7 @@ import { markers } from "@/lib/hard-code-data";
 import { Box, Typography } from "@mui/material";
 import { CustomMarkerIcon } from "@/lib/utils/marker";
 import MobileHero from "@/components/home/mobile-hero";
+import HubspotScript from "@/lib/hs-cookie/hubspotScript";
 
 function Home() {
   const [widget, setWidget] = React.useState(markers[0]);
@@ -42,6 +43,7 @@ function Home() {
 
   return (
     <>
+      <HubspotScript />
       <Box
         className="desktop"
         sx={{

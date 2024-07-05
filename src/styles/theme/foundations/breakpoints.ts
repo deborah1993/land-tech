@@ -3,6 +3,9 @@
 import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
+  typography: {
+    fontFamily: `"Noto Sans", sans-serif`,
+  },
   breakpoints: {
     values: {
       xs: 0, // para pantallas pequeñas como móviles
