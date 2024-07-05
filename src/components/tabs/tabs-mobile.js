@@ -59,21 +59,6 @@ function TabsMobile({ show, handleChange, setWidget, setExpand }) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (window && window._hsq) {
-      window._hsq.push([
-        "identify",
-        {
-          email: event.target.email.value, // Ajusta esto según los campos de tu formulario
-        },
-      ]);
-      window._hsq.push([
-        "trackEvent",
-        {
-          id: "FormularioEnviado",
-        },
-      ]);
-    }
-
     const xhr = new XMLHttpRequest();
     const url = HUBSPOT_API_URL;
 
