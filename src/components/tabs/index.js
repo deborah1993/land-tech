@@ -6,10 +6,8 @@ import {
   Tabs,
   Typography,
   TextField,
-  FormControlLabel,
   Autocomplete,
   Button,
-  FormGroup,
   Checkbox,
   FormControl,
   MenuItem,
@@ -140,6 +138,22 @@ function HeroTabs({ show, handleChange, setWidget }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    if (window && window._hsq) {
+      window._hsq.push([
+        "identify",
+        {
+          email: event.target.email.value, // Ajusta esto según los campos de tu formulario
+        },
+      ]);
+      window._hsq.push([
+        "trackEvent",
+        {
+          id: "FormularioEnviado",
+        },
+      ]);
+    }
+
     const xhr = new XMLHttpRequest();
     const url = HUBSPOT_API_URL;
 
@@ -308,6 +322,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                   fontSize="2.7vw"
                   lineHeight="110%"
                   fontWeight={500}
+                  fontFamily={"Soin Sans Neue"}
                 >
                   Find development opportunities in your chosen location
                 </Typography>
@@ -430,6 +445,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                   fontSize={{ lg: "2.7vw", xs: "30px" }}
                   lineHeight="110%"
                   fontWeight={500}
+                  fontFamily={"Soin Sans Neue"}
                 >
                   Find the perfect site for your development
                 </Typography>
@@ -1133,6 +1149,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                     backgroundColor: "rgba(2,235,199,0.8)",
                     color: "#FFF",
                   },
+                  fontFamily: "Soin Sans Neue",
                 }}
                 onClick={handleSubmit}
               >

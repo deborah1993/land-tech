@@ -58,6 +58,22 @@ function TabsMobile({ show, handleChange, setWidget, setExpand }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    if (window && window._hsq) {
+      window._hsq.push([
+        "identify",
+        {
+          email: event.target.email.value, // Ajusta esto según los campos de tu formulario
+        },
+      ]);
+      window._hsq.push([
+        "trackEvent",
+        {
+          id: "FormularioEnviado",
+        },
+      ]);
+    }
+
     const xhr = new XMLHttpRequest();
     const url = HUBSPOT_API_URL;
 
@@ -302,6 +318,7 @@ function TabsMobile({ show, handleChange, setWidget, setExpand }) {
                   fontSize="2.3vw"
                   lineHeight="110%"
                   fontWeight={500}
+                  fontFamily={"Soin Sans Neue"}
                 >
                   Find development opportunities in your chosen location
                 </Typography>
@@ -875,6 +892,7 @@ function TabsMobile({ show, handleChange, setWidget, setExpand }) {
                     backgroundColor: "rgba(2,235,199,0.8)",
                     color: "#FFF",
                   },
+                  fontFamily: "Soin Sans Neue",
                 }}
                 onClick={handleSubmit}
               >
