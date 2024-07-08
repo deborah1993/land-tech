@@ -17,15 +17,16 @@ export const BaseBoard = ({ setCard }) => {
   return (
     <div
       style={{
-        mt: "auto",
-        display: "inline-flex",
-        height: "100%",
-        flexDirection: "row",
         overflow: "hidden",
         alignItems: "flex-start",
         flexShrink: 0,
         borderRadius: "5px",
         gap: "2vw",
+        mt: "auto",
+        height: "calc(95dvh - (85px + 4rem))",
+        display: "flex",
+        top: "calc(80px + 4rem)",
+        position: "absolute",
       }}
     >
       <Column
@@ -154,13 +155,15 @@ const Column = ({ title, headingColor, cards, column, setCards, setCard }) => {
     <div
       style={{
         display: "inline-flex",
-        height: "100vh",
+        height: "100%",
+        overflowY: "hiiden",
         flexDirection: "column",
         alignItems: "flex-start",
         flexShrink: 0,
         borderRadius: "5px",
         width: "15vw",
         maxWidth: "300px",
+        position: "relative",
       }}
     >
       <Box
@@ -169,8 +172,11 @@ const Column = ({ title, headingColor, cards, column, setCards, setCard }) => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          width: "100%",
+          width: "15vw",
+          maxWidth: "300px",
           borderRadius: "5px",
+          position: "fixed",
+          zIndex: 3,
         }}
       >
         <Box
@@ -181,7 +187,7 @@ const Column = ({ title, headingColor, cards, column, setCards, setCard }) => {
             justifyContent: "space-between",
             alignItems: "center",
             alignSelf: "stretch",
-            borderRadius: "5px",
+            borderRadius: "5px 5px 0px 0px",
           }}
         >
           <Box
@@ -257,10 +263,9 @@ const Column = ({ title, headingColor, cards, column, setCards, setCard }) => {
         onDragLeave={handleDragLeave}
         sx={{
           display: "flex",
-          padding: "16px 12px",
+          padding: "54px 12px 12px 12px",
           flexDirection: "column",
           alignItems: "flex-start",
-          gap: "8px",
           flex: "1 0 0",
           height: "100%",
           width: "100%",
@@ -273,16 +278,31 @@ const Column = ({ title, headingColor, cards, column, setCards, setCard }) => {
           backdropFilter: "blur(calc(8px / 2))",
         }}
       >
-        {filteredCards.map((c) => {
-          return (
-            <MyCard
-              key={c.id}
-              card={c}
-              handleDragStart={handleDragStart}
-              setCard={setCard}
-            />
-          );
-        })}
+        <div
+          style={{
+            display: "flex",
+            gap: "8px",
+            width: "100%",
+            flexDirection: "column",
+            overflowY: "scroll",
+            "&::-webkit-scrollbar": {
+              display: "none",
+            },
+            msOverflowStyle: "none", // IE and Edge
+            scrollbarWidth: "none", // Firefox}}
+          }}
+        >
+          {filteredCards.map((c) => {
+            return (
+              <MyCard
+                key={c.id}
+                card={c}
+                handleDragStart={handleDragStart}
+                setCard={setCard}
+              />
+            );
+          })}
+        </div>
         <DropIndicator beforeId={null} column={column} />
       </Box>
     </div>

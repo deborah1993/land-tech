@@ -75,52 +75,53 @@ function HeroTabs({ show, handleChange, setWidget }) {
     });
   };
 
-  const handleFluChange = (event) => {
-    setFlu({
-      ...flu,
-      [event.target.name]: event.target.checked,
-    });
-  };
+  // FOR CHECK BOX!
+  // const handleFluChange = (event) => {
+  //   setFlu({
+  //     ...flu,
+  //     [event.target.name]: event.target.checked,
+  //   });
+  // };
 
-  const handlePlaceChange = (value) => {
-    if (value.name === "Fort De Soto Park") {
-      setWidget({
-        lastSold: "16,500,000.00 ",
-        property: "Fort De Soto Park",
-        address: "4055 Tyrone Blvd N, St. Petersburg, FL 33709, United States",
-        lotArea: "5,287",
-        owner: "Timothy Johnson",
-        externalLink: "https://www.isielitetraining.com/locations/st-pete/",
-      });
-    } else if (value.name === "The Dali Museum") {
-      setWidget({
-        lastSold: "16,500,000.00 ",
-        property: "The Dali Museum",
-        address: "153 2nd Ave N, St. Petersburg, FL 33701, United States",
-        lotArea: "10,253",
-        owner: "Ally Capital Group, LLC, Paradise Ventures, Inc",
-        externalLink: "https://sundialstpete.com/",
-      });
-    } else if (value.name === "Sunken Gardens") {
-      setWidget({
-        lastSold: "16,500,000.00 ",
-        property: "Sunken Gardens",
-        address: "4200 54th Ave S, St. Petersburg, FL 33711, United States",
-        lotArea: "3,971",
-        owner: "Jeff Fernandez",
-        externalLink: "https://www.starbucks.com/",
-      });
-    } else if (value.name === "St. Pete Beach") {
-      setWidget({
-        property: "St. Pete Beach",
-        address: "13625 Icot Blvd, Clearwater, FL 33760, United States",
-        lotArea: "15,338",
-        owner: "Michelle Rud",
-        externalLink: "https://www.ihg.com/holidayinnexpress/",
-        lastSold: "16,500,000.00 ",
-      });
-    }
-  };
+  // const handlePlaceChange = (value) => {
+  //   if (value.name === "Fort De Soto Park") {
+  //     setWidget({
+  //       lastSold: "16,500,000.00 ",
+  //       property: "Fort De Soto Park",
+  //       address: "4055 Tyrone Blvd N, St. Petersburg, FL 33709, United States",
+  //       lotArea: "5,287",
+  //       owner: "Timothy Johnson",
+  //       externalLink: "https://www.isielitetraining.com/locations/st-pete/",
+  //     });
+  //   } else if (value.name === "The Dali Museum") {
+  //     setWidget({
+  //       lastSold: "16,500,000.00 ",
+  //       property: "The Dali Museum",
+  //       address: "153 2nd Ave N, St. Petersburg, FL 33701, United States",
+  //       lotArea: "10,253",
+  //       owner: "Ally Capital Group, LLC, Paradise Ventures, Inc",
+  //       externalLink: "https://sundialstpete.com/",
+  //     });
+  //   } else if (value.name === "Sunken Gardens") {
+  //     setWidget({
+  //       lastSold: "16,500,000.00 ",
+  //       property: "Sunken Gardens",
+  //       address: "4200 54th Ave S, St. Petersburg, FL 33711, United States",
+  //       lotArea: "3,971",
+  //       owner: "Jeff Fernandez",
+  //       externalLink: "https://www.starbucks.com/",
+  //     });
+  //   } else if (value.name === "St. Pete Beach") {
+  //     setWidget({
+  //       property: "St. Pete Beach",
+  //       address: "13625 Icot Blvd, Clearwater, FL 33760, United States",
+  //       lotArea: "15,338",
+  //       owner: "Michelle Rud",
+  //       externalLink: "https://www.ihg.com/holidayinnexpress/",
+  //       lastSold: "16,500,000.00 ",
+  //     });
+  //   }
+  // };
 
   const handleZipCodeChange = (value) => {
     setZipCode(value);
@@ -202,7 +203,8 @@ function HeroTabs({ show, handleChange, setWidget }) {
         display: "flex",
         alignItems: "center",
         flexDirection: "column",
-        paddingTop: { lg: "calc(80px + 4rem)", xs: "5vh" },
+        paddingTop: { lg: "calc(80px + 4rem)", xs: "5dvh" },
+        paddingBottom: "2dvh",
         justifyContent: "flex-start",
         position: "relative",
         zIndex: 4,
@@ -215,7 +217,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
         overflow: "hidden",
       }}
     >
-      <Box sx={{ width: "95%", height: "78vh" }}>
+      <Box sx={{ width: "95%", height: "100%" }}>
         <Tabs
           value={show}
           onChange={handleChange}
@@ -300,7 +302,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
         >
           {show === 0 ? (
             <Box>
-              <Box sx={{ padding: "0px 16px 16px 16px" }}>
+              <Box>
                 <Typography
                   mb="0.5vw"
                   color="#FFF"
@@ -319,7 +321,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
 
               <Box
                 sx={{
-                  padding: "16px",
+                  // padding: "16px",
                   display: "flex",
                   borderRadius: "8px",
                   gap: "10px",
@@ -395,7 +397,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                   marginLeft: "16px",
                   marginY: "30px",
                   textTransform: "none",
-                  paddingY: "6px",
+                  // paddingY: "6px",
                   bgcolor: "#02EBC7",
                   color: "#001A41",
                   fontSize: "18px",
@@ -416,18 +418,19 @@ function HeroTabs({ show, handleChange, setWidget }) {
             <Box
               sx={{
                 width: "100%",
-                height: "100%",
+                height: "calc(88dvh - (85px + 4rem))",
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "start",
+                justifyContent: "space-between",
+                alignItems: "stretch",
               }}
             >
-              <Box sx={{ padding: "16px 16px 16px 16px" }}>
+              <Box sx={{ paddingX: "16px" }}>
                 <Typography
                   mb="0.5vw"
                   sx={{ mt: { lg: "0px", xs: "16px" } }}
                   color="#FFF"
-                  fontSize={{ lg: "2.7vw", xs: "30px" }}
+                  fontSize={{ "2xl": "2.7vw", lg: "2.3vw", xs: "30px" }}
                   lineHeight="110%"
                   fontWeight={500}
                   fontFamily={"Soin Sans Neue"}
@@ -438,7 +441,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                   color="#FFF"
                   fontSize="18px"
                   fontWeight={500}
-                  sx={{ display: { "2xl": "flex", xs: "none" } }}
+                  sx={{ display: { xs: "none" } }}
                 >
                   Enter your specific sourcing criteria to get a list of sites
                   that match your requirements.
@@ -447,184 +450,208 @@ function HeroTabs({ show, handleChange, setWidget }) {
 
               <Box
                 sx={{
+                  flex: "1 0 0",
                   width: "100%",
-                  padding: "0px 16px 16px 16px",
+                  padding: "0px 16px 0px 16px",
                   display: "flex",
                   flexDirection: "column",
-                  gap: "16px",
+                  justifyContent: "space-evenly",
                   borderRadius: "8px",
-                  paddingBottom: "16px",
                 }}
               >
-                <Typography
-                  sx={{
-                    color: "#FFF",
-                    fontSize: "14px",
-                    fontWeight: 600,
-                    lineHeight: "20px",
-                  }}
-                >
-                  Lot area
-                </Typography>
                 <Box
                   sx={{
                     width: "100%",
                     display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "8px",
+                    gap: "16px",
                     position: "relative",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
                   }}
                 >
-                  <Box sx={{ position: "relative", width: "100%" }}>
-                    <TextField
-                      fullWidth
-                      value={acresFrom}
-                      type="text"
-                      inputmode="numeric"
-                      pattern="[0-9]*"
-                      placeholder="0 Acre"
-                      size="small"
-                      sx={{
-                        backgroundColor: "#FFF",
-                        borderRadius: "8px",
-                      }}
-                      onChange={(e) => setAcresFrom(+e.target.value)}
-                    />
-                    <Box
-                      sx={{
-                        position: "absolute",
-                        top: "50%",
-                        transform: "translate(-50%, -50%)",
-                        right: "5%",
-                      }}
-                    >
-                      <Typography
+                  <Typography
+                    sx={{
+                      color: "#FFF",
+                      fontSize: "14px",
+                      fontWeight: 600,
+                      lineHeight: "20px",
+                    }}
+                  >
+                    Lot area
+                  </Typography>
+                  <Box
+                    sx={{
+                      width: "100%",
+                      display: "flex",
+                      flexDirection: "row",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: "8px",
+                      position: "relative",
+                    }}
+                  >
+                    <Box sx={{ position: "relative", width: "100%" }}>
+                      <TextField
+                        fullWidth
+                        value={acresFrom}
+                        type="text"
+                        inputmode="numeric"
+                        pattern="[0-9]*"
+                        placeholder="0 Acre"
+                        size="small"
                         sx={{
-                          color: "gray",
-                          fontSize: "16px",
+                          backgroundColor: "#FFF",
+                          borderRadius: "8px",
+                        }}
+                        onChange={(e) => setAcresFrom(+e.target.value)}
+                      />
+                      <Box
+                        sx={{
+                          position: "absolute",
+                          top: "50%",
+                          transform: "translate(-50%, -50%)",
+                          right: "5%",
                         }}
                       >
-                        Acre
-                      </Typography>
+                        <Typography
+                          sx={{
+                            color: "gray",
+                            fontSize: "16px",
+                          }}
+                        >
+                          Acre
+                        </Typography>
+                      </Box>
                     </Box>
-                  </Box>
-                  <Typography>-</Typography>
-                  <Box sx={{ position: "relative", width: "100%" }}>
-                    <TextField
-                      fullWidth
-                      value={acresTo}
-                      type="text"
-                      inputmode="numeric"
-                      pattern="[0-9]*"
-                      placeholder="50 Acre"
-                      size="small"
-                      sx={{
-                        backgroundColor: "#FFF",
-                        borderRadius: "8px",
-                      }}
-                      onChange={(e) => setAcresTo(+e.target.value)}
-                    />
-                    <Box
-                      sx={{
-                        position: "absolute",
-                        top: "50%",
-                        transform: "translate(-50%, -50%)",
-                        right: "5%",
-                      }}
-                    >
-                      <Typography
+                    <Typography>-</Typography>
+                    <Box sx={{ position: "relative", width: "100%" }}>
+                      <TextField
+                        fullWidth
+                        value={acresTo}
+                        type="text"
+                        inputmode="numeric"
+                        pattern="[0-9]*"
+                        placeholder="50 Acre"
+                        size="small"
                         sx={{
-                          color: "gray",
-                          fontSize: "16px",
+                          backgroundColor: "#FFF",
+                          borderRadius: "8px",
+                        }}
+                        onChange={(e) => setAcresTo(+e.target.value)}
+                      />
+                      <Box
+                        sx={{
+                          position: "absolute",
+                          top: "50%",
+                          transform: "translate(-50%, -50%)",
+                          right: "5%",
                         }}
                       >
-                        Acre
-                      </Typography>
+                        <Typography
+                          sx={{
+                            color: "gray",
+                            fontSize: "16px",
+                          }}
+                        >
+                          Acre
+                        </Typography>
+                      </Box>
                     </Box>
                   </Box>
                 </Box>
-                <Typography
-                  sx={{
-                    color: "#FFF",
-                    fontSize: "14px",
-                    fontWeight: 600,
-                    lineHeight: "20px",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 1,
-                  }}
-                >
-                  Property Type
-                </Typography>
+
                 <Box
                   sx={{
-                    display: "flex",
-                    spacingX: 2,
-                    flexDirection: "row",
-                    alignItems: "center",
-                    gap: 2,
                     width: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    gap: "16px",
+                    position: "relative",
                   }}
                 >
-                  <FormControl sx={{ width: "100%" }}>
-                    <Select
-                      sx={{
-                        backgroundColor: "#FFF",
-                        borderRadius: "8px",
-                      }}
-                      fullWidth
-                      labelId="landType"
-                      variant="outlined"
-                      size="small"
-                      multiple
-                      value={landType}
-                      onChange={(e) => {
-                        setLandType(e.target.value);
-                      }}
-                      renderValue={(selected) => (
-                        <Box
-                          sx={{
-                            display: "flex",
-                            flexWrap: "nowrap",
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
-                            whiteSpace: "nowrap",
-                            width: "20vw",
-                            maxWidth: "500px",
-                            overflow: "hidden",
-                          }}
-                        >
-                          {selected.map((current) => (
-                            <Chip
-                              // color="#02EBC7"
-                              // sx={{
-                              //   "& .MuiChip-label": {
-                              //     color: "black",
-                              //   },
-                              // }}
-                              key={current}
-                              label={current}
-                              style={{ margin: 2 }}
-                            />
-                          ))}
-                        </Box>
-                      )}
-                    >
-                      <MenuItem value={"Vacant"}>
-                        <Checkbox checked={landType.indexOf("Vacant") > -1} />
-                        <ListItemText>{"Vacant"}</ListItemText>
-                      </MenuItem>
+                  <Typography
+                    sx={{
+                      color: "#FFF",
+                      fontSize: "14px",
+                      fontWeight: 600,
+                      lineHeight: "20px",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 1,
+                    }}
+                  >
+                    Property Type
+                  </Typography>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      spacingX: 2,
+                      flexDirection: "row",
+                      alignItems: "center",
+                      gap: 2,
+                      width: "100%",
+                    }}
+                  >
+                    <FormControl sx={{ width: "100%" }}>
+                      <Select
+                        sx={{
+                          backgroundColor: "#FFF",
+                          borderRadius: "8px",
+                        }}
+                        fullWidth
+                        labelId="landType"
+                        variant="outlined"
+                        size="small"
+                        multiple
+                        value={landType}
+                        onChange={(e) => {
+                          setLandType(e.target.value);
+                        }}
+                        renderValue={(selected) => (
+                          <Box
+                            sx={{
+                              display: "flex",
+                              flexWrap: "nowrap",
+                              overflow: "hidden",
+                              textOverflow: "ellipsis",
+                              whiteSpace: "nowrap",
+                              width: "20vw",
+                              maxWidth: "500px",
+                              overflow: "hidden",
+                            }}
+                          >
+                            {selected.map((current) => (
+                              <Chip
+                                // color="#02EBC7"
+                                // sx={{
+                                //   "& .MuiChip-label": {
+                                //     color: "black",
+                                //   },
+                                // }}
+                                size="small"
+                                key={current}
+                                label={current}
+                                style={{ margin: 2 }}
+                              />
+                            ))}
+                          </Box>
+                        )}
+                      >
+                        <MenuItem value={"Vacant"}>
+                          <Checkbox checked={landType.indexOf("Vacant") > -1} />
+                          <ListItemText>{"Vacant"}</ListItemText>
+                        </MenuItem>
 
-                      <MenuItem value={"Non-vacant"}>
-                        <Checkbox
-                          checked={landType.indexOf("Non-vacant") > -1}
-                        />
-                        <ListItemText>{"Non-vacant"}</ListItemText>
-                      </MenuItem>
-                    </Select>
-                  </FormControl>
+                        <MenuItem value={"Non-vacant"}>
+                          <Checkbox
+                            checked={landType.indexOf("Non-vacant") > -1}
+                          />
+                          <ListItemText>{"Non-vacant"}</ListItemText>
+                        </MenuItem>
+                      </Select>
+                    </FormControl>
+                  </Box>
                 </Box>
 
                 <Box
@@ -879,6 +906,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                                   //   },
                                   // }}
                                   key={current}
+                                  size="small"
                                   label={current}
                                   style={{ margin: 2 }}
                                 />
@@ -1077,6 +1105,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                             >
                               {selected.map((current) => (
                                 <Chip
+                                  size="small"
                                   key={current}
                                   label={current}
                                   style={{ margin: 2 }}

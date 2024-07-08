@@ -9,18 +9,21 @@ function ManagementPanel({ widget }) {
     <div
       style={{
         mt: "auto",
-        height: "85vh",
+        height: "calc(95dvh - (85px + 4rem))",
         width: "27vw",
         maxWidth: "463px",
         display: "flex",
         justifyContent: "center",
         alignItems: "start",
         zIndex: 3,
+        borderRadius: "8px",
+        top: "calc(80px + 4rem)",
+        right: "1%",
         overflowY: "scroll",
+        position: "absolute",
         "&::-webkit-scrollbar": {
           display: "none",
         },
-        borderRadius: "8px",
         msOverflowStyle: "none", // IE and Edge
         scrollbarWidth: "none", // Firefox
       }}
