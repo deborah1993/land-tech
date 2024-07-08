@@ -430,9 +430,9 @@ function HeroTabs({ show, handleChange, setWidget }) {
                   mb="0.5vw"
                   sx={{ mt: { lg: "0px", xs: "16px" } }}
                   color="#FFF"
-                  fontSize={{ "2xl": "2.7vw", lg: "2.3vw", xs: "30px" }}
                   lineHeight="110%"
                   fontWeight={500}
+                  fontSize={{ "2xl": "2.7vw", lg: "2.3vw", xs: "30px" }}
                   fontFamily={"Soin Sans Neue"}
                 >
                   Find the perfect site for your development
@@ -1295,13 +1295,19 @@ function HeroTabs({ show, handleChange, setWidget }) {
               <Typography
                 mb="0.5vw"
                 color="#FFF"
-                fontSize="2.7vw"
+                fontSize={{ "2xl": "2.7vw", lg: "2.3vw", xs: "30px" }}
+                fontFamily={"Soin Sans Neue"}
                 lineHeight="110%"
                 fontWeight={500}
               >
                 Manage sites to completion
               </Typography>
-              <Typography color="#FFF" fontSize="18px" fontWeight={500}>
+              <Typography
+                color="#FFF"
+                fontSize="18px"
+                fontWeight={500}
+                fontFamily={"Noto Sans"}
+              >
                 Move projects between customizable stages and click to open the
                 site card.
               </Typography>
@@ -1321,6 +1327,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                     backgroundColor: "rgba(2,235,199,0.8)",
                     color: "#FFF",
                   },
+                  fontFamily: "Soin Sans Neue",
                 }}
                 onClick={handleOpen}
               >

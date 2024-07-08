@@ -1015,7 +1015,12 @@ function TabsMobile({ show, handleChange, setWidget, setExpand }) {
               >
                 Manage sites to completion
               </Typography>
-              <Typography color="#FFF" fontSize="18px" fontWeight={500}>
+              <Typography
+                color="#FFF"
+                fontSize="18px"
+                fontWeight={500}
+                fontFamily={"Noto Sans"}
+              >
                 Move projects between customizable stages and click to open the
                 site card.
               </Typography>
@@ -1035,6 +1040,7 @@ function TabsMobile({ show, handleChange, setWidget, setExpand }) {
                     backgroundColor: "rgba(2,235,199,0.8)",
                     color: "#FFF",
                   },
+                  fontFamily: "Soin Sans Neue",
                 }}
                 onClick={handleOpen}
               >
