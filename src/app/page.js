@@ -267,8 +267,6 @@ function Home() {
               display: "flex",
               paddingX: "1vw",
               left: "35vw",
-              bottom: "3dvh",
-              height: "85dvh",
               zIndex: 5,
               width: "65vw",
               gap: "5vw",
