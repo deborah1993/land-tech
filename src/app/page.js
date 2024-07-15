@@ -16,6 +16,7 @@ import { CustomMarkerIcon } from "@/lib/utils/marker";
 import MobileHero from "@/components/home/mobile-hero";
 import HubspotScript from "@/lib/hs-cookie/hubspotScript";
 import * as FullStory from "@fullstory/browser";
+import FullStoryScript from "@/lib/fullstoryScript";
 
 if (typeof window !== "undefined") {
   FullStory.init({ orgId: "o-1ZT2V2-na1" });
@@ -49,6 +50,7 @@ function Home() {
   return (
     <>
       <HubspotScript />
+      <FullStoryScript />
       <Box
         className="desktop"
         sx={{
