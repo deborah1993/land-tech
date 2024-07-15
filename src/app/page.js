@@ -11,10 +11,14 @@ import axios from "axios";
 import ManagementPanel from "@/components/widgets/management-panel";
 import RightHandPanel from "@/components/widgets/right-hand-panel";
 import { markers } from "@/lib/hard-code-data";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { CustomMarkerIcon } from "@/lib/utils/marker";
 import MobileHero from "@/components/home/mobile-hero";
 import HubspotScript from "@/lib/hs-cookie/hubspotScript";
+
+if (typeof window !== "undefined") {
+  FullStory.init({ orgId: "o-1VX11Q-na1" });
+}
 
 function Home() {
   const [widget, setWidget] = React.useState(markers[0]);
