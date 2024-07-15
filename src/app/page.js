@@ -15,6 +15,7 @@ import { Box } from "@mui/material";
 import { CustomMarkerIcon } from "@/lib/utils/marker";
 import MobileHero from "@/components/home/mobile-hero";
 import HubspotScript from "@/lib/hs-cookie/hubspotScript";
+import * as FullStory from "@fullstory/browser";
 
 if (typeof window !== "undefined") {
   FullStory.init({ orgId: "o-1ZT2V2-na1" });
