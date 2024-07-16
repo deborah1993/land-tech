@@ -15,12 +15,12 @@ import { Box } from "@mui/material";
 import { CustomMarkerIcon } from "@/lib/utils/marker";
 import MobileHero from "@/components/home/mobile-hero";
 import HubspotScript from "@/lib/hs-cookie/hubspotScript";
-import FullStoryScript from "@/lib/fullstoryScript";
-import * as FullStory from "@fullstory/browser";
+// import FullStoryScript from "@/lib/fullstoryScript";
+// import * as FullStory from "@fullstory/browser";
 
-if (typeof window !== "undefined") {
-  FullStory.init({ orgId: "o-1ZT2V2-na1" });
-}
+// if (typeof window !== "undefined") {
+//   FullStory.init({ orgId: "o-1ZT2V2-na1" });
+// }
 
 function Home() {
   const [widget, setWidget] = React.useState(markers[0]);
@@ -50,7 +50,7 @@ function Home() {
   return (
     <>
       <HubspotScript />
-      <FullStoryScript />
+      {/* <FullStoryScript /> */}
       <Box
         className="desktop"
         sx={{
