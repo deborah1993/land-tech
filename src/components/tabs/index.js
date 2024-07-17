@@ -421,7 +421,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                 height: "calc(88dvh - (85px + 4rem))",
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "space-between",
+                justifyContent: "flex-start",
                 alignItems: "stretch",
               }}
             >
@@ -441,7 +441,7 @@ function HeroTabs({ show, handleChange, setWidget }) {
                   color="#FFF"
                   fontSize="18px"
                   fontWeight={500}
-                  sx={{ display: { xs: "none" } }}
+                  sx={{ display: { xs: "none", "2xl": "block" } }}
                 >
                   Enter your specific sourcing criteria to get a list of sites
                   that match your requirements.
@@ -450,13 +450,14 @@ function HeroTabs({ show, handleChange, setWidget }) {
 
               <Box
                 sx={{
-                  flex: "1 0 0",
+                  // flex: "1 0 0",
                   width: "100%",
-                  padding: "0px 16px 0px 16px",
+                  padding: "16px 16px 16px 16px",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-evenly",
                   borderRadius: "8px",
+                  gap: "16px",
                 }}
               >
                 <Box
