@@ -1,7 +1,58 @@
 import { Helmet } from "react-helmet";
+import { useEffect } from "react";
 
 const HubspotScript = () => {
   const hubspotId = "2979356";
+
+  useEffect(() => {
+    const consentGiven = localStorage.getItem("cookieConsent");
+
+    if (!consentGiven) {
+      const acceptCookies = () => {
+        localStorage.setItem("cookieConsent", "true");
+        removeListeners();
+      };
+
+      const rejectCookies = () => {
+        localStorage.setItem("cookieConsent", "false");
+        removeListeners();
+      };
+
+      const removeListeners = () => {
+        const acceptButton = document.getElementById(
+          "hs-eu-confirmation-button"
+        );
+        const rejectButton = document.getElementById("hs-eu-decline-button");
+
+        if (acceptButton) {
+          acceptButton.removeEventListener("click", acceptCookies);
+        }
+
+        if (rejectButton) {
+          rejectButton.removeEventListener("click", rejectCookies);
+        }
+      };
+
+      const initListeners = () => {
+        const acceptButton = document.getElementById(
+          "accept-cookies-button-id"
+        );
+        const rejectButton = document.getElementById(
+          "reject-cookies-button-id"
+        );
+
+        if (acceptButton) {
+          acceptButton.addEventListener("click", acceptCookies);
+        }
+
+        if (rejectButton) {
+          rejectButton.addEventListener("click", rejectCookies);
+        }
+      };
+
+      initListeners();
+    }
+  }, []);
 
   return (
     <Helmet>
