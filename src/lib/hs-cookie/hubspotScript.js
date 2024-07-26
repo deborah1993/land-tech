@@ -42,10 +42,12 @@ const HubspotScript = () => {
         );
 
         if (acceptButton) {
+          console.log("hizo click en aceptar");
           acceptButton.addEventListener("click", acceptCookies);
         }
 
         if (rejectButton) {
+          console.log("hizo click en aceptar");
           rejectButton.addEventListener("click", rejectCookies);
         }
       };
